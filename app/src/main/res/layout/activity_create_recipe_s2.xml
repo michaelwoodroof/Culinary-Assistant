@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".createRecipe.CreateRecipeS2">
+
+    <ImageView
+        android:id="@+id/imgBacker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="goBack"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+
+    <TextView
+        android:id="@+id/txtvActivityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Base Infomation"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiPrep"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtiPrepMax"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvPMin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtvPrep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:maxLength="5"
+            android:maxLines="1"
+            android:textSize="12sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiPrepMax"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/txtiPrep"
+        app:layout_constraintTop_toTopOf="@+id/txtiPrep">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtPrepMax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:maxLength="5"
+            android:maxLines="1"
+            android:textSize="12sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txtvPOverall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Preparation Time"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBacker" />
+
+    <TextView
+        android:id="@+id/txtvCOverall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Cooking Time"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtiPrep" />
+
+    <TextView
+        android:id="@+id/txtvPMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Minimum time (in mins)"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/txtvPOverall"
+        app:layout_constraintTop_toBottomOf="@+id/txtvPOverall" />
+
+    <TextView
+        android:id="@+id/txtvPMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Maximum time (in mins)"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/txtiPrepMax"
+        app:layout_constraintTop_toBottomOf="@+id/txtvPOverall" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiCook"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtiCookMax"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvCMin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtvCook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="5"
+            android:maxLines="1"
+            android:textSize="12sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiCookMax"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/txtiCook"
+        app:layout_constraintTop_toTopOf="@+id/txtiCook">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtCookMax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="5"
+            android:maxLines="1"
+            android:textSize="12sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txtvCMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Minimum time (in mins)"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/txtvCOverall"
+        app:layout_constraintTop_toBottomOf="@+id/txtvCOverall" />
+
+    <TextView
+        android:id="@+id/txtvCMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Maximum time (in mins)"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/txtiCookMax"
+        app:layout_constraintTop_toBottomOf="@+id/txtvCOverall" />
+
+    <TextView
+        android:id="@+id/txtvCuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cuisine Type"
+        app:layout_constraintStart_toStartOf="@+id/txtiCook"
+        app:layout_constraintTop_toBottomOf="@+id/txtiCook" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiCuisine"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtvCuisine"
+        app:layout_constraintTop_toBottomOf="@+id/txtvCuisine">
+
+        <AutoCompleteTextView
+            android:id="@+id/ddCuisine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txtvMealType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Meal Type"
+        app:layout_constraintStart_toStartOf="@+id/txtvCuisine"
+        app:layout_constraintTop_toBottomOf="@+id/txtiCuisine" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiMealType"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtvCuisine"
+        app:layout_constraintTop_toBottomOf="@+id/txtvMealType">
+
+        <AutoCompleteTextView
+            android:id="@+id/ddMeal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txtvSpice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Spice Rating"
+        app:layout_constraintStart_toStartOf="@+id/txtvMealType"
+        app:layout_constraintTop_toBottomOf="@+id/txtiMealType" />
+
+    <TextView
+        android:id="@+id/txtvHelper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leave empty if not spicy"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/txtvSpice"
+        app:layout_constraintTop_toBottomOf="@+id/txtvSpice" />
+
+    <ImageButton
+        android:id="@+id/imgClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:onClick="clearSpice"
+        android:padding="8dp"
+        android:tint="#F44336"
+        app:layout_constraintBottom_toBottomOf="@+id/txtvHelper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtvSpice"
+        app:srcCompat="@drawable/ic_cancel_black_19dp" />
+
+    <ImageButton
+        android:id="@+id/btnSpice1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@null"
+        android:onClick="spiceChange"
+        android:tag="empty"
+        android:tint="#000000"
+        app:layout_constraintEnd_toStartOf="@+id/btnSpice2"
+        app:layout_constraintTop_toTopOf="@+id/btnSpice3"
+        app:srcCompat="@drawable/ic_spicyoff" />
+
+    <ImageButton
+        android:id="@+id/btnSpice2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@null"
+        android:onClick="spiceChange"
+        android:tag="empty"
+        android:tint="#000000"
+        app:layout_constraintEnd_toStartOf="@+id/btnSpice3"
+        app:layout_constraintTop_toTopOf="@+id/btnSpice3"
+        app:srcCompat="@drawable/ic_spicyoff" />
+
+    <ImageButton
+        android:id="@+id/btnSpice3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:onClick="spiceChange"
+        android:tag="empty"
+        android:tint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvHelper"
+        app:srcCompat="@drawable/ic_spicyoff" />
+
+    <ImageButton
+        android:id="@+id/btnSpice4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@null"
+        android:onClick="spiceChange"
+        android:tag="empty"
+        android:tint="@null"
+        app:layout_constraintStart_toEndOf="@+id/btnSpice3"
+        app:layout_constraintTop_toTopOf="@+id/btnSpice3"
+        app:srcCompat="@drawable/ic_spicyoff" />
+
+    <ImageButton
+        android:id="@+id/btnSpice5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@null"
+        android:onClick="spiceChange"
+        android:tag="empty"
+        android:tint="@null"
+        app:layout_constraintStart_toEndOf="@+id/btnSpice4"
+        app:layout_constraintTop_toTopOf="@+id/btnSpice3"
+        app:srcCompat="@drawable/ic_spicyoff" />
+
+    <TextView
+        android:id="@+id/txtvSpicyRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="No Heat"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnSpice3"
+        app:layout_constraintStart_toEndOf="@+id/btnSpice2"
+        app:layout_constraintTop_toBottomOf="@+id/btnSpice3" />
+
+    <ImageButton
+        android:id="@+id/btnForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="goForward"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imgIndication1"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintEnd_toStartOf="@+id/imgIndication2"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication2"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="3dp"
+        android:backgroundTint="#FF0000"
+        android:foregroundTint="#FF0000"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintEnd_toStartOf="@+id/imgIndication3"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication3"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication4"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication4"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintStart_toEndOf="@+id/imgIndication3"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication5"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/btnForward"
+        app:layout_constraintStart_toEndOf="@+id/imgIndication4"
+        app:layout_constraintTop_toTopOf="@+id/btnForward"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

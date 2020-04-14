@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#64b5f6</color>
+    <color name="colorPrimaryDark">#2286c3</color>
+    <color name="colorAccent">#9be7ff</color>
+    <color name="floatingAccent">#4CAF50</color>
+    <color name="green">#ff00ff00</color>
+    <color name="baseTextColor">#000000</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="m300Green">#FF81C784</color>
+    <color name="m300Orange">#FFFF8A65</color>
+    <color name="m300Red">#FFE57373</color>
+    <color name="nofill">#00ffffff</color>
+    <color name="red">#FFFF0000</color>
+    <color name = "mygrey">#595959</color>
+    <color name = "mainmenugrey">#757575</color>
+</resources>

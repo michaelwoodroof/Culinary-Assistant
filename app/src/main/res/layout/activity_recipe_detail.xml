@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".overviews.RecipeDetail">
+
+    <ImageView
+        android:id="@+id/imgBacker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="goBack"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+
+    <TextView
+        android:id="@+id/txtvView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recipe Overview"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBacker">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clRecipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgRecipePhoto"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="TODO"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/paella" />
+
+            <TextView
+                android:id="@+id/txtvDifficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Intermediate"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtvTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtvTitle" />
+
+            <TextView
+                android:id="@+id/txtvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Paella"
+                app:layout_constraintStart_toEndOf="@+id/imgRecipePhoto"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgS1"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="2dp"
+                android:contentDescription="TODO"
+                android:tint="#F44336"
+                app:layout_constraintStart_toStartOf="@+id/txtvTitle"
+                app:layout_constraintTop_toBottomOf="@+id/txtvTitle"
+                app:srcCompat="@drawable/ic_spicyon" />
+
+            <ImageView
+                android:id="@+id/imgS2"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:contentDescription="TODO"
+                app:layout_constraintStart_toEndOf="@+id/imgS1"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyoff" />
+
+            <ImageView
+                android:id="@+id/imgS3"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                app:layout_constraintStart_toEndOf="@+id/imgS2"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyoff" />
+
+            <ImageView
+                android:id="@+id/imgS4"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                app:layout_constraintStart_toEndOf="@+id/imgS3"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyoff" />
+
+            <ImageView
+                android:id="@+id/imgS5"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                app:layout_constraintStart_toEndOf="@+id/imgS4"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyoff" />
+
+            <TextView
+                android:id="@+id/txtvPrepT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Prep Time"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/txtvTitle"
+                app:layout_constraintTop_toBottomOf="@+id/txtvTemp" />
+
+            <TextView
+                android:id="@+id/txtvCookT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cook Time"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/txtvAuthor"
+                app:layout_constraintTop_toTopOf="@+id/txtvPrepT" />
+
+            <TextView
+                android:id="@+id/txtvPrep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 - 15 Minutes"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/txtvTitle"
+                app:layout_constraintTop_toBottomOf="@+id/txtvPrepT" />
+
+            <TextView
+                android:id="@+id/txtvCook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30 - 40 Minutes"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/txtvCookT"
+                app:layout_constraintTop_toBottomOf="@+id/txtvCookT" />
+
+            <TextView
+                android:id="@+id/txtvServings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Serves 4 People"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgRecipePhoto"
+                app:layout_constraintStart_toStartOf="@+id/txtvPrep" />
+
+            <TextView
+                android:id="@+id/txtvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:minLines="1"
+                android:text="A paella dish adapted and suited for a vegetarian diet. Featuring an assortment of mediterrian vegetables."
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imgRecipePhoto"
+                app:layout_constraintTop_toBottomOf="@+id/cgAllergens" />
+
+            <TextView
+                android:id="@+id/txtvAllergens"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Allergens"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/cgAllergens"
+                app:layout_constraintTop_toBottomOf="@+id/imgRecipePhoto" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgAllergens"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtvAllergens">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpCelery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="9dp"
+                    app:chipIcon="@drawable/ic_003___egg_nf"
+                    app:chipIconSize="14dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipMinTouchTargetSize="32dp"
+                    app:chipStartPadding="9dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpEgg3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="9dp"
+                    app:chipIcon="@drawable/ic_008___peanut_nf"
+                    app:chipIconSize="14dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipMinTouchTargetSize="32dp"
+                    app:chipStartPadding="9dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/txtvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200 C"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgS5"
+                app:layout_constraintEnd_toEndOf="@+id/txtvDifficulty"
+                app:layout_constraintTop_toTopOf="@+id/imgS1" />
+
+            <Button
+                android:id="@+id/btnSeeMore"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="See More"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/txtvDescription"
+                app:layout_constraintTop_toBottomOf="@+id/txtvDescription" />
+
+            <TextView
+                android:id="@+id/txtvAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Example Author"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgRecipePhoto"
+                app:layout_constraintEnd_toEndOf="@+id/txtvTemp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clReview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnSeeMore"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/txtvReviewHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Reviews"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnWriteReview"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btnWriteReview" />
+
+                <Button
+                    android:id="@+id/btnWriteReview"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="Write a Review"
+                    android:textAllCaps="false"
+                    android:textColor="#757575"
+                    android:textSize="12sp"
+                    app:icon="@drawable/ic_edit_black_24dp"
+                    app:iconPadding="4dp"
+                    app:iconSize="18dp"
+                    app:iconTint="#6C6C6C"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtReviewScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:text="4.2"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtv1"
+                    app:layout_constraintEnd_toStartOf="@+id/txtv3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtv5" />
+
+                <RatingBar
+                    android:id="@+id/rbRating"
+                    style="@style/Widget.AppCompat.RatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:clickable="false"
+                    android:filterTouchesWhenObscured="true"
+                    android:focusable="false"
+                    android:progressTint="#595959"
+                    android:rating="4.2"
+                    android:scaleX="0.35"
+                    android:scaleY="0.35"
+                    android:secondaryProgressTint="#595959"
+                    android:stepSize="0.1"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtv1"
+                    app:layout_constraintEnd_toEndOf="@+id/txtReviewScore"
+                    app:layout_constraintStart_toStartOf="@+id/txtReviewScore"
+                    app:layout_constraintTop_toTopOf="@+id/txtv5" />
+
+                <TextView
+                    android:id="@+id/txtvTotalReviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="15 total"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/txtReviewScore"
+                    app:layout_constraintStart_toStartOf="@+id/txtReviewScore"
+                    app:layout_constraintTop_toBottomOf="@+id/txtReviewScore" />
+
+                <TextView
+                    android:id="@+id/txtv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="1"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtv5"
+                    app:layout_constraintTop_toBottomOf="@+id/txtv2" />
+
+                <TextView
+                    android:id="@+id/txtv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="2"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtv5"
+                    app:layout_constraintTop_toBottomOf="@+id/txtv3" />
+
+                <TextView
+                    android:id="@+id/txtv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="3"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtv5"
+                    app:layout_constraintTop_toBottomOf="@+id/txtv4" />
+
+                <TextView
+                    android:id="@+id/txtv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="4"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtv5"
+                    app:layout_constraintTop_toBottomOf="@+id/txtv5" />
+
+                <TextView
+                    android:id="@+id/txtv5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="16dp"
+                    android:text="5"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtvReviewHeader"
+                    app:layout_constraintTop_toBottomOf="@+id/btnWriteReview" />
+
+                <ImageView
+                    android:id="@+id/imgRect1"
+                    android:layout_width="60dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:tint="#F44336"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtv1"
+                    app:layout_constraintStart_toEndOf="@+id/txtv1"
+                    app:layout_constraintTop_toTopOf="@+id/txtv1"
+                    tools:srcCompat="@drawable/rectangle" />
+
+                <ImageView
+                    android:id="@+id/imgRect2"
+                    android:layout_width="30dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:tint="#FF9800"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtv2"
+                    app:layout_constraintStart_toEndOf="@+id/txtv2"
+                    app:layout_constraintTop_toTopOf="@+id/txtv2"
+                    tools:srcCompat="@drawable/rectangle" />
+
+                <ImageView
+                    android:id="@+id/imgRect3"
+                    android:layout_width="20dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:tint="#FFC107"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtv3"
+                    app:layout_constraintStart_toEndOf="@+id/txtv3"
+                    app:layout_constraintTop_toTopOf="@+id/txtv3"
+                    tools:srcCompat="@drawable/rectangle" />
+
+                <ImageView
+                    android:id="@+id/imgRect4"
+                    android:layout_width="30dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:tint="#8BC34A"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtv4"
+                    app:layout_constraintStart_toEndOf="@+id/txtv4"
+                    app:layout_constraintTop_toTopOf="@+id/txtv4"
+                    tools:srcCompat="@drawable/rectangle" />
+
+                <ImageView
+                    android:id="@+id/imgRect5"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:tint="#4CAF50"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtv5"
+                    app:layout_constraintStart_toEndOf="@+id/txtv5"
+                    app:layout_constraintTop_toTopOf="@+id/txtv5"
+                    tools:srcCompat="@drawable/rectangle" />
+
+                <ScrollView
+                    android:id="@+id/svReviews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgRect1">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clReviews"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/txtAuth"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="4dp"
+                            android:text="Michael Woodroof"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="1"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/btnUpvote"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/btnUpvote" />
+
+                        <ImageButton
+                            android:id="@+id/btnUpvote"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:scaleX="0.5"
+                            android:scaleY="0.5"
+                            app:layout_constraintEnd_toStartOf="@+id/txtTotal"
+                            app:layout_constraintTop_toTopOf="@+id/txtAuth"
+                            app:srcCompat="@drawable/ic_thumb_up_black_24dp" />
+
+                        <ImageView
+                            android:id="@+id/imgStar2"
+                            android:layout_width="15dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="1dp"
+                            android:tint="#6A6A6A"
+                            app:layout_constraintStart_toEndOf="@+id/imgStar"
+                            app:layout_constraintTop_toTopOf="@+id/imgStar1"
+                            app:srcCompat="@drawable/ic_star_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/txtDesc"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:inputType="textMultiLine"
+                            android:lines="1"
+                            android:maxLines="5"
+                            android:text="Loved the recipe"
+                            android:textSize="10sp"
+                            app:layout_constraintEnd_toEndOf="@+id/txtTotal"
+                            app:layout_constraintStart_toStartOf="@+id/imgStar1"
+                            app:layout_constraintTop_toBottomOf="@+id/imgStar4" />
+
+                        <TextView
+                            android:id="@+id/txtDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10 / 03 / 20"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/imgStar4"
+                            app:layout_constraintEnd_toEndOf="@+id/txtAuth"
+                            app:layout_constraintTop_toTopOf="@+id/imgStar3" />
+
+                        <ImageView
+                            android:id="@+id/imgStar1"
+                            android:layout_width="15dp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="2dp"
+                            android:tint="#6A6A6A"
+                            app:layout_constraintStart_toStartOf="@+id/txtAuth"
+                            app:layout_constraintTop_toBottomOf="@+id/txtAuth"
+                            app:srcCompat="@drawable/ic_star_black_24dp" />
+
+                        <ImageView
+                            android:id="@+id/imgStar"
+                            android:layout_width="15dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="1dp"
+                            android:tint="#6A6A6A"
+                            app:layout_constraintStart_toEndOf="@+id/imgStar1"
+                            app:layout_constraintTop_toTopOf="@+id/imgStar1"
+                            app:srcCompat="@drawable/ic_star_black_24dp" />
+
+                        <ImageView
+                            android:id="@+id/imgStar3"
+                            android:layout_width="15dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="1dp"
+                            android:tint="#6A6A6A"
+                            app:layout_constraintStart_toEndOf="@+id/imgStar2"
+                            app:layout_constraintTop_toTopOf="@+id/imgStar1"
+                            app:srcCompat="@drawable/ic_star_black_24dp" />
+
+                        <ImageView
+                            android:id="@+id/imgStar4"
+                            android:layout_width="15dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="1dp"
+                            android:tint="#6A6A6A"
+                            app:layout_constraintStart_toEndOf="@+id/imgStar3"
+                            app:layout_constraintTop_toTopOf="@+id/imgStar1"
+                            app:srcCompat="@drawable/ic_star_black_24dp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </ScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".createRecipe.CreateRecipeS3">
+
+    <ImageView
+        android:id="@+id/imgBacker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="goBack"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+
+    <TextView
+        android:id="@+id/txtvActivityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Additional Infomation"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <TextView
+        android:id="@+id/txtvIsFreezable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Is Recipe Freezable ?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBacker" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/swFreezeable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:checked="false"
+        android:onClick="showKeepMenu"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/txtvIsFreezable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtvIsFreezable" />
+
+    <TextView
+        android:id="@+id/txtvHowLong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How long does recipe keep for?"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/txtvIsFreezable"
+        app:layout_constraintTop_toBottomOf="@+id/txtvIsFreezable" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiKeep"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtvCuisine"
+        app:layout_constraintTop_toBottomOf="@+id/txtvHowLong">>
+
+        <AutoCompleteTextView
+            android:id="@+id/ddKeep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txtvKeywords"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Main Characteristics of Recipe"
+        app:layout_constraintStart_toStartOf="@+id/txtvIsFreezable"
+        app:layout_constraintTop_toBottomOf="@+id/txtiKeep" />
+
+    <TextView
+        android:id="@+id/txtvHelper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Such as vegetarian, healthy etc."
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/txtvKeywords"
+        app:layout_constraintTop_toBottomOf="@+id/txtvKeywords" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiChara"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:hint="Name of Characteristic"
+        android:visibility="gone"
+        app:counterEnabled="true"
+        app:counterMaxLength="30"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toStartOf="@+id/swFreezeable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvHelper">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtChara"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textSize="12sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@null"
+        android:onClick="addChip"
+        android:tint="#8BC34A"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/txtiChara"
+        app:layout_constraintEnd_toEndOf="@+id/swFreezeable"
+        app:layout_constraintStart_toStartOf="@+id/swFreezeable"
+        app:layout_constraintTop_toTopOf="@+id/txtiChara"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/cgKeywords"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddChar"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddChar"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="openChipMenu"
+        android:text="No characteristics add one?"
+        android:textSize="12sp"
+        app:icon="@drawable/ic_add_circle_black_24dp"
+        app:iconGravity="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtvHelper"
+        app:layout_constraintTop_toBottomOf="@+id/txtiChara" />
+
+    <ImageButton
+        android:id="@+id/btnForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="goForward"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imgIndication1"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintEnd_toStartOf="@+id/imgIndication2"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication2"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="3dp"
+        android:backgroundTint="#FF0000"
+        android:foregroundTint="#FF0000"
+        android:tint="#E3e3e3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintEnd_toStartOf="@+id/imgIndication3"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication3"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication4"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication4"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintStart_toEndOf="@+id/imgIndication3"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication5"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/btnForward"
+        app:layout_constraintStart_toEndOf="@+id/imgIndication4"
+        app:layout_constraintTop_toTopOf="@+id/btnForward"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

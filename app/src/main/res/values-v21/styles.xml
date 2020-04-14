@@ -1,0 +1,35 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/OpenSansTextViewStyle</item>
+        <item name="android:editTextStyle">@style/OpenSansEditTextStyle</item>
+        <item name="android:buttonStyle">@style/OpenSansTextViewStyle</item>
+    </style>
+
+    <style name="OpenSansTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textColor">@color/baseTextColor</item>
+    </style>
+
+    <style name="OpenSansButtonStyle" parent="android:Widget.Button">
+        <item name="android:fontFamily">@font/open_sans</item>
+    </style>
+
+    <style name="OpenSansEditTextStyle" parent="android:Widget.EditText">
+        <item name="android:fontFamily">@font/open_sans</item>
+    </style>
+
+    <style name="materialSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/colorAccent</item>
+
+        <item name="colorSwitchThumbNormal">#f1f1f1</item>
+
+        <item name="android:colorForeground">#42221f1f</item>
+    </style>
+
+</resources>

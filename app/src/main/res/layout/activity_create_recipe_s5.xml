@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".createRecipe.CreateRecipeS5">
+
+    <ImageView
+        android:id="@+id/imgBacker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="goBack"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+
+    <TextView
+        android:id="@+id/txtvActivityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Steps"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiStepNum"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Step Number"
+        app:counterMaxLength="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBacker">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtStepNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="1"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiStepDesc"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Description of Step"
+        app:counterEnabled="true"
+        app:counterMaxLength="750"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtiStepNum">>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtStepDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:onClick="createRecipe"
+        android:text="Create Recipe"
+        app:layout_constraintBottom_toTopOf="@+id/imgIndication3"
+        app:layout_constraintEnd_toEndOf="@+id/svSteps"
+        app:layout_constraintStart_toStartOf="@+id/svSteps" />
+
+    <ImageView
+        android:id="@+id/imgIndication1"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintEnd_toStartOf="@+id/imgIndication2"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication2"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="3dp"
+        android:backgroundTint="#FF0000"
+        android:foregroundTint="#FF0000"
+        android:tint="#E3e3e3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintEnd_toStartOf="@+id/imgIndication3"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication3"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:tint="#e3e3e3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication4"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication4"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        android:tint="#e3e3e3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintStart_toEndOf="@+id/imgIndication3"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication5"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="21dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgIndication4"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <Button
+        android:id="@+id/btnAddStep"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="addStep"
+        android:text="Add Step"
+        app:layout_constraintEnd_toEndOf="@+id/txtiStepNum"
+        app:layout_constraintStart_toStartOf="@+id/txtiStepNum"
+        app:layout_constraintTop_toBottomOf="@+id/txtiStepDesc" />
+
+    <ScrollView
+        android:id="@+id/svSteps"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddStep">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSteps"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

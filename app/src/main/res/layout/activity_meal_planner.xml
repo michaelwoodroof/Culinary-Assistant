@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MealPlanner">
+
+    <TextView
+        android:id="@+id/tvBreakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/breakfast"
+        android:textColor="@color/mygrey"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtiDayOfWeek" />
+
+    <TextView
+        android:id="@+id/tvLunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/lunch"
+        android:textColor="@color/mygrey"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/tvBreakfast"
+        app:layout_constraintTop_toBottomOf="@+id/tvBreakfast" />
+
+    <TextView
+        android:id="@+id/tvDinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/dinner"
+        android:textColor="@color/mygrey"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/tvBreakfast"
+        app:layout_constraintTop_toBottomOf="@+id/tvLunch" />
+
+    <ImageButton
+        android:id="@+id/btnEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:onClick="loadPicker"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtiDayOfWeek"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtiDayOfWeek"
+        app:srcCompat="@drawable/ic_edit_black_24dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiDayOfWeek"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        app:boxStrokeColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/ddDayOfWeek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:text="Monday" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvLocalRef1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/tvBreakfast"
+        app:layout_constraintTop_toBottomOf="@+id/tvBreakfast" />
+
+    <TextView
+        android:id="@+id/tvLocalRef3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/tvDinner"
+        app:layout_constraintTop_toBottomOf="@+id/tvDinner" />
+
+    <Button
+        android:id="@+id/btnTPBreakfast"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:onClick="loadPicker"
+        android:paddingRight="8dp"
+        android:text="07:00"
+        android:textColor="@color/baseTextColor"
+        app:icon="@drawable/ic_arrow_drop_down_black_24dp"
+        app:iconGravity="end"
+        app:iconPadding="4dp"
+        app:iconTint="#616161"
+        app:layout_constraintBottom_toBottomOf="@+id/tvBreakfast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvBreakfast"
+        app:strokeColor="@color/mainmenugrey" />
+
+    <Button
+        android:id="@+id/btnTPLunch"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:onClick="loadPicker"
+        android:paddingRight="8dp"
+        android:text="12:00"
+        android:textColor="@color/baseTextColor"
+        app:icon="@drawable/ic_arrow_drop_down_black_24dp"
+        app:iconGravity="end"
+        app:iconPadding="4dp"
+        app:iconTint="@color/mygrey"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLunch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvLunch"
+        app:strokeColor="@color/mainmenugrey" />
+
+    <Button
+        android:id="@+id/btnTPDinner"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:onClick="loadPicker"
+        android:paddingRight="8dp"
+        android:text="17:00"
+        android:textColor="@color/baseTextColor"
+        app:icon="@drawable/ic_arrow_drop_down_black_24dp"
+        app:iconGravity="end"
+        app:iconPadding="4dp"
+        app:iconTint="@color/mygrey"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvDinner"
+        app:strokeColor="@color/mainmenugrey" />
+
+    <ImageView
+        android:id="@+id/imgNotif1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toggleNotification"
+        android:padding="8dp"
+        android:tag="tog"
+        android:tint="@color/mainmenugrey"
+        app:layout_constraintBottom_toBottomOf="@+id/btnTPBreakfast"
+        app:layout_constraintEnd_toStartOf="@+id/btnTPBreakfast"
+        app:layout_constraintTop_toTopOf="@+id/btnTPBreakfast"
+        app:srcCompat="@drawable/ic_notifications_active_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imgNotif2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toggleNotification"
+        android:padding="8dp"
+        android:tag="tog"
+        android:tint="@color/mainmenugrey"
+        app:layout_constraintBottom_toBottomOf="@+id/btnTPLunch"
+        app:layout_constraintEnd_toStartOf="@+id/btnTPLunch"
+        app:layout_constraintTop_toTopOf="@+id/btnTPLunch"
+        app:srcCompat="@drawable/ic_notifications_active_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imgNotif3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toggleNotification"
+        android:padding="8dp"
+        android:tag="tog"
+        android:tint="@color/mainmenugrey"
+        app:layout_constraintBottom_toBottomOf="@+id/btnTPDinner"
+        app:layout_constraintEnd_toStartOf="@+id/btnTPDinner"
+        app:layout_constraintTop_toTopOf="@+id/btnTPDinner"
+        app:srcCompat="@drawable/ic_notifications_active_black_24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

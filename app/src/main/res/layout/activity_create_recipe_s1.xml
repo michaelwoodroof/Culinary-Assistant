@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/laycMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:clipToPadding="false"
+    tools:context=".createRecipe.CreateRecipeS1">
+
+    <ImageView
+        android:id="@+id/imgBacker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="goBack"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+
+    <TextView
+        android:id="@+id/txtvView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Recipe"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiTitle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Name of Recipe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBacker"
+        app:counterEnabled="true"
+        app:counterMaxLength="30"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textSize="12sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiDesc"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Short Description of Recipe"
+        app:counterEnabled="true"
+        app:counterMaxLength="250"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtiTitle"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:maxLines="5"
+            android:textSize="12sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/txtvDifficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Difficulty of recipe"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtiDesc" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNovice"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="diffSelector"
+        android:tag="nt"
+        android:text="Novice"
+        android:textColor="@color/m300Green"
+        android:textSize="12sp"
+        app:backgroundTint="#00FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/btnIntermediate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnIntermediate"
+        app:strokeColor="@color/m300Green" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnIntermediate"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:onClick="diffSelector"
+        android:tag="nt"
+        android:text="Intermediate"
+        android:textColor="@color/m300Orange"
+        android:textSize="12sp"
+        app:backgroundTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvDiffError"
+        app:strokeColor="@color/m300Orange" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAdvanced"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="diffSelector"
+        android:tag="nt"
+        android:text="Expert"
+        android:textColor="@color/m300Red"
+        android:textSize="12sp"
+        app:backgroundTint="#00ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnIntermediate"
+        app:layout_constraintTop_toTopOf="@+id/btnIntermediate"
+        app:strokeColor="@color/m300Red" />
+
+    <ImageView
+        android:id="@+id/imgPreview"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="8dp"
+        android:cropToPadding="true"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvWarning"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnImgPicker"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="pickImage"
+        android:text="CHOOSE IMAGE"
+        android:textSize="12sp"
+        app:icon="@drawable/ic_image_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPreview" />
+
+    <ImageButton
+        android:id="@+id/btnForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="goForward"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="hideImage"
+        android:padding="6dp"
+        android:tint="#FA0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPreview"
+        app:layout_constraintEnd_toEndOf="@+id/imgPreview"
+        app:layout_constraintStart_toStartOf="@+id/imgPreview"
+        app:layout_constraintTop_toBottomOf="@+id/imgPreview"
+        app:srcCompat="@drawable/ic_cancel_black_19dp" />
+
+    <ImageView
+        android:id="@+id/imgIndication1"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintEnd_toStartOf="@+id/imgIndication2"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication2"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="3dp"
+        android:backgroundTint="#FF0000"
+        android:foregroundTint="#FF0000"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintEnd_toStartOf="@+id/imgIndication3"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication3"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication4"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication4"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintStart_toEndOf="@+id/imgIndication3"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication5"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/btnForward"
+        app:layout_constraintStart_toEndOf="@+id/imgIndication4"
+        app:layout_constraintTop_toTopOf="@+id/btnForward"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <TextView
+        android:id="@+id/txtvDiffError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:drawableStart="@drawable/ic_error_black_24dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:text="Please choose a difficulty"
+        android:textColor="#F44336"
+        android:textSize="10sp"
+        android:visibility="gone"
+        app:drawableTint="#F44336"
+        app:layout_constraintStart_toStartOf="@+id/txtvDifficulty"
+        app:layout_constraintTop_toBottomOf="@+id/txtvDifficulty" />
+
+    <TextView
+        android:id="@+id/txtvWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:drawableStart="@drawable/ic_warning_black_24dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:text="Choosing an image allows for the recipe to be more easily found"
+        android:textColor="#FF9800"
+        android:textSize="10sp"
+        android:visibility="gone"
+        app:drawableTint="#FFC107"
+        app:layout_constraintStart_toStartOf="@+id/txtvDifficulty"
+        app:layout_constraintTop_toBottomOf="@+id/btnNovice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

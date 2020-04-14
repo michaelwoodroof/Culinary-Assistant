@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dlMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/laycoMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <SearchView
+            android:id="@+id/svMain"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/txtiSearch"
+            app:layout_constraintEnd_toEndOf="@+id/txtiSearch"
+            app:layout_constraintStart_toStartOf="@+id/txtiSearch"
+            app:layout_constraintTop_toTopOf="@+id/txtiSearch" />
+
+        <ImageButton
+            android:id="@+id/btnFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="18dp"
+            android:background="@null"
+            android:tint="@color/mainmenugrey"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/txtiSearch"
+            app:layout_constraintEnd_toEndOf="@+id/txtiSearch"
+            app:layout_constraintTop_toTopOf="@+id/txtiSearch"
+            app:srcCompat="@drawable/ic_filter_list_black_24dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtiSearch"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="68dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint=""
+            android:longClickable="false"
+            app:counterEnabled="false"
+            app:counterMaxLength="50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btnSearchLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:onClick="loadSearch"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnMenu"
+            app:layout_constraintEnd_toEndOf="@+id/txtiSearch"
+            app:layout_constraintTop_toTopOf="@+id/btnMenu"
+            app:srcCompat="@drawable/ic_search_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@null"
+            android:onClick="loadAccount"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtiSearch"
+            app:layout_constraintStart_toStartOf="@+id/txtiSearch"
+            app:layout_constraintTop_toTopOf="@+id/txtiSearch"
+            app:srcCompat="@drawable/ic_menu_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/btnAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:background="@null"
+            android:onClick="loadAccount"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSearchLoad"
+            app:layout_constraintStart_toEndOf="@+id/txtiSearch"
+            app:layout_constraintTop_toTopOf="@+id/btnSearchLoad"
+            app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+        <ScrollView
+            android:id="@+id/svContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:scrollbarFadeDuration="0"
+            android:scrollbarSize="0dp"
+            android:scrollbarThumbHorizontal="@null"
+            android:scrollbarThumbVertical="@null"
+            android:scrollbarTrackVertical="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtiSearch">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtvGetStarted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Suggested"
+                    android:textColor="@color/mygrey"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btnSuggestions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@null"
+                    android:onClick="loadAllSuggested"
+                    android:padding="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtvGetStarted"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtvGetStarted"
+                    app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
+
+                <HorizontalScrollView
+                    android:id="@+id/hsvSuggested"
+                    android:layout_width="wrap_content"
+                    android:layout_height="180dp"
+                    app:layout_constraintStart_toStartOf="@+id/txtvGetStarted"
+                    app:layout_constraintTop_toBottomOf="@+id/txtvGetStarted">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clSuggested"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/txtvCommunityFavourites"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="180dp"
+                    android:text="Community Favourites"
+                    android:textColor="@color/mygrey"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtvGetStarted"
+                    app:layout_constraintTop_toBottomOf="@+id/txtvGetStarted" />
+
+                <ImageButton
+                    android:id="@+id/btnCommunity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:onClick="loadAllCommunityFavourites"
+                    android:padding="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtvCommunityFavourites"
+                    app:layout_constraintStart_toStartOf="@+id/btnSuggestions"
+                    app:layout_constraintTop_toTopOf="@+id/txtvCommunityFavourites"
+                    app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
+
+                <HorizontalScrollView
+                    android:id="@+id/hsvCommunityFavourites"
+                    android:layout_width="wrap_content"
+                    android:layout_height="180dp"
+                    app:layout_constraintStart_toStartOf="@+id/txtvCommunityFavourites"
+                    app:layout_constraintTop_toBottomOf="@+id/txtvCommunityFavourites">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clCommunity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/txtvCategories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="180dp"
+                    android:text="Categories"
+                    android:textColor="@color/mygrey"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtvCommunityFavourites"
+                    app:layout_constraintTop_toBottomOf="@+id/txtvCommunityFavourites" />
+
+                <ImageButton
+                    android:id="@+id/btnCategories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:onClick="loadAllCategories"
+                    android:padding="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtvCategories"
+                    app:layout_constraintStart_toStartOf="@+id/btnCommunity"
+                    app:layout_constraintTop_toTopOf="@+id/txtvCategories"
+                    app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
+
+                <HorizontalScrollView
+                    android:id="@+id/hsvCategories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="180dp"
+                    android:scrollbarAlwaysDrawHorizontalTrack="false"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:scrollbarDefaultDelayBeforeFade="0"
+                    android:scrollbarFadeDuration="0"
+                    android:scrollbarSize="0dp"
+                    android:scrollbarThumbHorizontal="@null"
+                    android:scrollbarThumbVertical="@null"
+                    android:scrollbarTrackVertical="@null"
+                    android:scrollbars="none"
+                    app:layout_constraintStart_toStartOf="@+id/txtvCategories"
+                    app:layout_constraintTop_toBottomOf="@+id/txtvCategories">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clCategories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                </HorizontalScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:backgroundTint="#4CAF50"
+            android:backgroundTintMode="src_atop"
+            android:foregroundTint="#FFFFFF"
+            android:foregroundTintMode="src_atop"
+            android:onClick="openCreateMenu"
+            android:tint="@color/white"
+            android:tintMode="src_atop"
+            app:backgroundTint="#4CAF50"
+            app:backgroundTintMode="add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_add_white_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nvMain"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:visibility="visible"
+        app:itemIconTint="@color/mygrey"
+        app:itemTextColor="@color/mygrey"
+        app:menu="@menu/activity_main_drawer"
+        tools:visibility="gone" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

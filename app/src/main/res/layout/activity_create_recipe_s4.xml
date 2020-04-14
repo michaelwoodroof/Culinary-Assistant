@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- @TODO ADD CHECKED ICON AND ICON TO DIETARY CHIPS -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    tools:context=".createRecipe.CreateRecipeS4">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCreate"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clCreateIngredient"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvCI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add an Ingredient"
+                android:textColor="@color/baseTextColor"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnClose"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnClose" />
+
+            <ImageButton
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:backgroundTint="@null"
+                android:onClick="closeIngredientMenu"
+                android:padding="16dp"
+                android:tint="#F44336"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close_custom" />
+
+            <Button
+                android:id="@+id/btnCreateIngredient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@null"
+                android:backgroundTint="#4CAF50"
+                android:onClick="addIngredient"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:shadowColor="#00FFFFFF"
+                android:text="Add Ingredient"
+                android:textSize="14sp"
+                app:cornerRadius="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:shapeAppearance="@null" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtiIngredientName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Name of Ingredient"
+                app:counterMaxLength="30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCI">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtIngredientName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtiAmount"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Amount of Ingredient"
+                app:counterMaxLength="30"
+                app:layout_constraintEnd_toStartOf="@+id/txtiUnit"
+                app:layout_constraintHorizontal_bias="0.58"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtiIngredientName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtiUnit"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtiAmount"
+                app:layout_constraintTop_toBottomOf="@+id/txtiIngredientName"
+                app:layout_constraintWidth_percent="0.3">
+
+                <AutoCompleteTextView
+                    android:id="@+id/ddUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:editable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtiNotes"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Notes about Ingredient"
+                app:counterEnabled="true"
+                app:counterMaxLength="250"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtiAmount">>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imgBacker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="goBack"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+
+    <TextView
+        android:id="@+id/txtvActivityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingredients"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiPortion"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Number of Portions"
+        app:counterMaxLength="30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBacker">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtPortion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:maxLength="5"
+            android:maxLines="1"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txtHelper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Changing this value will update the ingredient amounts accordingly"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/txtiPortion"
+        app:layout_constraintTop_toBottomOf="@+id/txtiPortion" />
+
+    <Button
+        android:id="@+id/btnAddIngredient"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="100dp"
+        android:foregroundTint="#4CAF50"
+        android:onClick="loadIngredientMenu"
+        android:paddingRight="8dp"
+        android:text="Add Ingredient"
+        android:textColor="#4CAF50"
+        app:iconPadding="8dp"
+        app:iconTint="#4CAF50"
+        app:layout_constraintEnd_toEndOf="@+id/txtiPortion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHelper"
+        app:strokeColor="#4CAF50" />
+
+    <ScrollView
+        android:id="@+id/svIngredients"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxHeight="250dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/txtiPortion"
+        app:layout_constraintHeight_max="wrap"
+        app:layout_constraintStart_toStartOf="@+id/txtiPortion"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddIngredient">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="0dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingredients:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glIngredient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/txtvDietary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Allergens"
+        app:layout_constraintStart_toStartOf="@+id/txtiPortion"
+        app:layout_constraintTop_toBottomOf="@+id/svIngredients" />
+
+    <Switch
+        android:id="@+id/swShowNames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="changeChips"
+        android:text="Toggle Allergens "
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtvDietary"
+        app:layout_constraintEnd_toEndOf="@+id/txtiPortion"
+        app:layout_constraintTop_toTopOf="@+id/txtvDietary" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/cgDietary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/swShowNames"
+        app:layout_constraintStart_toStartOf="@+id/txtvDietary"
+        app:layout_constraintTop_toBottomOf="@+id/txtvDietary">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpCelery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Celery"
+            android:textColor="#424242"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_001___celery_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipMinTouchTargetSize="48dp"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpGluten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Gluten"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_002___bread_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipMinTouchTargetSize="48dp"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpEggs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Eggs"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_003___egg_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpSeafood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Seafood"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_010___fish_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpLupin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:drawablePadding="0dp"
+            android:onClick="checkedChips"
+            android:tag="Lupin"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_013___lupin_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpMilk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Milk"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_006___milk_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpMustard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Mustard"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_007___mustard_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpNuts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Nuts"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_011___nut_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpPeanuts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Peanuts"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_008___peanut_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpSesame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Sesame"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_012___sesame_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:iconEndPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpSoya"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Soya"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_009___soya_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chpSulphites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:onClick="checkedChips"
+            android:tag="Sulphites"
+            app:checkedIcon="@null"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="#E1E1E1"
+            app:chipEndPadding="7dp"
+            app:chipIcon="@drawable/ic_014___sulphites_nf"
+            app:chipIconSize="20dp"
+            app:chipIconTint="#838383"
+            app:chipStartPadding="7dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconSize="28dp"
+            app:closeIconStartPadding="0dp"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <ImageView
+        android:id="@+id/imgIndication1"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintEnd_toStartOf="@+id/imgIndication2"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication2"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="3dp"
+        android:backgroundTint="#FF0000"
+        android:foregroundTint="#FF0000"
+        android:tint="#E3e3e3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintEnd_toStartOf="@+id/imgIndication3"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication3"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:tint="#e3e3e3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication4"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication4"
+        android:layout_width="14dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIndication5"
+        app:layout_constraintStart_toEndOf="@+id/imgIndication3"
+        app:layout_constraintTop_toTopOf="@+id/imgIndication5"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageView
+        android:id="@+id/imgIndication5"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="3dp"
+        android:tint="#E3E3E3"
+        app:layout_constraintBottom_toBottomOf="@+id/btnForward"
+        app:layout_constraintStart_toEndOf="@+id/imgIndication4"
+        app:layout_constraintTop_toTopOf="@+id/btnForward"
+        app:srcCompat="@drawable/ic_circle_fill" />
+
+    <ImageButton
+        android:id="@+id/btnForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="goForward"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
