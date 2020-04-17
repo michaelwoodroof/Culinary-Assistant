@@ -26,7 +26,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity android:name="com.michaelwoodroof.culinaryassistant.MealPlanner" />
-        <activity android:name="com.michaelwoodroof.culinaryassistant.DebugMenu" />
+        <activity android:name="com.michaelwoodroof.culinaryassistant.LocalRecipes" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.RecipeOverview" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.CategoryOverview" />

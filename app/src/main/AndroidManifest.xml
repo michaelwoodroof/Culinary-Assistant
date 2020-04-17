@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MealPlanner" />
-        <activity android:name=".DebugMenu" />
+        <activity android:name=".LocalRecipes" />
         <activity android:name=".overviews.RecipeDetail" />
         <activity android:name=".overviews.RecipeOverview" />
         <activity android:name=".overviews.CategoryOverview" />

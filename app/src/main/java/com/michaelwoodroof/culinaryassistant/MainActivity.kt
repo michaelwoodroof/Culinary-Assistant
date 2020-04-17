@@ -64,36 +64,6 @@ class MainActivity : AppCompatActivity() {
         val sn = ScheduleNotification()
         sn.createAlarm(this, 20, 45, (1000 * 60 * 60 * 24), "Demo")
 
-        // Get Local File
-        val fh = FileHandler()
-
-        val ingredients = ArrayList<Ingredient>()
-        ingredients.add(Ingredient("Carrot","200","100","ML"))
-        val keywords = ArrayList<String>()
-        keywords.add("Vegan")
-        val steps = ArrayList<Section>()
-        steps.add(Section(1, "A Step"))
-
-        var newRecipe = Recipe("","10-20","5-10",0,0,"uid444","Michael","Other","Other",
-            "A Local Recipes","","2","Local","200","Ze",ArrayList<Dietary>(),ingredients,
-            ArrayList<Nutrition>(), ArrayList<ExtSection>(), ArrayList<ExtSection>(), keywords, steps,
-            "")
-
-        fh.addRecipe(newRecipe, this)
-
-        newRecipe = Recipe("","10-20","5-10",0,0,"uid322","Michael","Other","Other",
-            "A Local Recipes","","2","Local","200","Paella D",ArrayList<Dietary>(),ingredients,
-            ArrayList<Nutrition>(), ArrayList<ExtSection>(), ArrayList<ExtSection>(), keywords, steps,
-            "")
-
-        fh.addRecipe(newRecipe, this)
-
-        val localRecipes = fh.getLocalRecipes(this)
-
-        localRecipes.forEach {
-            Log.d("testData", it.title)
-        }
-
     }
 
     // Used to Fill Main Menu with Info can be called with Sync Button if application is offline
@@ -145,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                             it["imagePath"] as String, false, it["categoryTitle"] as String, it["categoryTitle"] as String,
                             0.0, prevID)
 
-                        RenderCard.renderFiller(this, clCategories, tempID)
+                        RenderCard.renderFiller(this, clCategories, tempID, 80, 440)
                     } else {
                         RenderCard.makeHorizontalCard(this, clCategories, it["categoryTitle"] as String,
                             it["imagePath"] as String, false, it["categoryTitle"] as String, it["categoryTitle"] as String,
@@ -186,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
                             it["reviewScore"] as Double, prevID)
 
-                        RenderCard.renderFiller(this, clSuggested, tempID)
+                        RenderCard.renderFiller(this, clSuggested, tempID, 80, 440)
                     } else {
                         RenderCard.makeHorizontalCard(this, clSuggested, it["title"] as String,
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
@@ -225,7 +195,7 @@ class MainActivity : AppCompatActivity() {
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
                             it["reviewScore"] as Double, prevID)
 
-                        RenderCard.renderFiller(this, clCommunity, tempID)
+                        RenderCard.renderFiller(this, clCommunity, tempID, 80, 440)
                     } else {
                         RenderCard.makeHorizontalCard(this, clCommunity, it["title"] as String,
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
@@ -320,13 +290,13 @@ class MainActivity : AppCompatActivity() {
 
         when (item.title) {
 
-            "My Recipes" -> intent = Intent(this, DebugMenu::class.java)
+            "My Recipes" -> intent = Intent(this, LocalRecipes::class.java)
 
             "Meal Planner" -> intent = Intent(this, MealPlanner::class.java)
 
-            "Settings" -> intent = Intent(this, DebugMenu::class.java)
+            "Settings" -> intent = Intent(this, LocalRecipes::class.java)
 
-            else -> intent = Intent(this, DebugMenu::class.java)
+            else -> intent = Intent(this, LocalRecipes::class.java)
 
         }
 

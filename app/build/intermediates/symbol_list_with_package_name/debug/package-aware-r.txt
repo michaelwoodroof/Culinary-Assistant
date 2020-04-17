@@ -1576,6 +1576,7 @@ drawable ic_circle_fill
 drawable ic_clear_black_24dp
 drawable ic_close_custom
 drawable ic_close_white_24dp
+drawable ic_delete_black_24dp
 drawable ic_edit_black_24dp
 drawable ic_error_black_24dp
 drawable ic_filter_list_black_24dp
@@ -1741,6 +1742,7 @@ id btnClose
 id btnCommunity
 id btnCreate
 id btnCreateIngredient
+id btnDelete
 id btnEdit
 id btnFilter
 id btnForward
@@ -1797,10 +1799,10 @@ id clCategories
 id clCommunity
 id clContent
 id clCreateIngredient
-id clFiles
 id clFlowHelper
 id clIngredients
 id clLayout
+id clLocalRecipes
 id clMain
 id clParent
 id clRecipe
@@ -2072,8 +2074,8 @@ id submenuarrow
 id submit_area
 id svCategories
 id svContent
-id svFiles
 id svIngredients
+id svLocalRecipes
 id svMain
 id svRecipes
 id svReviews
@@ -2119,9 +2121,11 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvBacker
 id tvBreakfast
 id tvCI
 id tvDinner
+id tvHeader
 id tvLocalRef1
 id tvLocalRef3
 id tvLunch
@@ -2291,7 +2295,7 @@ layout activity_create_recipe_s2
 layout activity_create_recipe_s3
 layout activity_create_recipe_s4
 layout activity_create_recipe_s5
-layout activity_debug_menu
+layout activity_local_recipes
 layout activity_login
 layout activity_main_nav
 layout activity_meal_planner
