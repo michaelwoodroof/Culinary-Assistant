@@ -3,6 +3,7 @@ package com.michaelwoodroof.culinaryassistant.createRecipe
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.text.Editable
 import android.util.Log
 import android.view.View
@@ -80,7 +81,7 @@ class CreateRecipeS3 : AppCompatActivity() {
         }
         pr?.keywords = keywords
         val intent = Intent(this, CreateRecipeS2::class.java)
-        intent.putExtra("partialrecipe", pr)
+        intent.putExtra("partialrecipe", pr as Parcelable)
         startActivity(intent)
     }
 
@@ -106,7 +107,7 @@ class CreateRecipeS3 : AppCompatActivity() {
         }
         pr?.keywords = keywords
         val intent = Intent(this, CreateRecipeS4::class.java)
-        intent.putExtra("partialrecipe", pr)
+        intent.putExtra("partialrecipe", pr as Parcelable)
         startActivity(intent)
     }
 

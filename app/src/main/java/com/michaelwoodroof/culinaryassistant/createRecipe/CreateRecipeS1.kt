@@ -13,6 +13,7 @@ import android.graphics.Color
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -65,7 +66,7 @@ class CreateRecipeS1 : AppCompatActivity() {
             imgPreview.visibility = View.VISIBLE
             btnRemove.visibility = View.VISIBLE
         }
-        intent.putExtra("partialrecipe", pr)
+        intent.putExtra("partialrecipe", pr as Parcelable)
         setButtons()
     }
 
@@ -112,7 +113,7 @@ class CreateRecipeS1 : AppCompatActivity() {
             }
 
             val intent = Intent(this, CreateRecipeS2::class.java)
-            intent.putExtra("partialrecipe", pr)
+            intent.putExtra("partialrecipe", pr as Parcelable)
             startActivity(intent)
         }
     }
@@ -186,8 +187,8 @@ class CreateRecipeS1 : AppCompatActivity() {
             imgPreview.tag = selectedImage.toString()
             // @TODO Update pr here to save reference as uri instead
             var pr: Recipe? = intent.getParcelableExtra("partialrecipe")
-            pr!!.uriRef = selectedImage!!
-            intent.putExtra("partialrecipe", pr)
+            pr!!.uriRef = selectedImage!!.toString()
+            intent.putExtra("partialrecipe", pr as Parcelable)
 
             // Update Visibles
             txtvWarning.visibility = View.GONE

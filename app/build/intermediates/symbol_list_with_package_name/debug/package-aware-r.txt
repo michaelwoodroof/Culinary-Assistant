@@ -2409,6 +2409,8 @@ string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string breakfast
+string channel_description
+string channel_name
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern

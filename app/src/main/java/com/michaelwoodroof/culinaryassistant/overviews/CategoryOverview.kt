@@ -69,7 +69,7 @@ class CategoryOverview : AppCompatActivity() {
                     txtDesc.text = desc
                     txtDesc.maxLines = 100
                     txtDesc.textSize = 10.0f
-                    txtDesc.isSingleLine = false
+                    //txtDesc.isSingleLine = false
 
                     // Set Properties
                     txtKeywords.id = View.generateViewId()

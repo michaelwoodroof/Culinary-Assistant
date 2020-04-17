@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.text.Editable
 import android.view.View
 import android.widget.ArrayAdapter
@@ -116,7 +117,7 @@ class CreateRecipeS2 : AppCompatActivity() {
             pr?.spice = 0
         }
         val intent = Intent(this, CreateRecipeS1::class.java)
-        intent.putExtra("partialrecipe", pr)
+        intent.putExtra("partialrecipe", pr as Parcelable)
         startActivity(intent)
     }
 
@@ -147,7 +148,7 @@ class CreateRecipeS2 : AppCompatActivity() {
                 pr?.spice = 0
             }
             val intent = Intent(this, CreateRecipeS3::class.java)
-            intent.putExtra("partialrecipe", pr)
+            intent.putExtra("partialrecipe", pr as Parcelable)
             startActivity(intent)
         }
     }

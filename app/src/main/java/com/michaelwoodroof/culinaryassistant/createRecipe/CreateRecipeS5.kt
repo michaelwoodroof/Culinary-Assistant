@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.text.Editable
 import android.util.Log
 import android.view.View
@@ -41,7 +42,7 @@ class CreateRecipeS5 : AppCompatActivity() {
     fun goBack(view: View) {
         var pr: Recipe? = intent.getParcelableExtra("partialrecipe")
         val intent = Intent(this, CreateRecipeS4::class.java)
-        intent.putExtra("partialrecipe", pr)
+        intent.putExtra("partialrecipe", pr as Parcelable)
         startActivity(intent)
     }
 
@@ -271,7 +272,7 @@ class CreateRecipeS5 : AppCompatActivity() {
         recipeDoc["difficulty"] = pr.difficulty
 
         if (pr.imgReference != "") {
-            recipeDoc["imagePath"] = ImageConversions.bitMapToString(ImageConversions.uriToBitMap(pr.uriRef, this.contentResolver))
+            recipeDoc["imagePath"] = ImageConversions.bitMapToString(ImageConversions.uriToBitMap(pr.uriRef.toUri(), this.contentResolver))
         } else {
             recipeDoc["imagePath"] = ""
         }

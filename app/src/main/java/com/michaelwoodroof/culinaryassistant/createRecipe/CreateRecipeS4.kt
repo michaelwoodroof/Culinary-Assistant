@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.text.Editable
 import android.util.Log
 import android.view.View
@@ -59,7 +60,7 @@ class CreateRecipeS4 : AppCompatActivity() {
 
     fun goBack(view: View) {
         val intent = Intent(this, CreateRecipeS3::class.java)
-        intent.putExtra("partialrecipe", loadDataIntoIntent())
+        intent.putExtra("partialrecipe", loadDataIntoIntent() as Parcelable)
         startActivity(intent)
     }
 
@@ -71,7 +72,7 @@ class CreateRecipeS4 : AppCompatActivity() {
 
     fun goForward(view: View) {
         val intent = Intent(this, CreateRecipeS5::class.java)
-        intent.putExtra("partialrecipe", loadDataIntoIntent())
+        intent.putExtra("partialrecipe", loadDataIntoIntent() as Parcelable)
         startActivity(intent)
     }
 

@@ -4,6 +4,7 @@ import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 import java.net.URI
 import kotlin.collections.ArrayList
 
@@ -16,8 +17,9 @@ class Recipe(var isFreezable: String, var cookTime: String, var prepTime: String
              var title: String, var dietary: ArrayList<Dietary>, var ingredients: ArrayList<Ingredient>,
              var nutrition: ArrayList<Nutrition>, var ingredientSection: ArrayList<ExtSection>,
              var stepsSection: ArrayList<ExtSection>, var keywords: ArrayList<String>,
-             var steps: ArrayList<Section>, var uriRef : Uri) : Parcelable {
-    
+             var steps: ArrayList<Section>, var uriRef : String) : Parcelable, Serializable {
+
+
     // Functions
     fun convertTemperature(givenTemperature: String): String {
         return ""

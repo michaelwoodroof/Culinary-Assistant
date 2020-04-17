@@ -1,38 +1,25 @@
 package com.michaelwoodroof.culinaryassistant
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Bitmap
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.util.Base64
+import android.os.Parcelable
 import android.util.Log
 import android.view.Gravity
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.content.ContextCompat
-import com.google.android.material.navigation.NavigationView
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.net.toUri
 import com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS1
-import com.michaelwoodroof.culinaryassistant.helper.CategoryColor
-import com.michaelwoodroof.culinaryassistant.helper.ImageConversions
-import com.michaelwoodroof.culinaryassistant.helper.RenderCard
+import com.michaelwoodroof.culinaryassistant.helper.*
 import com.michaelwoodroof.culinaryassistant.login.AccountInfo
 import com.michaelwoodroof.culinaryassistant.login.Login
 import com.michaelwoodroof.culinaryassistant.overviews.Categories
-import com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail
 import com.michaelwoodroof.culinaryassistant.overviews.RecipeOverview
 import com.michaelwoodroof.culinaryassistant.structure.*
 import com.mongodb.stitch.android.core.Stitch
@@ -40,11 +27,14 @@ import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
 import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_main_nav.*
 import org.bson.Document
-import java.net.URI
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
     var loggedIn = false
+    private var alarmMgr: AlarmManager? = null
+    private lateinit var alarmIntent: PendingIntent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +56,42 @@ class MainActivity : AppCompatActivity() {
             var fileName = "token.txt"
             loggedIn = true
             loadMainScreen()
+        }
+
+        // Ensure that App has Notification Channel
+        NotificationHandler.createNotificationChannel(this)
+
+        val sn = ScheduleNotification()
+        sn.createAlarm(this, 20, 45, (1000 * 60 * 60 * 24), "Demo")
+
+        // Get Local File
+        val fh = FileHandler()
+
+        val ingredients = ArrayList<Ingredient>()
+        ingredients.add(Ingredient("Carrot","200","100","ML"))
+        val keywords = ArrayList<String>()
+        keywords.add("Vegan")
+        val steps = ArrayList<Section>()
+        steps.add(Section(1, "A Step"))
+
+        var newRecipe = Recipe("","10-20","5-10",0,0,"uid444","Michael","Other","Other",
+            "A Local Recipes","","2","Local","200","Ze",ArrayList<Dietary>(),ingredients,
+            ArrayList<Nutrition>(), ArrayList<ExtSection>(), ArrayList<ExtSection>(), keywords, steps,
+            "")
+
+        fh.addRecipe(newRecipe, this)
+
+        newRecipe = Recipe("","10-20","5-10",0,0,"uid322","Michael","Other","Other",
+            "A Local Recipes","","2","Local","200","Paella D",ArrayList<Dietary>(),ingredients,
+            ArrayList<Nutrition>(), ArrayList<ExtSection>(), ArrayList<ExtSection>(), keywords, steps,
+            "")
+
+        fh.addRecipe(newRecipe, this)
+
+        val localRecipes = fh.getLocalRecipes(this)
+
+        localRecipes.forEach {
+            Log.d("testData", it.title)
         }
 
     }
@@ -239,10 +265,10 @@ class MainActivity : AppCompatActivity() {
             stepsSection = ArrayList<ExtSection>(),
             keywords = ArrayList<String>(),
             steps = ArrayList<Section>(),
-            uriRef = Uri.EMPTY
+            uriRef = ""
         )
         val intent = Intent(this, CreateRecipeS1::class.java)
-        intent.putExtra("partialrecipe", er)
+        intent.putExtra("partialrecipe", er as Parcelable)
         startActivity(intent)
     }
 

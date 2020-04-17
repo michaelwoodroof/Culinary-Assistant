@@ -3,6 +3,8 @@
     package="com.michaelwoodroof.culinaryassistant">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MealPlanner"></activity>
+        <activity android:name=".MealPlanner" />
         <activity android:name=".DebugMenu" />
         <activity android:name=".overviews.RecipeDetail" />
         <activity android:name=".overviews.RecipeOverview" />
@@ -25,6 +27,7 @@
         <activity android:name=".createRecipe.CreateRecipeS3" />
         <activity android:name=".createRecipe.CreateRecipeS2" />
         <activity android:name=".createRecipe.CreateRecipeS1" />
+        <receiver android:name=".helper.NotificationReceiver" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
