@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -228,6 +229,8 @@ object RenderCard {
         // Set up Views
         val cv = CardView(givenContext)
         val cl = ConstraintLayout(givenContext)
+
+        Log.d("testData", "Card Made")
 
         // Set Properties
         cv.id = View.generateViewId()
@@ -750,7 +753,5 @@ object RenderCard {
         return filler.id
 
     }
-
-
 
 }

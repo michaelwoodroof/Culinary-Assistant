@@ -43,20 +43,24 @@ class LocalRecipes : AppCompatActivity() {
 
         var counter = 0
         var tempInt : Int
-        var prevID = clLocalRecipes.id
-//        localRecipes.forEach {
-//            // Create Card for Each Recipe
-//            prevID = if (counter == localRecipes.size - 1) {
-//                tempInt = RenderCard.makeVerticalCard(this, clLocalRecipes)
-//                RenderCard.renderFiller(this, clLocalRecipes, tempInt, 40, 10)
-//
-//            } else {
-//                RenderCard.makeVerticalCard(this, clLocalRecipes)
-//            }
-//
-//            counter++
-//
-//        }
+        var prevID = -1
+
+        localRecipes.forEach {
+            // Create Card for Each Recipe
+            Log.d("testData", prevID.toString())
+            Log.d("testData", it.title)
+            prevID = if (counter == localRecipes.size - 1) {
+                tempInt = RenderCard.makeVerticalCard(this, clLocalRecipes, it.id, it.imgReference,
+                it.title, it.spice, it.description, it.keywords, it.difficulty, 0.0, prevID)
+                RenderCard.renderFiller(this, clLocalRecipes, tempInt, 400, 10)
+            } else {
+                RenderCard.makeVerticalCard(this, clLocalRecipes, it.id, it.imgReference,
+                    it.title, it.spice, it.description, it.keywords, it.difficulty, 0.0, prevID)
+            }
+
+            counter++
+
+        }
 
     }
 

@@ -1,31 +1,19 @@
 package com.michaelwoodroof.culinaryassistant.overviews
 
 import android.content.Intent
-import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
+import androidx.appcompat.app.AppCompatActivity
 import com.michaelwoodroof.culinaryassistant.MainActivity
 import com.michaelwoodroof.culinaryassistant.R
-import com.michaelwoodroof.culinaryassistant.helper.ImageConversions
 import com.michaelwoodroof.culinaryassistant.helper.RenderCard
-import com.michaelwoodroof.culinaryassistant.structure.Recipe
 import com.mongodb.stitch.android.core.Stitch
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
 import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_recipe_overview.*
-import kotlinx.android.synthetic.main.activity_recipe_overview.imgBacker
 import org.bson.Document
-import java.lang.StringBuilder
 
 class RecipeOverview : AppCompatActivity() {
 
@@ -64,17 +52,27 @@ class RecipeOverview : AppCompatActivity() {
             val query = coll.find(Document("cuisine", intent?.getStringExtra("category"))).sort(Document("reviewScore", 1)).limit(20)
             val result = mutableListOf<Document>()
             var prevID = -1
+            var counter = 0
+            var tempInt = 0
 
             Log.d("testData", "attempt call")
 
             query.into(result).addOnSuccessListener {
                 result.forEach {
-
-                    prevID = RenderCard.makeVerticalCard(this, clRecipes, it["uid"] as String,
-                    it["imagePath"] as String, it["title"] as String, it["spice"] as Int,
-                        it["description"] as String, it["keyWords"] as ArrayList<*>,
-                        it["difficulty"] as Int, it["reviewScore"] as Double, prevID)
-
+                    if (counter == result.size - 1) {
+                        tempInt = RenderCard.makeVerticalCard(this, clRecipes, it["uid"] as String,
+                            it["imagePath"] as String, it["title"] as String, it["spice"] as Int,
+                            it["description"] as String, it["keyWords"] as ArrayList<*>,
+                            it["difficulty"] as Int, it["reviewScore"] as Double, prevID)
+                        RenderCard.renderFiller(this, clRecipes, tempInt, 400, 10) // @TODO MIGHT CHANGE SEEMS HIGH
+                        Log.d("testData", "TESTTEST")
+                    } else {
+                        prevID = RenderCard.makeVerticalCard(this, clRecipes, it["uid"] as String,
+                            it["imagePath"] as String, it["title"] as String, it["spice"] as Int,
+                            it["description"] as String, it["keyWords"] as ArrayList<*>,
+                            it["difficulty"] as Int, it["reviewScore"] as Double, prevID)
+                    }
+                    counter++
                 }
 
             }

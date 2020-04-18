@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                             it["imagePath"] as String, false, it["categoryTitle"] as String, it["categoryTitle"] as String,
                             0.0, prevID)
 
-                        RenderCard.renderFiller(this, clCategories, tempID, 80, 440)
+                        RenderCard.renderFiller(this, clCategories, tempID, 440, 80)
                     } else {
                         RenderCard.makeHorizontalCard(this, clCategories, it["categoryTitle"] as String,
                             it["imagePath"] as String, false, it["categoryTitle"] as String, it["categoryTitle"] as String,
@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
                             it["reviewScore"] as Double, prevID)
 
-                        RenderCard.renderFiller(this, clSuggested, tempID, 80, 440)
+                        RenderCard.renderFiller(this, clSuggested, tempID, 440, 80)
                     } else {
                         RenderCard.makeHorizontalCard(this, clSuggested, it["title"] as String,
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
@@ -195,7 +195,7 @@ class MainActivity : AppCompatActivity() {
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
                             it["reviewScore"] as Double, prevID)
 
-                        RenderCard.renderFiller(this, clCommunity, tempID, 80, 440)
+                        RenderCard.renderFiller(this, clCommunity, tempID, 440, 80)
                     } else {
                         RenderCard.makeHorizontalCard(this, clCommunity, it["title"] as String,
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
