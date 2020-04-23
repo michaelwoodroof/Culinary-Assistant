@@ -4,41 +4,7 @@
             "outputFile": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kk\\values-kk.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\163ba80aa74cf2b66a97b31641e8ba82\\core-1.2.0\\res\\values-kk\\values-kk.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "33",
-                        "startColumns": "4",
-                        "startOffsets": "3331",
-                        "endColumns": "100",
-                        "endOffsets": "3427"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\c5d37640092efaed65e9ea0d6f08e8fa\\navigation-ui-2.2.1\\res\\values-kk\\values-kk.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,168",
-                        "endColumns": "112,117",
-                        "endOffsets": "163,281"
-                    },
-                    "to": {
-                        "startLines": "30,31",
-                        "startColumns": "4,4",
-                        "startOffsets": "3019,3132",
-                        "endColumns": "112,117",
-                        "endOffsets": "3127,3245"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\c718709a63172dec4cfffa1a59a58445\\appcompat-1.1.0\\res\\values-kk\\values-kk.xml",
+                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\07d91a6f02149585995d851c56f12844\\appcompat-1.1.0\\res\\values-kk\\values-kk.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\930ed79dad0f53128a4c4e6866bd6456\\jetified-play-services-basement-15.0.1\\res\\values-kk\\values.xml",
+                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\33ecac56757fcf026b55784f8dc952ea\\navigation-ui-2.2.1\\res\\values-kk\\values-kk.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,168",
+                        "endColumns": "112,117",
+                        "endOffsets": "163,281"
+                    },
+                    "to": {
+                        "startLines": "30,31",
+                        "startColumns": "4,4",
+                        "startOffsets": "3019,3132",
+                        "endColumns": "112,117",
+                        "endOffsets": "3127,3245"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\83702586ce7cf48f5ea85b06fb9c4b0d\\jetified-play-services-basement-15.0.1\\res\\values-kk\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -69,6 +52,23 @@
                         "startOffsets": "2796",
                         "endColumns": "222",
                         "endOffsets": "3014"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\0b96859a3cdf2530aa3d77dcfaeaf2fb\\core-1.2.0\\res\\values-kk\\values-kk.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "33",
+                        "startColumns": "4",
+                        "startOffsets": "3331",
+                        "endColumns": "100",
+                        "endOffsets": "3427"
                     }
                 }
             ]

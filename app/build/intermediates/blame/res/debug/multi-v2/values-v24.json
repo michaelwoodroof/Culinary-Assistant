@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\c718709a63172dec4cfffa1a59a58445\\appcompat-1.1.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\07d91a6f02149585995d851c56f12844\\appcompat-1.1.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\e6facb77adb513d5d091c74c460f1482\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-2\\files-2.1\\7744bf1c1a9eb83f849bb62720f3dc7e\\media-1.0.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

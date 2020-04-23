@@ -20,18 +20,18 @@
 13-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:7:5-81
 13-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:7:22-78
 14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-14-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\cd313287cf47b9f8160cbf0fdc61747f\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:11:5-79
-14-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\cd313287cf47b9f8160cbf0fdc61747f\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:11:22-76
+14-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:11:5-79
+14-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:11:22-76
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\cd313287cf47b9f8160cbf0fdc61747f\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:12:5-67
-15-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\cd313287cf47b9f8160cbf0fdc61747f\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:12:22-64
+15-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:12:5-67
+15-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:12:22-64
 16
 17    <application
 17-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:9:5-42:19
 18        android:allowBackup="true"
 18-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:10:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\163ba80aa74cf2b66a97b31641e8ba82\core-1.2.0\AndroidManifest.xml:24:18-86
+19-->[androidx.core:core:1.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\0b96859a3cdf2530aa3d77dcfaeaf2fb\core-1.2.0\AndroidManifest.xml:24:18-86
 20        android:debuggable="true"
 21        android:icon="@mipmap/ic_launcher"
 21-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:11:9-43
@@ -114,44 +114,44 @@
 54-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:41:13-54
 55        <!-- MongoDbMobileProvider initialize MongoDB Mobile for future usage -->
 56        <provider
-56-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\a26b80a3453573722e93919d5a69b030\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:14:9-17:40
+56-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:14:9-17:40
 57            android:name="com.mongodb.stitch.android.services.mongodb.local.internal.MongoDbMobileProvider"
-57-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\a26b80a3453573722e93919d5a69b030\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:15:13-108
+57-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:15:13-108
 58            android:authorities="com.michaelwoodroof.culinaryassistant.StitchMongoDBMobileProvider"
-58-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\a26b80a3453573722e93919d5a69b030\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:16:13-79
+58-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:16:13-79
 59            android:exported="false" />
-59-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\a26b80a3453573722e93919d5a69b030\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:17:13-37
+59-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:17:13-37
 60        <!--
 61          StitchInitProvider is a ContentProvider that will associate the application's Context
 62          with Stitch. It also will look for resource values such as stitch_client_app_id to register
 63           a default app client.
 64        -->
 65        <provider
-65-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\cd313287cf47b9f8160cbf0fdc61747f\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:21:9-24:40
+65-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:21:9-24:40
 66            android:name="com.mongodb.stitch.android.core.internal.StitchInitProvider"
-66-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\cd313287cf47b9f8160cbf0fdc61747f\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:22:13-87
+66-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:22:13-87
 67            android:authorities="com.michaelwoodroof.culinaryassistant.StitchInitProvider"
-67-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\cd313287cf47b9f8160cbf0fdc61747f\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:23:13-70
+67-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:23:13-70
 68            android:exported="false" />
-68-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\cd313287cf47b9f8160cbf0fdc61747f\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:24:13-37
+68-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:24:13-37
 69
 70        <meta-data
-70-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\930ed79dad0f53128a4c4e6866bd6456\jetified-play-services-basement-15.0.1\AndroidManifest.xml:23:9-25:69
+70-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\83702586ce7cf48f5ea85b06fb9c4b0d\jetified-play-services-basement-15.0.1\AndroidManifest.xml:23:9-25:69
 71            android:name="com.google.android.gms.version"
-71-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\930ed79dad0f53128a4c4e6866bd6456\jetified-play-services-basement-15.0.1\AndroidManifest.xml:24:13-58
+71-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\83702586ce7cf48f5ea85b06fb9c4b0d\jetified-play-services-basement-15.0.1\AndroidManifest.xml:24:13-58
 72            android:value="@integer/google_play_services_version" />
-72-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\930ed79dad0f53128a4c4e6866bd6456\jetified-play-services-basement-15.0.1\AndroidManifest.xml:25:13-66
+72-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\83702586ce7cf48f5ea85b06fb9c4b0d\jetified-play-services-basement-15.0.1\AndroidManifest.xml:25:13-66
 73
 74        <provider
-74-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\0cb84a9f6b2cae5c973ef025c366f9e5\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+74-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
 75            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-75-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\0cb84a9f6b2cae5c973ef025c366f9e5\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+75-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
 76            android:authorities="com.michaelwoodroof.culinaryassistant.lifecycle-process"
-76-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\0cb84a9f6b2cae5c973ef025c366f9e5\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+76-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
 77            android:exported="false"
-77-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\0cb84a9f6b2cae5c973ef025c366f9e5\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+77-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
 78            android:multiprocess="true" />
-78-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\0cb84a9f6b2cae5c973ef025c366f9e5\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+78-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
 79    </application>
 80
 81</manifest>
