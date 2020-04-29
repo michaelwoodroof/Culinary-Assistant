@@ -13,11 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MealPlanner" />
+        <activity android:name=".DebugMenu"></activity>
+        <activity android:name=".mealPlanner.MealPlanner" />
         <activity android:name=".LocalRecipes" />
         <activity android:name=".overviews.RecipeDetail" />
         <activity android:name=".overviews.RecipeOverview" />
-        <activity android:name=".overviews.CategoryOverview" />
         <activity android:name=".login.AccountSignUp" />
         <activity android:name=".login.AccountInfo" />
         <activity android:name=".login.Login" />
@@ -27,7 +27,9 @@
         <activity android:name=".createRecipe.CreateRecipeS3" />
         <activity android:name=".createRecipe.CreateRecipeS2" />
         <activity android:name=".createRecipe.CreateRecipeS1" />
+
         <receiver android:name=".helper.NotificationReceiver" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,24 +1,19 @@
 package com.michaelwoodroof.culinaryassistant
 
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.content.Context
+import android.app.SearchManager
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
 import android.os.Parcelable
 import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.net.toUri
 import com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS1
 import com.michaelwoodroof.culinaryassistant.helper.*
 import com.michaelwoodroof.culinaryassistant.login.AccountInfo
 import com.michaelwoodroof.culinaryassistant.login.Login
+import com.michaelwoodroof.culinaryassistant.mealPlanner.MealPlanner
 import com.michaelwoodroof.culinaryassistant.overviews.Categories
 import com.michaelwoodroof.culinaryassistant.overviews.RecipeOverview
 import com.michaelwoodroof.culinaryassistant.structure.*
@@ -27,14 +22,12 @@ import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
 import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_main_nav.*
 import org.bson.Document
-import java.util.*
+import org.bson.types.Decimal128
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    var loggedIn = false
-    private var alarmMgr: AlarmManager? = null
-    private lateinit var alarmIntent: PendingIntent
+    private var loggedIn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +35,13 @@ class MainActivity : AppCompatActivity() {
 
         btnMenu.setOnClickListener{
             dlMain.openDrawer(Gravity.LEFT)
+        }
+
+        // Initialise Search
+        if (Intent.ACTION_SEARCH == intent.action) {
+            intent.getStringExtra(SearchManager.QUERY)?.also {
+                query -> performSearch(query)
+            }
         }
 
         // Attempts Database Connection
@@ -61,34 +61,27 @@ class MainActivity : AppCompatActivity() {
         // Ensure that App has Notification Channel
         NotificationHandler.createNotificationChannel(this)
 
+//        Log.d("testData", "startConvert")
+//        Conversions.convertUIDtoRecipe("uid00000001")
+
         val sn = ScheduleNotification()
         sn.createAlarm(this, 20, 45, (1000 * 60 * 60 * 24), "Demo")
 
     }
 
+    private fun performSearch(query: String) {
+        // Handles Search Query
+        Log.d("testData", query)
+    }
+
     // Used to Fill Main Menu with Info can be called with Sync Button if application is offline
     private fun loadMainScreen() {
 
-        Handler().postDelayed(
-            {
-                loadSuggested()
-            },
-            10
-        )
+        loadSuggested()
 
-        Handler().postDelayed(
-            {
-                loadCommunityFavourites()
-            },
-            10
-        )
+        loadCommunityFavourites()
 
-        Handler().postDelayed(
-            {
-                loadCategories()
-            },
-            10
-        )
+        loadCategories()
 
     }
 
@@ -113,13 +106,13 @@ class MainActivity : AppCompatActivity() {
                     prevID = if (counter == result.size - 1) {
                         tempID = RenderCard.makeHorizontalCard(this, clCategories, it["categoryTitle"] as String,
                             it["imagePath"] as String, false, it["categoryTitle"] as String, it["categoryTitle"] as String,
-                            0.0, prevID)
+                            Decimal128(0), prevID)
 
                         RenderCard.renderFiller(this, clCategories, tempID, 440, 80)
                     } else {
                         RenderCard.makeHorizontalCard(this, clCategories, it["categoryTitle"] as String,
                             it["imagePath"] as String, false, it["categoryTitle"] as String, it["categoryTitle"] as String,
-                            0.0, prevID)
+                            Decimal128(0), prevID)
                     }
 
                     counter ++
@@ -154,13 +147,13 @@ class MainActivity : AppCompatActivity() {
                     prevID = if (counter == result.size - 1) {
                         tempID = RenderCard.makeHorizontalCard(this, clSuggested, it["title"] as String,
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
-                            it["reviewScore"] as Double, prevID)
+                            it["reviewScore"] as Decimal128, prevID)
 
                         RenderCard.renderFiller(this, clSuggested, tempID, 440, 80)
                     } else {
                         RenderCard.makeHorizontalCard(this, clSuggested, it["title"] as String,
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
-                            it["reviewScore"] as Double, prevID)
+                            it["reviewScore"] as Decimal128, prevID)
                     }
 
                     counter++
@@ -193,13 +186,13 @@ class MainActivity : AppCompatActivity() {
                     prevID = if (counter == result.size - 1) {
                         tempID = RenderCard.makeHorizontalCard(this, clCommunity, it["title"] as String,
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
-                            it["reviewScore"] as Double, prevID)
+                            it["reviewScore"] as Decimal128, prevID)
 
                         RenderCard.renderFiller(this, clCommunity, tempID, 440, 80)
                     } else {
                         RenderCard.makeHorizontalCard(this, clCommunity, it["title"] as String,
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
-                            it["reviewScore"] as Double, prevID)
+                            it["reviewScore"] as Decimal128, prevID)
                     }
 
                     counter++
@@ -276,6 +269,7 @@ class MainActivity : AppCompatActivity() {
     fun loadSearch(view : View) {
         // Load Search View
         svMain.visibility = View.VISIBLE
+        svMain.queryHint = "Search Here!"
         btnFilter.visibility = View.VISIBLE
         btnMenu.visibility = View.GONE
         btnFilter.visibility = View.VISIBLE
@@ -295,6 +289,8 @@ class MainActivity : AppCompatActivity() {
             "Meal Planner" -> intent = Intent(this, MealPlanner::class.java)
 
             "Settings" -> intent = Intent(this, LocalRecipes::class.java)
+
+            "Debug" -> intent = Intent(this, DebugMenu::class.java)
 
             else -> intent = Intent(this, LocalRecipes::class.java)
 

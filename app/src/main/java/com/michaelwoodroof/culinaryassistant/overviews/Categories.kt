@@ -1,32 +1,19 @@
 package com.michaelwoodroof.culinaryassistant.overviews
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.content.ContextCompat
 import com.michaelwoodroof.culinaryassistant.MainActivity
 import com.michaelwoodroof.culinaryassistant.R
-import com.michaelwoodroof.culinaryassistant.helper.CategoryColor
-import com.michaelwoodroof.culinaryassistant.helper.ImageConversions
 import com.michaelwoodroof.culinaryassistant.helper.RenderCard
 import com.mongodb.stitch.android.core.Stitch
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
 import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_categories.*
-import kotlinx.android.synthetic.main.activity_main_nav.*
 import kotlinx.android.synthetic.main.activity_main_nav.clCategories
 import org.bson.Document
+import org.bson.types.Decimal128
 
 class Categories : AppCompatActivity() {
 
@@ -58,12 +45,9 @@ class Categories : AppCompatActivity() {
             query.into(result).addOnSuccessListener {
                 result.forEach {
 
-//                    prevID = renderCard(it["categoryTitle"] as String, it["imagePath"] as String, false, clCategories, prevID,
-//                        it["categoryTitle"] as String, it["categoryTitle"] as String, 0.0, false)
-
-                    prevID = RenderCard.makeHorizontalCard(this, clCategories, it["categoryTitle"] as String,
-                                                it["imagePath"] as String, false, it["categoryTitle"] as String, it["categoryTitle"] as String,
-                                                0.0, prevID)
+                    prevID = RenderCard.makeHorizontalCard(this, clCategories,
+                        it["categoryTitle"] as String, it["imagePath"] as String, false,
+                        it["categoryTitle"] as String, it["categoryTitle"] as String, Decimal128(0), prevID)
 
                     clFlowHelper.referencedIds = clFlowHelper.referencedIds.plus(prevID)
 

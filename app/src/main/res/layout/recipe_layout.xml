@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlMain"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_marginBottom="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:cardCornerRadius="20px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:text="Sample"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/img_ref"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_ref"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvDescR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:text="Sample"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/img_ref"
+                app:layout_constraintTop_toBottomOf="@+id/imgS1" />
+
+            <TextView
+                android:id="@+id/tvTags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:text="#sausage"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvDesc" />
+
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:text="0.0"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgStar"
+                app:layout_constraintEnd_toStartOf="@+id/imgStar"
+                app:layout_constraintTop_toTopOf="@+id/imgStar" />
+
+            <ImageView
+                android:id="@+id/imgStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvTitle"
+                app:srcCompat="@drawable/ic_star_black_8dp" />
+
+            <TextView
+                android:id="@+id/tvDiff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diff"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgS5"
+                app:layout_constraintEnd_toEndOf="@+id/imgStar"
+                app:layout_constraintTop_toTopOf="@+id/imgS5" />
+
+            <ImageView
+                android:id="@+id/imgS1"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginTop="2dp"
+                app:layout_constraintStart_toStartOf="@+id/tvTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                app:srcCompat="@drawable/ic_spicyon" />
+
+            <ImageView
+                android:id="@+id/imgS2"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                app:layout_constraintStart_toEndOf="@+id/imgS1"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyon" />
+
+            <ImageView
+                android:id="@+id/imgS3"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                app:layout_constraintStart_toEndOf="@+id/imgS2"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyon" />
+
+            <ImageView
+                android:id="@+id/imgS4"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                app:layout_constraintStart_toEndOf="@+id/imgS3"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyon" />
+
+            <ImageView
+                android:id="@+id/imgS5"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                app:layout_constraintStart_toEndOf="@+id/imgS4"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

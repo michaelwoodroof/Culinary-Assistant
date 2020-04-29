@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
+import android.os.Parcelable
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -19,13 +20,17 @@ import com.michaelwoodroof.culinaryassistant.MainActivity
 import com.michaelwoodroof.culinaryassistant.R
 import com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail
 import com.michaelwoodroof.culinaryassistant.overviews.RecipeOverview
+import com.michaelwoodroof.culinaryassistant.structure.Recipe
+import org.bson.types.Decimal128
+import java.io.File
 import java.lang.StringBuilder
 
 object RenderCard {
 
-    fun makeHorizontalCard(givenContext : Context, givenParent : ConstraintLayout, lowerText : String,
-    imgPath : String, hasRating : Boolean, uid : String, cuisine : String,
-                 reviewScore : Double, prevID : Int) : Int {
+    fun makeHorizontalCard(
+        givenContext: Context, givenParent: ConstraintLayout, lowerText: String,
+        imgPath: String, hasRating: Boolean, uid: String, cuisine: String,
+        reviewScore: Decimal128, prevID: Int) : Int {
 
         // Make Card View
         val cv = CardView(givenContext)
@@ -42,6 +47,7 @@ object RenderCard {
             cv.setOnClickListener {
                 val intent = Intent(givenContext, RecipeDetail::class.java)
                 intent.putExtra("uid", cv.tag as String)
+                intent.putExtra("isOnline", "Yes")
                 givenContext.startActivity(intent)
             }
         } else {
@@ -131,8 +137,8 @@ object RenderCard {
         if (hasRating) {
             rating.id = View.generateViewId()
             rating.tag = uid
-            val dr : Double = reviewScore
-            val sr = dr.toBigDecimal().toPlainString()
+            val dr : Decimal128 = reviewScore
+            val sr = dr.toString()
             rating.text = sr
             rating.setBackgroundResource(R.drawable.roundedtextview)
             rating.textSize = 10F
@@ -224,13 +230,11 @@ object RenderCard {
 
     fun makeVerticalCard(givenContext: Context, givenParent: ConstraintLayout, uid : String,
                          imgPath : String, title : String, spice : Int, description : String,
-                         keywords : ArrayList<*>, difficulty : Int, reviewScore: Double,
+                         keywords : ArrayList<*>, difficulty : Int, reviewScore: Decimal128,
                          prevID : Int) : Int {
         // Set up Views
         val cv = CardView(givenContext)
         val cl = ConstraintLayout(givenContext)
-
-        Log.d("testData", "Card Made")
 
         // Set Properties
         cv.id = View.generateViewId()
@@ -238,7 +242,24 @@ object RenderCard {
         cv.radius = 20f
 
         cv.setOnClickListener { // @TODO REPLACE
-            val intent = Intent(givenContext, MainActivity::class.java)
+
+            val intent = Intent(givenContext, RecipeDetail::class.java)
+
+            // Put Extras
+            val fh = FileHandler()
+            val ef = File(givenContext.filesDir, uid)
+            Log.d("testData", uid)
+            if (ef.exists()) {
+                Log.d("testData", "File Exists")
+                intent.putExtra("isOnline", "No")
+                intent.putExtra("r", fh.getRecipe(givenContext, uid, false) as Parcelable)
+            } else {
+                Log.d("testData", "File does not Exist")
+                intent.putExtra("isOnline", "Yes")
+                // Make Online Call
+                intent.putExtra("t", uid)
+            }
+
             givenContext.startActivity(intent)
         }
 
@@ -412,7 +433,7 @@ object RenderCard {
         }
 
         txtRating.id = View.generateViewId()
-        val rs = reviewScore as Double
+        val rs : Decimal128 = reviewScore
         txtRating.text = rs.toString()
         txtRating.textSize = 10F
 

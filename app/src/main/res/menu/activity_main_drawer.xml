@@ -21,5 +21,12 @@
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="@string/menu_settings"
             android:onClick="loadNavMenu" />
+
+        <item
+            android:id="@+id/nav_searchTest"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/menu_debugMenu"
+            android:onClick="loadNavMenu" />
+
     </group>
 </menu>

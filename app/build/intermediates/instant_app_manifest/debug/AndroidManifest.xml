@@ -25,11 +25,11 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.michaelwoodroof.culinaryassistant.MealPlanner" />
+        <activity android:name="com.michaelwoodroof.culinaryassistant.DebugMenu" />
+        <activity android:name="com.michaelwoodroof.culinaryassistant.mealPlanner.MealPlanner" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.LocalRecipes" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.RecipeOverview" />
-        <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.CategoryOverview" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.login.AccountSignUp" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.login.AccountInfo" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.login.Login" />

@@ -203,6 +203,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Allergens"
                 android:textSize="12sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/cgAllergens"
                 app:layout_constraintTop_toBottomOf="@+id/imgRecipePhoto" />
 
@@ -222,30 +223,268 @@
                     android:id="@+id/chpCelery"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Celery"
+                    android:textColor="#424242"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
                     app:chipBackgroundColor="#838383"
-                    app:chipEndPadding="9dp"
-                    app:chipIcon="@drawable/ic_003___egg_nf"
-                    app:chipIconSize="14dp"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_001___celery_nf"
+                    app:chipIconSize="20dp"
                     app:chipIconTint="#FFFFFF"
-                    app:chipMinTouchTargetSize="32dp"
-                    app:chipStartPadding="9dp"
+                    app:chipMinTouchTargetSize="48dp"
+                    app:chipStartPadding="7dp"
                     app:closeIconEndPadding="0dp"
                     app:closeIconStartPadding="0dp"
                     app:textEndPadding="0dp"
                     app:textStartPadding="0dp" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chpEgg3"
+                    android:id="@+id/chpGluten"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Gluten"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
                     app:chipBackgroundColor="#838383"
-                    app:chipEndPadding="9dp"
-                    app:chipIcon="@drawable/ic_008___peanut_nf"
-                    app:chipIconSize="14dp"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_002___bread_nf"
+                    app:chipIconSize="20dp"
                     app:chipIconTint="#FFFFFF"
-                    app:chipMinTouchTargetSize="32dp"
-                    app:chipStartPadding="9dp"
+                    app:chipMinTouchTargetSize="48dp"
+                    app:chipStartPadding="7dp"
                     app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpEggs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Eggs"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_003___egg_nf"
+                    app:chipIconSize="20dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipStartPadding="7dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpSeafood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Seafood"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_010___fish_nf"
+                    app:chipIconSize="20dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipStartPadding="7dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpLupin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:drawablePadding="0dp"
+                    android:tag="Lupin"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_013___lupin_nf"
+                    app:chipIconSize="20dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipStartPadding="7dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpMilk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Milk"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_006___milk_nf"
+                    app:chipIconSize="20dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipStartPadding="7dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpMustard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Mustard"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_007___mustard_nf"
+                    app:chipIconSize="20dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipStartPadding="7dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpNuts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Nuts"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_011___nut_nf"
+                    app:chipIconSize="20dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipStartPadding="7dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpPeanuts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Peanuts"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_008___peanut_nf"
+                    app:chipIconSize="20dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipStartPadding="7dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpSesame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Sesame"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_012___sesame_nf"
+                    app:chipIconSize="20dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipStartPadding="7dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:iconEndPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpSoya"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Soya"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_009___soya_nf"
+                    app:chipIconSize="20dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipStartPadding="7dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconStartPadding="0dp"
+                    app:textEndPadding="0dp"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpSulphites"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:checked="false"
+                    android:tag="Sulphites"
+                    android:visibility="gone"
+                    app:checkedIcon="@null"
+                    app:checkedIconEnabled="false"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="#838383"
+                    app:chipEndPadding="7dp"
+                    app:chipIcon="@drawable/ic_014___sulphites_nf"
+                    app:chipIconSize="20dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipStartPadding="7dp"
+                    app:closeIconEndPadding="0dp"
+                    app:closeIconSize="28dp"
                     app:closeIconStartPadding="0dp"
                     app:textEndPadding="0dp"
                     app:textStartPadding="0dp" />
@@ -257,7 +496,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="200 C"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imgS5"
                 app:layout_constraintEnd_toEndOf="@+id/txtvDifficulty"
                 app:layout_constraintTop_toTopOf="@+id/imgS1" />
@@ -270,6 +509,7 @@
                 android:layout_marginTop="8dp"
                 android:text="See More"
                 android:textSize="12sp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/txtvDescription"
                 app:layout_constraintTop_toBottomOf="@+id/txtvDescription" />
 
@@ -282,14 +522,162 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imgRecipePhoto"
                 app:layout_constraintEnd_toEndOf="@+id/txtvTemp" />
 
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgStepIngredient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/txtvDescription"
+                app:layout_constraintTop_toBottomOf="@+id/txtvDescription">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpSteps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="changeStepIng"
+                    android:tag="is"
+                    android:text="Steps"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:chipBackgroundColor="#FF64B5F6" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpIngredients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="changeStepIng"
+                    android:tag="not"
+                    android:text="Ingredients"
+                    app:chipBackgroundColor="#DADADA" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clStepbyStep"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/swSBS"
+                app:layout_constraintStart_toStartOf="@+id/txtvDescription"
+                app:layout_constraintTop_toBottomOf="@+id/swSBS">
+
+                <ImageView
+                    android:id="@+id/imgSBS"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_circle_fill" />
+
+                <TextView
+                    android:id="@+id/tvSBSDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="TextView"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/chipGroup"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgSBS" />
+
+                <TextView
+                    android:id="@+id/tvStepNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgSBS"
+                    app:layout_constraintEnd_toEndOf="@+id/imgSBS"
+                    app:layout_constraintStart_toStartOf="@+id/imgSBS"
+                    app:layout_constraintTop_toTopOf="@+id/imgSBS" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chpPrev"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="moveStep"
+                        app:chipBackgroundColor="#DADADA"
+                        app:chipEndPadding="0dp"
+                        app:chipIcon="@drawable/ic_keyboard_arrow_left_black_24dp"
+                        app:chipIconSize="32dp"
+                        app:chipIconTint="#FFFFFF"
+                        app:chipStartPadding="0dp"
+                        app:closeIcon="@null"
+                        app:closeIconEndPadding="0dp"
+                        app:closeIconStartPadding="0dp"
+                        app:iconStartPadding="0dp"
+                        app:textEndPadding="0dp"
+                        app:textStartPadding="0dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chpNext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="moveStep"
+                        app:chipBackgroundColor="#DADADA"
+                        app:chipEndPadding="0dp"
+                        app:chipIcon="@drawable/ic_keyboard_arrow_right_black_24dp"
+                        app:chipIconSize="32dp"
+                        app:chipIconTint="#FFFFFF"
+                        app:chipStartPadding="0dp"
+                        app:closeIcon="@null"
+                        app:closeIconEndPadding="0dp"
+                        app:closeIconStartPadding="0dp"
+                        app:closeIconTint="#FFFFFF"
+                        app:textEndPadding="0dp"
+                        app:textStartPadding="0dp" />
+                </com.google.android.material.chip.ChipGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSteps"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/txtvDescription"
+                app:layout_constraintStart_toStartOf="@+id/cgStepIngredient"
+                app:layout_constraintTop_toBottomOf="@+id/cgStepIngredient">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvIngredients"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/txtvDescription"
+                app:layout_constraintTop_toBottomOf="@+id/cgStepIngredient" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clReview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnSeeMore"
-                tools:visibility="visible">
+                tools:visibility="gone">
 
                 <TextView
                     android:id="@+id/txtvReviewHeader"
@@ -595,6 +983,19 @@
                 </ScrollView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Switch
+                android:id="@+id/swSBS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:onClick="changeStepMode"
+                android:switchPadding="8dp"
+                android:text="Step by Step"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/cgStepIngredient"
+                app:layout_constraintEnd_toEndOf="@+id/txtvDescription"
+                app:layout_constraintTop_toTopOf="@+id/cgStepIngredient" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

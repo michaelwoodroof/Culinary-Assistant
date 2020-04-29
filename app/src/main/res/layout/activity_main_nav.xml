@@ -23,7 +23,9 @@
             app:layout_constraintBottom_toBottomOf="@+id/txtiSearch"
             app:layout_constraintEnd_toEndOf="@+id/txtiSearch"
             app:layout_constraintStart_toStartOf="@+id/txtiSearch"
-            app:layout_constraintTop_toTopOf="@+id/txtiSearch" />
+            app:layout_constraintTop_toTopOf="@+id/txtiSearch" >
+
+        </SearchView>
 
         <ImageButton
             android:id="@+id/btnFilter"
@@ -273,7 +275,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.navigation.NavigationView
+        <com.google.android.material.navigation.NavigationView
         android:id="@+id/nvMain"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

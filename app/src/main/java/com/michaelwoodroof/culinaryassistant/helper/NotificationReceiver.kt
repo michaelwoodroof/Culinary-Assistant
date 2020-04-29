@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.core.app.NotificationManagerCompat
-import com.michaelwoodroof.culinaryassistant.MealPlanner
+import com.michaelwoodroof.culinaryassistant.mealPlanner.MealPlanner
 
 class NotificationReceiver : BroadcastReceiver() {
 

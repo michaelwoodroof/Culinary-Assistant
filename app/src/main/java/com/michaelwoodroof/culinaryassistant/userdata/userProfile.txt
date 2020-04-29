@@ -1,7 +1,0 @@
-userID = uid00000001
-<TAG DATA>
-["beef : 1", "chicken", 2]
-<CUISINE>
-[]
-<MEAL TYPE>
-[]

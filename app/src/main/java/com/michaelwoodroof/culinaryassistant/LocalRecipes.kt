@@ -8,6 +8,7 @@ import com.michaelwoodroof.culinaryassistant.helper.FileHandler
 import com.michaelwoodroof.culinaryassistant.helper.RenderCard
 import com.michaelwoodroof.culinaryassistant.structure.*
 import kotlinx.android.synthetic.main.activity_local_recipes.*
+import org.bson.types.Decimal128
 
 class LocalRecipes : AppCompatActivity() {
 
@@ -19,14 +20,19 @@ class LocalRecipes : AppCompatActivity() {
         val fh = FileHandler()
 
         val ingredients = ArrayList<Ingredient>()
-        ingredients.add(Ingredient("Carrot","200","100","ML"))
+        ingredients.add(Ingredient("Carrot","200","g","Diced"))
+        ingredients.add(Ingredient("Pepper","200","g","Diced"))
         val keywords = ArrayList<String>()
         keywords.add("Vegan")
         val steps = ArrayList<Section>()
         steps.add(Section(1, "A Step"))
+        steps.add(Section(2, "There is another Step"))
+        val dietary = ArrayList<Dietary>()
+        dietary.add(Dietary("Nuts"))
+        dietary.add(Dietary("Soya"))
 
         var newRecipe = Recipe("","10-20","5-10",0,0,"uid444","Michael","Other","Other",
-            "A Local Recipes","","2","Local","200","Ze",ArrayList<Dietary>(),ingredients,
+            "A Local Recipes","","2","Local","200","Ze",dietary,ingredients,
             ArrayList<Nutrition>(), ArrayList<ExtSection>(), ArrayList<ExtSection>(), keywords, steps,
             "")
 
@@ -47,15 +53,13 @@ class LocalRecipes : AppCompatActivity() {
 
         localRecipes.forEach {
             // Create Card for Each Recipe
-            Log.d("testData", prevID.toString())
-            Log.d("testData", it.title)
             prevID = if (counter == localRecipes.size - 1) {
                 tempInt = RenderCard.makeVerticalCard(this, clLocalRecipes, it.id, it.imgReference,
-                it.title, it.spice, it.description, it.keywords, it.difficulty, 0.0, prevID)
+                it.title, it.spice, it.description, it.keywords, it.difficulty, Decimal128(0), prevID)
                 RenderCard.renderFiller(this, clLocalRecipes, tempInt, 400, 10)
             } else {
                 RenderCard.makeVerticalCard(this, clLocalRecipes, it.id, it.imgReference,
-                    it.title, it.spice, it.description, it.keywords, it.difficulty, 0.0, prevID)
+                    it.title, it.spice, it.description, it.keywords, it.difficulty, Decimal128(0), prevID)
             }
 
             counter++

@@ -28,6 +28,10 @@
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_006___milk_nf.xml"
     },
     {
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout_ingredient_layout.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\ingredient_layout.xml"
+    },
+    {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_main_drawer.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
     },
@@ -38,6 +42,10 @@
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_thumb_up_black_24dp.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_thumb_up_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout_step_layout.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\step_layout.xml"
     },
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_image_black_24dp.xml.flat",
@@ -52,16 +60,16 @@
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\color\\csltred.xml"
     },
     {
-        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_circle_fill.xml.flat",
-        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_circle_fill.xml"
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_notifications_active_black_24dp.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_notifications_active_black_24dp.xml"
     },
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_notifications_active_black_24dp.xml.flat",
-        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_notifications_active_black_24dp.xml"
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_circle_fill.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_circle_fill.xml"
     },
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_keyboard_arrow_down_black_24dp.xml.flat",
@@ -72,16 +80,16 @@
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_notifications_off_black_24dp.xml"
     },
     {
-        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_account_info.xml.flat",
-        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\activity_account_info.xml"
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_009___soya_nf.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_009___soya_nf.xml"
     },
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_007___mustard_f.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_007___mustard_f.xml"
     },
     {
-        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_009___soya_nf.xml.flat",
-        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_009___soya_nf.xml"
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_account_info.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\activity_account_info.xml"
     },
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_close_custom.xml.flat",
@@ -136,6 +144,10 @@
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_014___sulphites_f.xml"
     },
     {
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout_step_list.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\step_list.xml"
+    },
+    {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
@@ -188,6 +200,10 @@
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout_recipe_layout.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\recipe_layout.xml"
+    },
+    {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_add_white_24dp.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_add_white_24dp.xml"
     },
@@ -216,12 +232,12 @@
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\activity_create_recipe_s2.xml"
     },
     {
-        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_cancel_black_24dp.xml.flat",
-        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_cancel_black_24dp.xml"
-    },
-    {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_010___fish_f.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_010___fish_f.xml"
+    },
+    {
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_cancel_black_24dp.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_cancel_black_24dp.xml"
     },
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_roundededges.xml.flat",
@@ -234,6 +250,10 @@
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_keyboard_arrow_up_black_24dp.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_keyboard_arrow_up_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout_ingredient_list.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\ingredient_list.xml"
     },
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_filter_list_black_24dp.xml.flat",
@@ -258,6 +278,10 @@
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_menu_camera.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_menu_camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_keyboard_arrow_left_black_24dp.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_keyboard_arrow_left_black_24dp.xml"
     },
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_back_black_24dp.xml.flat",
@@ -392,6 +416,10 @@
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_002___bread_f.xml"
     },
     {
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_debug_menu.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\activity_debug_menu.xml"
+    },
+    {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_settings_black_24dp.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_settings_black_24dp.xml"
     },
@@ -438,6 +466,10 @@
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_011___nut_f.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_011___nut_f.xml"
+    },
+    {
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout_recipe_list.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\recipe_list.xml"
     },
     {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_bookmark_border_black_24dp.xml.flat",

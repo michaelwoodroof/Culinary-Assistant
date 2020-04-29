@@ -14,6 +14,7 @@ import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
 import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_recipe_overview.*
 import org.bson.Document
+import org.bson.types.Decimal128
 
 class RecipeOverview : AppCompatActivity() {
 
@@ -63,14 +64,14 @@ class RecipeOverview : AppCompatActivity() {
                         tempInt = RenderCard.makeVerticalCard(this, clRecipes, it["uid"] as String,
                             it["imagePath"] as String, it["title"] as String, it["spice"] as Int,
                             it["description"] as String, it["keyWords"] as ArrayList<*>,
-                            it["difficulty"] as Int, it["reviewScore"] as Double, prevID)
+                            it["difficulty"] as Int, it["reviewScore"] as Decimal128, prevID)
                         RenderCard.renderFiller(this, clRecipes, tempInt, 400, 10) // @TODO MIGHT CHANGE SEEMS HIGH
                         Log.d("testData", "TESTTEST")
                     } else {
                         prevID = RenderCard.makeVerticalCard(this, clRecipes, it["uid"] as String,
                             it["imagePath"] as String, it["title"] as String, it["spice"] as Int,
                             it["description"] as String, it["keyWords"] as ArrayList<*>,
-                            it["difficulty"] as Int, it["reviewScore"] as Double, prevID)
+                            it["difficulty"] as Int, it["reviewScore"] as Decimal128, prevID)
                     }
                     counter++
                 }
