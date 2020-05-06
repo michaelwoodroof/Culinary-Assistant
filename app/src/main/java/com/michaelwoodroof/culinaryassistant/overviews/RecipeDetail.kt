@@ -47,14 +47,6 @@ class RecipeDetail : AppCompatActivity() {
                     // Show Reviews
                     clReview.visibility = View.VISIBLE
                     clReview.visibility = View.GONE // @TODO REMOVE
-                    val uid = intent.getStringExtra("uid")
-                    // Inject Data into Constraint
-                    Conversions.convertUIDtoRecipe(uid, this)
-                    val fh = FileHandler()
-                    val r : Recipe = fh.getRecipe(this, uid, true)
-                    Log.d("testData", "MEEP MEEP")
-                    Log.d("testData", r.title)
-                    Log.d("testData", "MEEP MEEP")
                 } else {
                     // Remove Review as Offline Recipe
                     clReview.visibility = View.GONE
@@ -62,7 +54,6 @@ class RecipeDetail : AppCompatActivity() {
             }
 
             if (bundle.containsKey("r")) {
-                Log.d("testData", "loaded recipe")
                 rc = intent.getParcelableExtra("r")!!
 
                 // Fill in Content as Needed
@@ -233,9 +224,6 @@ class RecipeDetail : AppCompatActivity() {
 
         }
 
-
-
-
     }
 
     fun moveStep (view : View) {
@@ -259,21 +247,24 @@ class RecipeDetail : AppCompatActivity() {
     fun loadStepContent(stepNumber : Int) {
 
         // Update Step Number and Description
-        tvStepNumber.text = rc.steps[stepNumber].stepNumber.toString()
-        tvSBSDesc.text = rc.steps[stepNumber].description
+        if (rc.steps.size > 0) {
+            tvStepNumber.text = rc.steps[stepNumber].stepNumber.toString()
+            tvSBSDesc.text = rc.steps[stepNumber].description
 
-        // Update Chips
-        if (currentStep == 0) {
-            chpPrev.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#DADADA"))
-        } else {
-            chpPrev.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#64B5F6"))
+            // Update Chips
+            if (currentStep == 0) {
+                chpPrev.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#DADADA"))
+            } else {
+                chpPrev.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#64B5F6"))
+            }
+
+            if (currentStep == rc.steps.size - 1) {
+                chpNext.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#DADADA"))
+            } else {
+                chpNext.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#64B5F6"))
+            }
         }
 
-        if (currentStep == rc.steps.size - 1) {
-            chpNext.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#DADADA"))
-        } else {
-            chpNext.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#64B5F6"))
-        }
     }
 
     fun changeStepMode(view : View) {

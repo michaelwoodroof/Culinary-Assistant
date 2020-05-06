@@ -67,6 +67,40 @@ class MainActivity : AppCompatActivity() {
         val sn = ScheduleNotification()
         sn.createAlarm(this, 20, 45, (1000 * 60 * 60 * 24), "Demo")
 
+        // Demo for Changing Temperatures
+        val er = Recipe(
+            isFreezable = "NO", cookTime = "", prepTime = "",
+            difficulty = -1,
+            spice = 0,
+            id = "",
+            author = "",
+            courseType = "",
+            cuisine = "",
+            description = "",
+            imgReference = "",
+            numOfServings = "",
+            source = "",
+            temperature = "200CC",
+            title = "",
+            dietary = ArrayList<Dietary>(),
+            ingredients = ArrayList<Ingredient>(),
+            nutrition = ArrayList<Nutrition>(),
+            ingredientSection = ArrayList<ExtSection>(),
+            stepsSection = ArrayList<ExtSection>(),
+            keywords = ArrayList<String>(),
+            steps = ArrayList<Section>(),
+            uriRef = ""
+        )
+
+        val fah = er.convertTemperature("FF")
+        Log.d("convertData", fah)
+
+        val gm = er.convertTemperature("GM")
+        Log.d("convertData", gm)
+
+        val fo = er.convertTemperature("FO")
+        Log.d("convertData", fo)
+
     }
 
     private fun performSearch(query: String) {
@@ -107,7 +141,6 @@ class MainActivity : AppCompatActivity() {
                         tempID = RenderCard.makeHorizontalCard(this, clCategories, it["categoryTitle"] as String,
                             it["imagePath"] as String, false, it["categoryTitle"] as String, it["categoryTitle"] as String,
                             Decimal128(0), prevID)
-
                         RenderCard.renderFiller(this, clCategories, tempID, 440, 80)
                     } else {
                         RenderCard.makeHorizontalCard(this, clCategories, it["categoryTitle"] as String,
@@ -136,13 +169,17 @@ class MainActivity : AppCompatActivity() {
             // Read from File for Suggested Recipes
             val client = stitchAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas")
             val coll = client.getDatabase("appdata").getCollection("recipes")
-            val query = coll.find().sort(Document("reviewScore", -1)).limit(10)
+            val query = coll.find().sort(Document("reviewScore", 1)).limit(10)
             val result = mutableListOf<Document>()
             var counter = 0
             var tempID : Int
 
             query.into(result).addOnSuccessListener {
                 result.forEach {
+
+                    Conversions.convertUIDtoRecipe(it["uid"] as String, baseContext)
+                    val data = it["uid"] as String
+                    Log.d("cacheData", "Created file: $data")
 
                     prevID = if (counter == result.size - 1) {
                         tempID = RenderCard.makeHorizontalCard(this, clSuggested, it["title"] as String,
@@ -182,7 +219,11 @@ class MainActivity : AppCompatActivity() {
             var tempID : Int
 
             query.into(result).addOnSuccessListener {
+
                 result.forEach {
+
+                    Conversions.convertUIDtoRecipe(it["uid"] as String, baseContext)
+
                     prevID = if (counter == result.size - 1) {
                         tempID = RenderCard.makeHorizontalCard(this, clCommunity, it["title"] as String,
                             it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,

@@ -48,7 +48,10 @@ object RenderCard {
                 val intent = Intent(givenContext, RecipeDetail::class.java)
                 intent.putExtra("uid", cv.tag as String)
                 intent.putExtra("isOnline", "Yes")
+                val fh = FileHandler()
+                intent.putExtra("r", fh.getRecipe(givenContext, uid, true) as Parcelable)
                 givenContext.startActivity(intent)
+
             }
         } else {
             cv.setOnClickListener {
@@ -248,16 +251,12 @@ object RenderCard {
             // Put Extras
             val fh = FileHandler()
             val ef = File(givenContext.filesDir, uid)
-            Log.d("testData", uid)
             if (ef.exists()) {
-                Log.d("testData", "File Exists")
                 intent.putExtra("isOnline", "No")
                 intent.putExtra("r", fh.getRecipe(givenContext, uid, false) as Parcelable)
             } else {
-                Log.d("testData", "File does not Exist")
                 intent.putExtra("isOnline", "Yes")
-                // Make Online Call
-                intent.putExtra("t", uid)
+                intent.putExtra("r", fh.getRecipe(givenContext, uid, true) as Parcelable)
             }
 
             givenContext.startActivity(intent)

@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.michaelwoodroof.culinaryassistant.MainActivity
 import com.michaelwoodroof.culinaryassistant.R
+import com.michaelwoodroof.culinaryassistant.helper.Conversions
 import com.michaelwoodroof.culinaryassistant.helper.RenderCard
 import com.mongodb.stitch.android.core.Stitch
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
@@ -26,7 +27,6 @@ class RecipeOverview : AppCompatActivity() {
 
         if (typeis == "category") {
             txtvView.text = Editable.Factory.getInstance().newEditable(intent?.getStringExtra("category") + " Recipes")
-            Log.d("testData", "RO Load")
             loadCategoryRecipes()
         } else if (typeis == "community") {
             txtvView.text = Editable.Factory.getInstance().newEditable("Community Recipes")
@@ -42,8 +42,6 @@ class RecipeOverview : AppCompatActivity() {
 
         val stitchAppClient = Stitch.getDefaultAppClient()
 
-        Log.d("testData", "attempt initial call")
-
         // Call Database for Categories
         stitchAppClient.auth.loginWithCredential(AnonymousCredential()).addOnSuccessListener {
 
@@ -56,17 +54,17 @@ class RecipeOverview : AppCompatActivity() {
             var counter = 0
             var tempInt = 0
 
-            Log.d("testData", "attempt call")
-
             query.into(result).addOnSuccessListener {
                 result.forEach {
+
+                    Conversions.convertUIDtoRecipe(it["uid"] as String, baseContext)
+
                     if (counter == result.size - 1) {
                         tempInt = RenderCard.makeVerticalCard(this, clRecipes, it["uid"] as String,
                             it["imagePath"] as String, it["title"] as String, it["spice"] as Int,
                             it["description"] as String, it["keyWords"] as ArrayList<*>,
                             it["difficulty"] as Int, it["reviewScore"] as Decimal128, prevID)
                         RenderCard.renderFiller(this, clRecipes, tempInt, 400, 10) // @TODO MIGHT CHANGE SEEMS HIGH
-                        Log.d("testData", "TESTTEST")
                     } else {
                         prevID = RenderCard.makeVerticalCard(this, clRecipes, it["uid"] as String,
                             it["imagePath"] as String, it["title"] as String, it["spice"] as Int,
