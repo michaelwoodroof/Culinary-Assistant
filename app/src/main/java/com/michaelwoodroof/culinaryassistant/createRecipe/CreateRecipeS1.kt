@@ -73,7 +73,7 @@ class CreateRecipeS1 : AppCompatActivity() {
     fun goBack(view: View) {
         val intent = Intent(this, MainActivity::class.java)
         //
-        // Show Pop Up that data on recipe will be removed
+        // Show Pop Up that data on recipe will be removed @TODO
         //
         startActivity(intent)
     }

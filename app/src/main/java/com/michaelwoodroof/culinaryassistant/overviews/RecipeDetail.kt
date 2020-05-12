@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Switch
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,12 +14,14 @@ import com.google.android.material.chip.Chip
 import com.michaelwoodroof.culinaryassistant.IngredientAdapter
 import com.michaelwoodroof.culinaryassistant.R
 import com.michaelwoodroof.culinaryassistant.StepAdapter
-import com.michaelwoodroof.culinaryassistant.helper.Conversions
-import com.michaelwoodroof.culinaryassistant.helper.FileHandler
 import com.michaelwoodroof.culinaryassistant.structure.IngredientContent
 import com.michaelwoodroof.culinaryassistant.structure.Recipe
 import com.michaelwoodroof.culinaryassistant.structure.StepContent
+import com.mongodb.stitch.android.core.Stitch
+import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
+import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_recipe_detail.*
+import org.bson.Document
 
 
 class RecipeDetail : AppCompatActivity() {
@@ -47,6 +48,8 @@ class RecipeDetail : AppCompatActivity() {
                     // Show Reviews
                     clReview.visibility = View.VISIBLE
                     clReview.visibility = View.GONE // @TODO REMOVE
+                    val uid = intent.getStringExtra("uid")
+                    loadReviews(uid)
                 } else {
                     // Remove Review as Offline Recipe
                     clReview.visibility = View.GONE
@@ -149,9 +152,25 @@ class RecipeDetail : AppCompatActivity() {
 
                 }
 
-                txtvTemp.text = getString(R.string.tempFormat, "", rc.temperature, "°C")
-                txtvPrep.text = getString(R.string.timingFormat, rc.prepTime)
-                txtvCook.text = getString(R.string.timingFormat, rc.cookTime)
+                val temperatureSuffix = "°C"
+
+                txtvTemp.text = getString(R.string.tempFormat, "", rc.temperature, temperatureSuffix)
+
+                // Format Prep and Cook Times
+                val prepTime = rc.prepTime.split("-")
+                var modPrep = rc.prepTime
+                if (prepTime[0] == prepTime[1]) {
+                    modPrep = prepTime[0]
+                }
+
+                val cookTime = rc.cookTime.split("-")
+                var modCook = rc.cookTime
+                if (cookTime[0] == cookTime[1]) {
+                    modCook = cookTime[0]
+                }
+
+                txtvPrep.text = getString(R.string.timingFormat, modPrep)
+                txtvCook.text = getString(R.string.timingFormat, modCook)
 
                 txtvServings.text = getString(R.string.servingFormat, rc.numOfServings)
                 txtvAuthor.text = rc.author
@@ -334,6 +353,36 @@ class RecipeDetail : AppCompatActivity() {
 
             chpIngredients.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#64B5F6"))
             chpIngredients.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+
+        }
+
+    }
+
+    fun loadReviews(uid : String) {
+
+        // Load in Reviews
+        val stitchAppClient = Stitch.getDefaultAppClient()
+
+        Log.d("searchTest", "IT loaded")
+
+        stitchAppClient.auth.loginWithCredential(AnonymousCredential()).addOnSuccessListener {
+
+            val client = stitchAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas")
+            val coll = client.getDatabase("appdata").getCollection("reviews")
+
+            val doc = Document().append("\$eq", uid)
+            val docQuery = Document().append("link", doc)
+
+            val query = coll.find(docQuery).limit(10)
+            val result = mutableListOf<Document>()
+
+            query.into(result).addOnSuccessListener {
+
+                result.forEach {
+                    Log.d("searchTest", it["contents"] as String)
+                }
+
+            }
 
         }
 

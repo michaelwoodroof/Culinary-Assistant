@@ -54,6 +54,7 @@
             android:focusableInTouchMode="false"
             android:hint=""
             android:longClickable="false"
+            android:onClick="loadSearch"
             app:counterEnabled="false"
             app:counterMaxLength="50"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1744,7 +1744,9 @@ id btnCommunity
 id btnCreate
 id btnCreateIngredient
 id btnDelete
-id btnEdit
+id btnDinner
+id btnEditBreak
+id btnEditLunch
 id btnFilter
 id btnForward
 id btnImgPicker
@@ -1775,6 +1777,7 @@ id center_horizontal
 id center_vertical
 id cgAllergens
 id cgDietary
+id cgFilters
 id cgKeywords
 id cgStepIngredient
 id chain
@@ -1782,6 +1785,9 @@ id chains
 id checkbox
 id checked
 id chip
+id chip2
+id chip3
+id chip4
 id chipGroup
 id chip_group
 id chpCelery
@@ -1911,6 +1917,7 @@ id image
 id imgBacker
 id imgCir
 id imgClear
+id imgHandle
 id imgIndication1
 id imgIndication2
 id imgIndication3
@@ -1995,6 +2002,7 @@ id nav_local
 id nav_meal_planner
 id nav_searchTest
 id nav_settings
+id nav_shopping_list
 id navigation_header_container
 id never
 id noScroll
@@ -2035,6 +2043,8 @@ id rlMain
 id rounded
 id rvIngredients
 id rvResults
+id rvSearchResults
+id rvShoppingList
 id rvSteps
 id save_non_transition_alpha
 id save_overlay_view
@@ -2097,6 +2107,7 @@ id svLocalRecipes
 id svMain
 id svRecipes
 id svReviews
+id svSearch
 id svSteps
 id svTest
 id swFreezeable
@@ -2161,6 +2172,7 @@ id tvStepNumber
 id tvTags
 id tvTitle
 id tvUnit
+id tv_search_title
 id txtAmount
 id txtAuth
 id txtChara
@@ -2333,6 +2345,8 @@ layout activity_main_nav
 layout activity_meal_planner
 layout activity_recipe_detail
 layout activity_recipe_overview
+layout activity_search
+layout activity_shopping_list
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2397,6 +2411,8 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout recipe_layout
 layout recipe_list
+layout search_layout
+layout search_list
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -2474,6 +2490,7 @@ string menu_debugMenu
 string menu_local
 string menu_meal_planner
 string menu_settings
+string menu_shopping_list
 string menu_slideshow
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description

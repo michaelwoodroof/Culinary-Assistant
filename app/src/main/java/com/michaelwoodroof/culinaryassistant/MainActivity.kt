@@ -65,7 +65,11 @@ class MainActivity : AppCompatActivity() {
 //        Conversions.convertUIDtoRecipe("uid00000001")
 
         val sn = ScheduleNotification()
-        sn.createAlarm(this, 20, 45, (1000 * 60 * 60 * 24), "Demo")
+        sn.createAlarm(this, 21, 41, (1000 * 60 * 60 * 24), "Demo")
+
+        val sn1 = ScheduleNotification()
+        sn1.createAlarm(this, 21, 42, (1000 * 60 * 60 * 24), "Demo2")
+
 
         // Demo for Changing Temperatures
         val er = Recipe(
@@ -92,6 +96,33 @@ class MainActivity : AppCompatActivity() {
             uriRef = ""
         )
 
+        //val stitchAppClient = Stitch.getDefaultAppClient()
+
+        // Call Database for Community Favouritesl
+//        stitchAppClient.auth.loginWithCredential(AnonymousCredential()).addOnSuccessListener {
+//
+//            val client = stitchAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas")
+//            val coll = client.getDatabase("appdata").getCollection("recipes")
+//
+//            val str = """.*""" + Pattern.quote("Med") + """.*"""
+//            val doc = Document().append("\$regex", str.toRegex())
+//            doc.append("\$options", "i")
+//            val docQuery = Document().append("title", doc)
+//            Log.d("searchTest", docQuery.toString())
+//
+//            val query = coll.find(docQuery).limit(10)
+//            val result = mutableListOf<Document>()
+//
+//            query.into(result).addOnSuccessListener {
+//
+//                result.forEach {
+//                    Log.d("searchTest", it["title"] as String)
+//                }
+//
+//            }
+//        }
+
+
         val fah = er.convertTemperature("FF")
         Log.d("convertData", fah)
 
@@ -108,10 +139,42 @@ class MainActivity : AppCompatActivity() {
         Log.d("testData", query)
     }
 
+    fun loadSearch(view : View) {
+        val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
+    }
+
     // Used to Fill Main Menu with Info can be called with Sync Button if application is offline
     private fun loadMainScreen() {
 
-        loadSuggested()
+        val r = loadSuggested(
+            object : RecipeCallback {
+                override fun getRecipe(result: MutableList<Document>) {
+                    var prevID = clSuggested.id
+                    var counter = 0
+                    var tempID : Int
+                    result.forEach {
+                        Conversions.convertUIDtoRecipe(it["uid"] as String, baseContext)
+                        val data = it["uid"] as String
+                        Log.d("cacheData", "Created file: $data")
+
+                            prevID = if (counter == result.size - 1) {
+                                tempID = RenderCard.makeHorizontalCard(baseContext, clSuggested, it["title"] as String,
+                                    it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
+                                    it["reviewScore"] as Decimal128, prevID)
+
+                                RenderCard.renderFiller(baseContext, clSuggested, tempID, 440, 80)
+                            } else {
+                                RenderCard.makeHorizontalCard(baseContext, clSuggested, it["title"] as String,
+                                    it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
+                                    it["reviewScore"] as Decimal128, prevID)
+                            }
+
+                        counter++
+                    }
+                }
+            }
+        )
 
         loadCommunityFavourites()
 
@@ -125,6 +188,7 @@ class MainActivity : AppCompatActivity() {
         val stitchAppClient = Stitch.getDefaultAppClient()
 
         // Call Database for Categories
+
         stitchAppClient.auth.loginWithCredential(AnonymousCredential()).addOnSuccessListener {
 
             // Get Categories
@@ -134,6 +198,8 @@ class MainActivity : AppCompatActivity() {
             val result = mutableListOf<Document>()
             var counter = 0
             var tempID: Int
+
+
 
             query.into(result).addOnSuccessListener {
                 result.forEach {
@@ -156,11 +222,11 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
     }
 
-    private fun loadSuggested() {
-        // Needed Variables
-        var prevID = clSuggested.id
+    private fun loadSuggested(rc : RecipeCallback) {
+
         val stitchAppClient = Stitch.getDefaultAppClient()
 
         // Call Database for Suggested Recipes
@@ -171,36 +237,15 @@ class MainActivity : AppCompatActivity() {
             val coll = client.getDatabase("appdata").getCollection("recipes")
             val query = coll.find().sort(Document("reviewScore", 1)).limit(10)
             val result = mutableListOf<Document>()
-            var counter = 0
-            var tempID : Int
 
             query.into(result).addOnSuccessListener {
-                result.forEach {
-
-                    Conversions.convertUIDtoRecipe(it["uid"] as String, baseContext)
-                    val data = it["uid"] as String
-                    Log.d("cacheData", "Created file: $data")
-
-                    prevID = if (counter == result.size - 1) {
-                        tempID = RenderCard.makeHorizontalCard(this, clSuggested, it["title"] as String,
-                            it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
-                            it["reviewScore"] as Decimal128, prevID)
-
-                        RenderCard.renderFiller(this, clSuggested, tempID, 440, 80)
-                    } else {
-                        RenderCard.makeHorizontalCard(this, clSuggested, it["title"] as String,
-                            it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
-                            it["reviewScore"] as Decimal128, prevID)
-                    }
-
-                    counter++
-
-                }
+                rc.getRecipe(result)
             }.addOnFailureListener {
-                loadSuggested()
+                // @TODO
             }
 
         }
+
     }
 
     private fun loadCommunityFavourites() {
@@ -307,17 +352,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun loadSearch(view : View) {
-        // Load Search View
-        svMain.visibility = View.VISIBLE
-        svMain.queryHint = "Search Here!"
-        btnFilter.visibility = View.VISIBLE
-        btnMenu.visibility = View.GONE
-        btnFilter.visibility = View.VISIBLE
-        btnSearchLoad.visibility = View.GONE
-        svMain.requestFocus()
-    }
-
     fun loadNavMenu(item : MenuItem) {
         dlMain.closeDrawer(Gravity.LEFT)
 
@@ -331,7 +365,10 @@ class MainActivity : AppCompatActivity() {
 
             "Settings" -> intent = Intent(this, LocalRecipes::class.java)
 
+            "Shopping List" -> intent = Intent(this, ShoppingList::class.java)
+
             "Debug" -> intent = Intent(this, DebugMenu::class.java)
+
 
             else -> intent = Intent(this, LocalRecipes::class.java)
 

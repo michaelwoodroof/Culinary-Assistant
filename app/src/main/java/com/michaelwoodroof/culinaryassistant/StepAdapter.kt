@@ -6,10 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.culinaryassistant.structure.StepContent
-import kotlinx.android.synthetic.main.recipe_layout.view.*
 import kotlinx.android.synthetic.main.step_layout.view.*
 
-class StepAdapter(private val mValues: List<StepContent.StepItem>
+class StepAdapter(private val mValues: ArrayList<StepContent.StepItem>
 ) : RecyclerView.Adapter<StepAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StepAdapter.ViewHolder {

@@ -200,4 +200,9 @@ class Recipe(var isFreezable: String, var cookTime: String, var prepTime: String
 
     }
 
+    // Used to Ensure Class Compatibility
+    companion object {
+        @JvmStatic private val serialVersionUID: Long = -5626256367765258332
+    }
+
 }

@@ -1,11 +1,13 @@
 package com.michaelwoodroof.culinaryassistant.mealPlanner
 
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.michaelwoodroof.culinaryassistant.MainActivity
 import com.michaelwoodroof.culinaryassistant.R
 import kotlinx.android.synthetic.main.activity_meal_planner.*
 import java.text.SimpleDateFormat
@@ -44,6 +46,7 @@ class MealPlanner : AppCompatActivity() {
             }
         }
         TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+        updateMealPlannerFile()
     }
 
     fun toggleNotification(view : View) {
@@ -58,6 +61,16 @@ class MealPlanner : AppCompatActivity() {
             view.setImageResource(R.drawable.ic_notifications_active_black_24dp)
         }
 
+    }
+
+    fun updateMealPlannerFile() {
+        // Get Day
+
+    }
+
+    fun goBack(view : View) {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
 }

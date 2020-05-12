@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tvTitle"
+                android:id="@+id/tv_search_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -64,7 +64,7 @@
                 android:text="#sausage"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvDesc" />
+                app:layout_constraintStart_toStartOf="@+id/tvTitle" />
 
             <TextView
                 android:id="@+id/tvRating"

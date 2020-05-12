@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-46:12
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-48:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta4] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\bf812a8d01999332b46ef828340a2f90\constraintlayout-2.0.0-beta4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.navigation:navigation-ui-ktx:2.2.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\256a0b066a8f0920b9ad786282376d98\navigation-ui-ktx-2.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-ui:2.2.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\33ecac56757fcf026b55784f8dc952ea\navigation-ui-2.2.1\AndroidManifest.xml:17:1-24:12
@@ -72,20 +72,20 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Michael\.gradle\
 MERGED from [org.mongodb:mongodb-driver-embedded-android:3.10.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c339ce46f286ccb09f8ae19477eeaaa6\jetified-mongodb-driver-embedded-android-3.10.1\AndroidManifest.xml:2:1-9:12
 MERGED from [org.mongodb:embedded-android:4.0.13] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\ee7ababf67840221794d892261b1ccba\jetified-embedded-android-4.0.13\AndroidManifest.xml:2:1-9:12
 MERGED from [net.java.dev.jna:jna:4.5.2] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\4cca30c20c87024212672ac27b7d9abc\jetified-jna-4.5.2\AndroidManifest.xml:2:1-8:12
-INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-48:12
 	package
 		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:3:5-52
 		INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-46:12
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-48:12
 		INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-46:12
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:1-48:12
 		INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:2:11-69
@@ -102,7 +102,7 @@ ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main
 	android:name
 		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:7:22-78
 application
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:9:5-44:19
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:9:5-46:19
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta4] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\bf812a8d01999332b46ef828340a2f90\constraintlayout-2.0.0-beta4\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta4] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\bf812a8d01999332b46ef828340a2f90\constraintlayout-2.0.0-beta4\AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\ad62cdd3b372bb81e612ecadb6ca9d76\material-1.1.0\AndroidManifest.xml:22:5-20
@@ -137,86 +137,94 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Mi
 		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:10:9-35
 	android:theme
 		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:15:9-40
+activity#com.michaelwoodroof.culinaryassistant.SearchActivity
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:16:9-61
+	android:name
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:16:19-49
+activity#com.michaelwoodroof.culinaryassistant.ShoppingList
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:9-50
+	android:name
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:19-47
 activity#com.michaelwoodroof.culinaryassistant.DebugMenu
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:16:9-56
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:9-47
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:16:19-44
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:19-44
 activity#com.michaelwoodroof.culinaryassistant.mealPlanner.MealPlanner
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:9-61
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:9-61
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:19-58
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:19-58
 activity#com.michaelwoodroof.culinaryassistant.LocalRecipes
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:9-50
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:20:9-50
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:19-47
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:20:19-47
 activity#com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:9-60
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:21:9-60
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:19-57
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:21:19-57
 activity#com.michaelwoodroof.culinaryassistant.overviews.RecipeOverview
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:20:9-62
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:22:9-62
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:20:19-59
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:22:19-59
 activity#com.michaelwoodroof.culinaryassistant.login.AccountSignUp
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:21:9-57
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:23:9-57
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:21:19-54
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:23:19-54
 activity#com.michaelwoodroof.culinaryassistant.login.AccountInfo
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:22:9-55
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:24:9-55
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:22:19-52
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:24:19-52
 activity#com.michaelwoodroof.culinaryassistant.login.Login
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:23:9-49
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:25:9-49
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:23:19-46
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:25:19-46
 activity#com.michaelwoodroof.culinaryassistant.overviews.Categories
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:24:9-58
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:26:9-58
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:24:19-55
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:26:19-55
 activity#com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS5
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:25:9-65
-	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:25:19-62
-activity#com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS4
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:26:9-65
-	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:26:19-62
-activity#com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS3
 ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:27:9-65
 	android:name
 		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:27:19-62
-activity#com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS2
+activity#com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS4
 ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:28:9-65
 	android:name
 		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:28:19-62
-activity#com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS1
+activity#com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS3
 ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:29:9-65
 	android:name
 		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:29:19-62
-receiver#com.michaelwoodroof.culinaryassistant.helper.NotificationReceiver
+activity#com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS2
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:30:9-65
+	android:name
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:30:19-62
+activity#com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS1
 ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:31:9-65
 	android:name
 		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:31:19-62
+receiver#com.michaelwoodroof.culinaryassistant.helper.NotificationReceiver
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:33:9-65
+	android:name
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:33:19-62
 activity#com.michaelwoodroof.culinaryassistant.MainActivity
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:33:9-39:20
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:35:9-41:20
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:33:19-47
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:35:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:34:13-38:29
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:36:13-40:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:35:17-69
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:37:17-69
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:35:25-66
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:37:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:37:17-77
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:39:17-77
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:37:27-74
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:39:27-74
 meta-data#preloaded_fonts
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:41:9-43:57
+ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:43:9-45:57
 	android:resource
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:43:13-54
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:45:13-54
 	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:42:13-43
+		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:44:13-43
 uses-sdk
 INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml

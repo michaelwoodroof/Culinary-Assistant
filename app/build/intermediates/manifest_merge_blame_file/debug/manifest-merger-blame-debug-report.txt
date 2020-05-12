@@ -27,7 +27,7 @@
 15-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:12:22-64
 16
 17    <application
-17-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:9:5-44:19
+17-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:9:5-46:19
 18        android:allowBackup="true"
 18-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:10:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -44,114 +44,120 @@
 25        android:testOnly="true"
 26        android:theme="@style/AppTheme" >
 26-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:15:9-40
-27        <activity android:name="com.michaelwoodroof.culinaryassistant.DebugMenu" />
-27-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:16:9-56
-27-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:16:19-44
-28        <activity android:name="com.michaelwoodroof.culinaryassistant.mealPlanner.MealPlanner" />
-28-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:9-61
-28-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:19-58
-29        <activity android:name="com.michaelwoodroof.culinaryassistant.LocalRecipes" />
-29-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:9-50
-29-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:19-47
-30        <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail" />
-30-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:9-60
-30-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:19-57
-31        <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.RecipeOverview" />
-31-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:20:9-62
-31-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:20:19-59
-32        <activity android:name="com.michaelwoodroof.culinaryassistant.login.AccountSignUp" />
-32-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:21:9-57
-32-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:21:19-54
-33        <activity android:name="com.michaelwoodroof.culinaryassistant.login.AccountInfo" />
-33-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:22:9-55
-33-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:22:19-52
-34        <activity android:name="com.michaelwoodroof.culinaryassistant.login.Login" />
-34-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:23:9-49
-34-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:23:19-46
-35        <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.Categories" />
-35-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:24:9-58
-35-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:24:19-55
-36        <activity android:name="com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS5" />
-36-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:25:9-65
-36-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:25:19-62
-37        <activity android:name="com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS4" />
-37-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:26:9-65
-37-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:26:19-62
-38        <activity android:name="com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS3" />
+27        <activity android:name="com.michaelwoodroof.culinaryassistant.SearchActivity" />
+27-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:16:9-61
+27-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:16:19-49
+28        <activity android:name="com.michaelwoodroof.culinaryassistant.ShoppingList" />
+28-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:9-50
+28-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:19-47
+29        <activity android:name="com.michaelwoodroof.culinaryassistant.DebugMenu" />
+29-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:9-47
+29-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:19-44
+30        <activity android:name="com.michaelwoodroof.culinaryassistant.mealPlanner.MealPlanner" />
+30-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:9-61
+30-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:19-58
+31        <activity android:name="com.michaelwoodroof.culinaryassistant.LocalRecipes" />
+31-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:20:9-50
+31-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:20:19-47
+32        <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail" />
+32-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:21:9-60
+32-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:21:19-57
+33        <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.RecipeOverview" />
+33-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:22:9-62
+33-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:22:19-59
+34        <activity android:name="com.michaelwoodroof.culinaryassistant.login.AccountSignUp" />
+34-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:23:9-57
+34-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:23:19-54
+35        <activity android:name="com.michaelwoodroof.culinaryassistant.login.AccountInfo" />
+35-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:24:9-55
+35-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:24:19-52
+36        <activity android:name="com.michaelwoodroof.culinaryassistant.login.Login" />
+36-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:25:9-49
+36-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:25:19-46
+37        <activity android:name="com.michaelwoodroof.culinaryassistant.overviews.Categories" />
+37-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:26:9-58
+37-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:26:19-55
+38        <activity android:name="com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS5" />
 38-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:27:9-65
 38-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:27:19-62
-39        <activity android:name="com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS2" />
+39        <activity android:name="com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS4" />
 39-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:28:9-65
 39-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:28:19-62
-40        <activity android:name="com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS1" />
+40        <activity android:name="com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS3" />
 40-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:29:9-65
 40-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:29:19-62
-41
-42        <receiver android:name="com.michaelwoodroof.culinaryassistant.helper.NotificationReceiver" />
+41        <activity android:name="com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS2" />
+41-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:30:9-65
+41-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:30:19-62
+42        <activity android:name="com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS1" />
 42-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:31:9-65
 42-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:31:19-62
 43
-44        <activity android:name="com.michaelwoodroof.culinaryassistant.MainActivity" >
-44-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:33:9-39:20
-44-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:33:19-47
-45            <intent-filter>
-45-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:34:13-38:29
-46                <action android:name="android.intent.action.MAIN" />
-46-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:35:17-69
-46-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:35:25-66
-47
-48                <category android:name="android.intent.category.LAUNCHER" />
-48-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:37:17-77
-48-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:37:27-74
-49            </intent-filter>
-50        </activity>
-51
-52        <meta-data
-52-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:41:9-43:57
-53            android:name="preloaded_fonts"
-53-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:42:13-43
-54            android:resource="@array/preloaded_fonts" />
-54-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:43:13-54
-55        <!-- MongoDbMobileProvider initialize MongoDB Mobile for future usage -->
-56        <provider
-56-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:14:9-17:40
-57            android:name="com.mongodb.stitch.android.services.mongodb.local.internal.MongoDbMobileProvider"
-57-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:15:13-108
-58            android:authorities="com.michaelwoodroof.culinaryassistant.StitchMongoDBMobileProvider"
-58-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:16:13-79
-59            android:exported="false" />
-59-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:17:13-37
-60        <!--
-61          StitchInitProvider is a ContentProvider that will associate the application's Context
-62          with Stitch. It also will look for resource values such as stitch_client_app_id to register
-63           a default app client.
-64        -->
-65        <provider
-65-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:21:9-24:40
-66            android:name="com.mongodb.stitch.android.core.internal.StitchInitProvider"
-66-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:22:13-87
-67            android:authorities="com.michaelwoodroof.culinaryassistant.StitchInitProvider"
-67-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:23:13-70
-68            android:exported="false" />
-68-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:24:13-37
-69
-70        <meta-data
-70-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\83702586ce7cf48f5ea85b06fb9c4b0d\jetified-play-services-basement-15.0.1\AndroidManifest.xml:23:9-25:69
-71            android:name="com.google.android.gms.version"
-71-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\83702586ce7cf48f5ea85b06fb9c4b0d\jetified-play-services-basement-15.0.1\AndroidManifest.xml:24:13-58
-72            android:value="@integer/google_play_services_version" />
-72-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\83702586ce7cf48f5ea85b06fb9c4b0d\jetified-play-services-basement-15.0.1\AndroidManifest.xml:25:13-66
-73
-74        <provider
-74-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
-75            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-75-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
-76            android:authorities="com.michaelwoodroof.culinaryassistant.lifecycle-process"
-76-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
-77            android:exported="false"
-77-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
-78            android:multiprocess="true" />
-78-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
-79    </application>
-80
-81</manifest>
+44        <receiver android:name="com.michaelwoodroof.culinaryassistant.helper.NotificationReceiver" />
+44-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:33:9-65
+44-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:33:19-62
+45
+46        <activity android:name="com.michaelwoodroof.culinaryassistant.MainActivity" >
+46-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:35:9-41:20
+46-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:35:19-47
+47            <intent-filter>
+47-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:36:13-40:29
+48                <action android:name="android.intent.action.MAIN" />
+48-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:37:17-69
+48-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:37:25-66
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+50-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:39:17-77
+50-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:39:27-74
+51            </intent-filter>
+52        </activity>
+53
+54        <meta-data
+54-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:43:9-45:57
+55            android:name="preloaded_fonts"
+55-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:44:13-43
+56            android:resource="@array/preloaded_fonts" />
+56-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:45:13-54
+57        <!-- MongoDbMobileProvider initialize MongoDB Mobile for future usage -->
+58        <provider
+58-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:14:9-17:40
+59            android:name="com.mongodb.stitch.android.services.mongodb.local.internal.MongoDbMobileProvider"
+59-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:15:13-108
+60            android:authorities="com.michaelwoodroof.culinaryassistant.StitchMongoDBMobileProvider"
+60-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:16:13-79
+61            android:exported="false" />
+61-->[org.mongodb:stitch-android-services-mongodb-local:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\c505fc82538991f84bfcb4d70284503d\jetified-stitch-android-services-mongodb-local-4.5.0\AndroidManifest.xml:17:13-37
+62        <!--
+63          StitchInitProvider is a ContentProvider that will associate the application's Context
+64          with Stitch. It also will look for resource values such as stitch_client_app_id to register
+65           a default app client.
+66        -->
+67        <provider
+67-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:21:9-24:40
+68            android:name="com.mongodb.stitch.android.core.internal.StitchInitProvider"
+68-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:22:13-87
+69            android:authorities="com.michaelwoodroof.culinaryassistant.StitchInitProvider"
+69-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:23:13-70
+70            android:exported="false" />
+70-->[org.mongodb:stitch-android-core:4.5.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\689dc43f014665cb83bcc7ece48816ac\jetified-stitch-android-core-4.5.0\AndroidManifest.xml:24:13-37
+71
+72        <meta-data
+72-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\83702586ce7cf48f5ea85b06fb9c4b0d\jetified-play-services-basement-15.0.1\AndroidManifest.xml:23:9-25:69
+73            android:name="com.google.android.gms.version"
+73-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\83702586ce7cf48f5ea85b06fb9c4b0d\jetified-play-services-basement-15.0.1\AndroidManifest.xml:24:13-58
+74            android:value="@integer/google_play_services_version" />
+74-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\83702586ce7cf48f5ea85b06fb9c4b0d\jetified-play-services-basement-15.0.1\AndroidManifest.xml:25:13-66
+75
+76        <provider
+76-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+77            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+77-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+78            android:authorities="com.michaelwoodroof.culinaryassistant.lifecycle-process"
+78-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+79            android:exported="false"
+79-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+80            android:multiprocess="true" />
+80-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Michael\.gradle\caches\transforms-2\files-2.1\6691aba6a07a208173ad67bb9ac35036\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+81    </application>
+82
+83</manifest>

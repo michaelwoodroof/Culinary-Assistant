@@ -25,6 +25,8 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.michaelwoodroof.culinaryassistant.SearchActivity" />
+        <activity android:name="com.michaelwoodroof.culinaryassistant.ShoppingList" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.DebugMenu" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.mealPlanner.MealPlanner" />
         <activity android:name="com.michaelwoodroof.culinaryassistant.LocalRecipes" />

@@ -1,4 +1,4 @@
-package com.michaelwoodroof.culinaryassistant.repiceFormat
+package com.michaelwoodroof.culinaryassistant.structure
 
 import java.util.ArrayList
 import java.util.HashMap
@@ -27,7 +27,14 @@ object RecipeContent {
     }
 
     private fun createRecipeItem(position: Int): RecipeItem {
-        return RecipeItem(position.toString(), "Item $position", makeDetails(position), "")
+        return RecipeItem(
+            position.toString(),
+            "Item $position",
+            makeDetails(
+                position
+            ),
+            ""
+        )
     }
 
     private fun makeDetails(position: Int): String {

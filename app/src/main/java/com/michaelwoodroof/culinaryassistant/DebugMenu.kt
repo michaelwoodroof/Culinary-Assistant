@@ -2,11 +2,9 @@ package com.michaelwoodroof.culinaryassistant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.michaelwoodroof.culinaryassistant.repiceFormat.RecipeContent
+import com.michaelwoodroof.culinaryassistant.structure.RecipeContent
 import java.util.ArrayList
 
 class DebugMenu : AppCompatActivity() {

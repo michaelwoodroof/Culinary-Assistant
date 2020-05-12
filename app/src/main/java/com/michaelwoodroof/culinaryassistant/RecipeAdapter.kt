@@ -7,11 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import com.michaelwoodroof.culinaryassistant.helper.ImageConversions
 import com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail
 
-import com.michaelwoodroof.culinaryassistant.repiceFormat.RecipeContent
+import com.michaelwoodroof.culinaryassistant.structure.RecipeContent
 
 import kotlinx.android.synthetic.main.recipe_layout.view.*
 
