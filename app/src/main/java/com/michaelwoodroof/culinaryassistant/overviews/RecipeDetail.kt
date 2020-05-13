@@ -49,7 +49,7 @@ class RecipeDetail : AppCompatActivity() {
                     clReview.visibility = View.VISIBLE
                     clReview.visibility = View.GONE // @TODO REMOVE
                     val uid = intent.getStringExtra("uid")
-                    loadReviews(uid)
+                    //loadReviews(uid)
                 } else {
                     // Remove Review as Offline Recipe
                     clReview.visibility = View.GONE

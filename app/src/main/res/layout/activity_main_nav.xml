@@ -133,9 +133,9 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvSuggested"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="180dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtvGetStarted">
 
@@ -144,9 +144,9 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCommunityFavourites"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="180dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtvCommunityFavourites">
 
@@ -155,10 +155,9 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCategories"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="180dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtvCategories">
 
@@ -193,7 +192,7 @@
                     android:id="@+id/txtvCommunityFavourites"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="Community Favourites"
                     android:textColor="@color/mygrey"
                     android:textSize="18sp"
@@ -216,7 +215,7 @@
                     android:id="@+id/txtvCategories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="Categories"
                     android:textColor="@color/mygrey"
                     android:textSize="18sp"

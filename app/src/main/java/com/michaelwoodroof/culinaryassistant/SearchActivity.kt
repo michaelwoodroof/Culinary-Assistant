@@ -81,8 +81,6 @@ class SearchActivity : AppCompatActivity() {
                     }
                 )
 
-                Thread.sleep(100)
-
                 return true
             }
 
