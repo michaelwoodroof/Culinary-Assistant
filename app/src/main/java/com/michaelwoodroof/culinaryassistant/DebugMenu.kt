@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.michaelwoodroof.culinaryassistant.adapters.RecipeAdapter
 import com.michaelwoodroof.culinaryassistant.structure.RecipeContent
 import java.util.ArrayList
 
@@ -28,7 +29,10 @@ class DebugMenu : AppCompatActivity() {
         myDataset.add(1, ri)
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = RecipeAdapter(myDataset)
+        viewAdapter =
+            RecipeAdapter(
+                myDataset
+            )
 
         recyclerView = findViewById<RecyclerView>(R.id.rvResults).apply {
             setHasFixedSize(true)

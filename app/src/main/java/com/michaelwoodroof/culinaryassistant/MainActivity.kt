@@ -9,6 +9,9 @@ import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.michaelwoodroof.culinaryassistant.adapters.MainMenuAdapter
 import com.michaelwoodroof.culinaryassistant.createRecipe.CreateRecipeS1
 import com.michaelwoodroof.culinaryassistant.helper.*
 import com.michaelwoodroof.culinaryassistant.login.AccountInfo
@@ -28,6 +31,9 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
 
     private var loggedIn = false
+    private lateinit var recyclerView : RecyclerView
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -147,44 +153,92 @@ class MainActivity : AppCompatActivity() {
     // Used to Fill Main Menu with Info can be called with Sync Button if application is offline
     private fun loadMainScreen() {
 
-        val r = loadSuggested(
+        var r = loadSuggested(
             object : RecipeCallback {
                 override fun getRecipe(result: MutableList<Document>) {
-                    var prevID = clSuggested.id
-                    var counter = 0
-                    var tempID : Int
+                    val dataSet = ArrayList<MainMenuContent.MainMenuItem>()
                     result.forEach {
                         Conversions.convertUIDtoRecipe(it["uid"] as String, baseContext)
-                        val data = it["uid"] as String
-                        Log.d("cacheData", "Created file: $data")
-
-                            prevID = if (counter == result.size - 1) {
-                                tempID = RenderCard.makeHorizontalCard(baseContext, clSuggested, it["title"] as String,
-                                    it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
-                                    it["reviewScore"] as Decimal128, prevID)
-
-                                RenderCard.renderFiller(baseContext, clSuggested, tempID, 440, 80)
-                            } else {
-                                RenderCard.makeHorizontalCard(baseContext, clSuggested, it["title"] as String,
-                                    it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
-                                    it["reviewScore"] as Decimal128, prevID)
-                            }
-
-                        counter++
+                        val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                            it["imagePath"] as String, it["uid"] as String,
+                            it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                        dataSet.add(mmc)
                     }
+
+                    viewManager = LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)
+                    viewAdapter =
+                        MainMenuAdapter(
+                            dataSet
+                        )
+
+                    recyclerView = findViewById<RecyclerView>(R.id.rvSuggested).apply {
+                        setHasFixedSize(true)
+                        layoutManager = viewManager
+                        adapter = viewAdapter
+                    }
+
                 }
             }
         )
 
-        loadCommunityFavourites()
+        r = loadCommunityFavourites(
+            object : RecipeCallback {
+                override fun getRecipe(result: MutableList<Document>) {
+                    val dataSet = ArrayList<MainMenuContent.MainMenuItem>()
+                    result.forEach {
+                        Conversions.convertUIDtoRecipe(it["uid"] as String, baseContext)
+                        val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                            it["imagePath"] as String, it["uid"] as String,
+                            it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                        dataSet.add(mmc)
+                    }
 
-        loadCategories()
+                    viewManager = LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)
+                    viewAdapter =
+                        MainMenuAdapter(
+                            dataSet
+                        )
+
+                    recyclerView = findViewById<RecyclerView>(R.id.rvCommunityFavourites).apply {
+                        setHasFixedSize(true)
+                        layoutManager = viewManager
+                        adapter = viewAdapter
+                    }
+
+                }
+            }
+        )
+
+        r = loadCategories(
+            object : RecipeCallback {
+                override fun getRecipe(result: MutableList<Document>) {
+                    val dataSet = ArrayList<MainMenuContent.MainMenuItem>()
+                    result.forEach {
+                        val mmc = MainMenuContent.MainMenuItem(it["categoryTitle"] as String,
+                            it["imagePath"] as String, it["categoryTitle"] as String,
+                            Decimal128(0), it["categoryTitle"] as String, false)
+                        dataSet.add(mmc)
+                    }
+
+                    viewManager = LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)
+                    viewAdapter =
+                        MainMenuAdapter(
+                            dataSet
+                        )
+
+                    recyclerView = findViewById<RecyclerView>(R.id.rvCategories).apply {
+                        setHasFixedSize(true)
+                        layoutManager = viewManager
+                        adapter = viewAdapter
+                    }
+
+                }
+            }
+        )
 
     }
 
-    private fun loadCategories() {
-        // Needed Variables
-        var prevID = clCategories.id
+    private fun loadCategories(rc : RecipeCallback) {
         val stitchAppClient = Stitch.getDefaultAppClient()
 
         // Call Database for Categories
@@ -196,29 +250,10 @@ class MainActivity : AppCompatActivity() {
             val coll = client.getDatabase("appdata").getCollection("categories")
             val query = coll.find().sort(Document("categoryTitle", 1)).limit(10)
             val result = mutableListOf<Document>()
-            var counter = 0
-            var tempID: Int
-
-
 
             query.into(result).addOnSuccessListener {
-                result.forEach {
-                    prevID = if (counter == result.size - 1) {
-                        tempID = RenderCard.makeHorizontalCard(this, clCategories, it["categoryTitle"] as String,
-                            it["imagePath"] as String, false, it["categoryTitle"] as String, it["categoryTitle"] as String,
-                            Decimal128(0), prevID)
-                        RenderCard.renderFiller(this, clCategories, tempID, 440, 80)
-                    } else {
-                        RenderCard.makeHorizontalCard(this, clCategories, it["categoryTitle"] as String,
-                            it["imagePath"] as String, false, it["categoryTitle"] as String, it["categoryTitle"] as String,
-                            Decimal128(0), prevID)
-                    }
-
-                    counter ++
-
-                }
+                rc.getRecipe(result)
             }.addOnFailureListener {
-                loadCategories()
             }
 
         }
@@ -248,9 +283,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun loadCommunityFavourites() {
-        // Needed Variables
-        var prevID = clCommunity.id
+    private fun loadCommunityFavourites(rc : RecipeCallback) {
+
         val stitchAppClient = Stitch.getDefaultAppClient()
 
         // Call Database for Community Favourites
@@ -260,32 +294,11 @@ class MainActivity : AppCompatActivity() {
             val coll = client.getDatabase("appdata").getCollection("recipes")
             val query = coll.find().sort(Document("reviewScore", -1)).limit(10)
             val result = mutableListOf<Document>()
-            var counter = 0
-            var tempID : Int
 
             query.into(result).addOnSuccessListener {
-
-                result.forEach {
-
-                    Conversions.convertUIDtoRecipe(it["uid"] as String, baseContext)
-
-                    prevID = if (counter == result.size - 1) {
-                        tempID = RenderCard.makeHorizontalCard(this, clCommunity, it["title"] as String,
-                            it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
-                            it["reviewScore"] as Decimal128, prevID)
-
-                        RenderCard.renderFiller(this, clCommunity, tempID, 440, 80)
-                    } else {
-                        RenderCard.makeHorizontalCard(this, clCommunity, it["title"] as String,
-                            it["imagePath"] as String, true, it["uid"] as String, it["cuisine"] as String,
-                            it["reviewScore"] as Decimal128, prevID)
-                    }
-
-                    counter++
-
-                }
+                rc.getRecipe(result)
             }.addOnFailureListener {
-                loadCommunityFavourites()
+                // @TODO
             }
 
         }

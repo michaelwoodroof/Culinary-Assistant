@@ -9,6 +9,7 @@ import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
+import com.michaelwoodroof.culinaryassistant.adapters.SearchAdapter
 import com.michaelwoodroof.culinaryassistant.structure.SearchContent
 import com.mongodb.stitch.android.core.Stitch
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
@@ -105,7 +106,10 @@ class SearchActivity : AppCompatActivity() {
                     if (count == result.size - 1) {
                         // Set - up Content
                         viewManager = LinearLayoutManager(this)
-                        viewAdapter = SearchAdapter(dataSet)
+                        viewAdapter =
+                            SearchAdapter(
+                                dataSet
+                            )
 
                         recyclerView = findViewById<RecyclerView>(R.id.rvSearchResults).apply {
                             setHasFixedSize(true)

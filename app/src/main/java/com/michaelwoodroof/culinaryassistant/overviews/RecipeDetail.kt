@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
-import com.michaelwoodroof.culinaryassistant.IngredientAdapter
+import com.michaelwoodroof.culinaryassistant.adapters.IngredientAdapter
 import com.michaelwoodroof.culinaryassistant.R
-import com.michaelwoodroof.culinaryassistant.StepAdapter
+import com.michaelwoodroof.culinaryassistant.adapters.StepAdapter
 import com.michaelwoodroof.culinaryassistant.structure.IngredientContent
 import com.michaelwoodroof.culinaryassistant.structure.Recipe
 import com.michaelwoodroof.culinaryassistant.structure.StepContent
@@ -213,7 +213,10 @@ class RecipeDetail : AppCompatActivity() {
                 }
 
                 viewManager = LinearLayoutManager(this)
-                viewAdapter = StepAdapter(dataSet)
+                viewAdapter =
+                    StepAdapter(
+                        dataSet
+                    )
 
                 recyclerView = findViewById<RecyclerView>(R.id.rvSteps).apply {
                     setHasFixedSize(true)
@@ -229,7 +232,10 @@ class RecipeDetail : AppCompatActivity() {
                 }
 
                 viewManager = LinearLayoutManager(this)
-                viewAdapter = IngredientAdapter(dataSetIng)
+                viewAdapter =
+                    IngredientAdapter(
+                        dataSetIng
+                    )
 
                 recyclerView = findViewById<RecyclerView>(R.id.rvIngredients).apply {
                     setHasFixedSize(true)

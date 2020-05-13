@@ -11,7 +11,6 @@ import com.mongodb.stitch.android.core.Stitch
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
 import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_categories.*
-import kotlinx.android.synthetic.main.activity_main_nav.clCategories
 import org.bson.Document
 import org.bson.types.Decimal128
 

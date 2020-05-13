@@ -112,7 +112,7 @@
         <ScrollView
             android:id="@+id/svContent"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:scrollbarAlwaysDrawHorizontalTrack="false"
             android:scrollbarAlwaysDrawVerticalTrack="false"
             android:scrollbarFadeDuration="0"
@@ -120,6 +120,7 @@
             android:scrollbarThumbHorizontal="@null"
             android:scrollbarThumbVertical="@null"
             android:scrollbarTrackVertical="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtiSearch">
@@ -128,6 +129,40 @@
                 android:id="@+id/clContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSuggested"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtvGetStarted">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCommunityFavourites"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtvCommunityFavourites">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCategories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtvCategories">
+
+                </androidx.recyclerview.widget.RecyclerView>
 
                 <TextView
                     android:id="@+id/txtvGetStarted"
@@ -154,31 +189,16 @@
                     app:layout_constraintTop_toTopOf="@+id/txtvGetStarted"
                     app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
 
-                <HorizontalScrollView
-                    android:id="@+id/hsvSuggested"
-                    android:layout_width="wrap_content"
-                    android:layout_height="180dp"
-                    app:layout_constraintStart_toStartOf="@+id/txtvGetStarted"
-                    app:layout_constraintTop_toBottomOf="@+id/txtvGetStarted">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/clSuggested"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent">
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </HorizontalScrollView>
-
                 <TextView
                     android:id="@+id/txtvCommunityFavourites"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="180dp"
+                    android:layout_marginTop="8dp"
                     android:text="Community Favourites"
                     android:textColor="@color/mygrey"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/txtvGetStarted"
-                    app:layout_constraintTop_toBottomOf="@+id/txtvGetStarted" />
+                    app:layout_constraintTop_toBottomOf="@+id/rvSuggested" />
 
                 <ImageButton
                     android:id="@+id/btnCommunity"
@@ -192,31 +212,16 @@
                     app:layout_constraintTop_toTopOf="@+id/txtvCommunityFavourites"
                     app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
 
-                <HorizontalScrollView
-                    android:id="@+id/hsvCommunityFavourites"
-                    android:layout_width="wrap_content"
-                    android:layout_height="180dp"
-                    app:layout_constraintStart_toStartOf="@+id/txtvCommunityFavourites"
-                    app:layout_constraintTop_toBottomOf="@+id/txtvCommunityFavourites">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/clCommunity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
-                </HorizontalScrollView>
-
                 <TextView
                     android:id="@+id/txtvCategories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="180dp"
+                    android:layout_marginTop="8dp"
                     android:text="Categories"
                     android:textColor="@color/mygrey"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/txtvCommunityFavourites"
-                    app:layout_constraintTop_toBottomOf="@+id/txtvCommunityFavourites" />
+                    app:layout_constraintTop_toBottomOf="@+id/rvCommunityFavourites" />
 
                 <ImageButton
                     android:id="@+id/btnCategories"
@@ -229,28 +234,6 @@
                     app:layout_constraintStart_toStartOf="@+id/btnCommunity"
                     app:layout_constraintTop_toTopOf="@+id/txtvCategories"
                     app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
-
-                <HorizontalScrollView
-                    android:id="@+id/hsvCategories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="180dp"
-                    android:scrollbarAlwaysDrawHorizontalTrack="false"
-                    android:scrollbarAlwaysDrawVerticalTrack="false"
-                    android:scrollbarDefaultDelayBeforeFade="0"
-                    android:scrollbarFadeDuration="0"
-                    android:scrollbarSize="0dp"
-                    android:scrollbarThumbHorizontal="@null"
-                    android:scrollbarThumbVertical="@null"
-                    android:scrollbarTrackVertical="@null"
-                    android:scrollbars="none"
-                    app:layout_constraintStart_toStartOf="@+id/txtvCategories"
-                    app:layout_constraintTop_toBottomOf="@+id/txtvCategories">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/clCategories"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-                </HorizontalScrollView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

@@ -1807,8 +1807,8 @@ id chpSoya
 id chpSteps
 id chpSulphites
 id chronometer
+id clCard
 id clCategories
-id clCommunity
 id clContent
 id clCreateIngredient
 id clFlowHelper
@@ -1823,7 +1823,6 @@ id clReview
 id clReviews
 id clStepbyStep
 id clSteps
-id clSuggested
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -1905,9 +1904,6 @@ id hideable
 id home
 id homeAsUp
 id honorRequest
-id hsvCategories
-id hsvCommunityFavourites
-id hsvSuggested
 id icon
 id icon_group
 id ifRoom
@@ -1923,6 +1919,7 @@ id imgIndication2
 id imgIndication3
 id imgIndication4
 id imgIndication5
+id imgMMRef
 id imgNotif1
 id imgNotif2
 id imgNotif3
@@ -2041,11 +2038,14 @@ id right_icon
 id right_side
 id rlMain
 id rounded
+id rvCategories
+id rvCommunityFavourites
 id rvIngredients
 id rvResults
 id rvSearchResults
 id rvShoppingList
 id rvSteps
+id rvSuggested
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -2165,8 +2165,10 @@ id tvIngredientName
 id tvLocalRef1
 id tvLocalRef3
 id tvLunch
+id tvMMLT
 id tvNotes
 id tvRating
+id tvReview
 id tvSBSDesc
 id tvStepNumber
 id tvTags
@@ -2366,6 +2368,8 @@ layout design_text_input_start_icon
 layout dropdown_menu_popup_item
 layout ingredient_layout
 layout ingredient_list
+layout main_menu_layout
+layout main_menu_list
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
