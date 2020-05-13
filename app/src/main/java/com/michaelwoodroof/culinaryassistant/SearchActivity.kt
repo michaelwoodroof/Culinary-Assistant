@@ -9,6 +9,7 @@ import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
+import com.michaelwoodroof.culinaryassistant.adapters.MainMenuAdapter
 import com.michaelwoodroof.culinaryassistant.adapters.SearchAdapter
 import com.michaelwoodroof.culinaryassistant.structure.SearchContent
 import com.mongodb.stitch.android.core.Stitch
@@ -42,7 +43,43 @@ class SearchActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(uquery: String): Boolean {
                 // Perform Search
 
-                fillRecipes(uquery)
+                val r = getRecipes(
+                    object : RecipeCallback {
+                        override fun getRecipe(result: MutableList<Document>) {
+                            val dataSet = ArrayList<SearchContent.SearchItem>()
+                            result.forEach {
+                                val title = it["title"] as String
+                                var isValid = true
+                                val si = SearchContent.SearchItem(title,
+                                    it["uid"] as String)
+
+                                // Check if Title is Viable
+                                val q = """.*""" + uquery + """.*"""
+                                val reg = q.toRegex()
+
+                                if (!title.matches(reg)) {
+                                    isValid = false
+                                }
+
+                                if (isValid) {
+                                    dataSet.add(si)
+                                }
+
+                            }
+                            viewManager = LinearLayoutManager(baseContext)
+                            viewAdapter =
+                                SearchAdapter(
+                                    dataSet
+                                )
+
+                            recyclerView = findViewById<RecyclerView>(R.id.rvSearchResults).apply {
+                                setHasFixedSize(true)
+                                layoutManager = viewManager
+                                adapter = viewAdapter
+                            }
+                        }
+                    }
+                )
 
                 Thread.sleep(100)
 
@@ -64,8 +101,7 @@ class SearchActivity : AppCompatActivity() {
 
     }
 
-    fun fillRecipes(uquery : String) {
-        Log.d("searchTest", uquery)
+    fun getRecipes(rc : RecipeCallback) {
 
         val stitchAppClient = Stitch.getDefaultAppClient()
 
@@ -76,54 +112,9 @@ class SearchActivity : AppCompatActivity() {
             val coll = client.getDatabase("appdata").getCollection("recipes")
             val query = coll.find().sort(Document("reviewScore", 1))
             val result = mutableListOf<Document>()
-            val dataSet = ArrayList<SearchContent.SearchItem>()
-            var count = 0
 
             query.into(result).addOnSuccessListener {
-                result.forEach {
-//                    val squery = uquery.toLowerCase()
-                    val pattern = """.*""" + uquery + """.*"""
-                    val reg : Regex = pattern.toRegex()
-
-                    val title = it["title"] as String
-//                    title.toLowerCase()
-                    val found : Boolean = title.matches(reg)
-
-                    // Next Check Filters
-                    for (child in cgFilters.children) {
-                        val chip : Chip = child as Chip
-                        if (chip.isChecked) {
-                            // Check each Filter
-
-                        }
-                    }
-
-                    if (found) {
-                        val sc = SearchContent.SearchItem(it["title"] as String, it["uid"] as String)
-                        dataSet.add(sc)
-                    }
-
-                    if (count == result.size - 1) {
-                        // Set - up Content
-                        viewManager = LinearLayoutManager(this)
-                        viewAdapter =
-                            SearchAdapter(
-                                dataSet
-                            )
-
-                        recyclerView = findViewById<RecyclerView>(R.id.rvSearchResults).apply {
-                            setHasFixedSize(true)
-                            layoutManager = viewManager
-                            adapter = viewAdapter
-                        }
-                    }
-
-                    Log.d("searchTest", title)
-                    Log.d("searchTest", found.toString())
-
-                    count++
-
-                }
+                rc.getRecipe(result)
             }
         }
     }
