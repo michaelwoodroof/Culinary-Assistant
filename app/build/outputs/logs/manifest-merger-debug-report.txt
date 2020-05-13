@@ -145,10 +145,6 @@ activity#com.michaelwoodroof.culinaryassistant.ShoppingList
 ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:9-50
 	android:name
 		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:19-47
-activity#com.michaelwoodroof.culinaryassistant.DebugMenu
-ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:9-47
-	android:name
-		ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:19-44
 activity#com.michaelwoodroof.culinaryassistant.mealPlanner.MealPlanner
 ADDED from C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:9-61
 	android:name

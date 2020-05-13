@@ -59,23 +59,23 @@
         android:id="@+id/tvLunch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="16dp"
         android:text="@string/lunch"
         android:textColor="@color/mygrey"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tvBreakfast"
-        app:layout_constraintTop_toBottomOf="@+id/tvBreakfast" />
+        app:layout_constraintTop_toBottomOf="@+id/includeBF" />
 
     <TextView
         android:id="@+id/tvDinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="16dp"
         android:text="@string/dinner"
         android:textColor="@color/mygrey"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tvBreakfast"
-        app:layout_constraintTop_toBottomOf="@+id/tvLunch" />
+        app:layout_constraintTop_toBottomOf="@+id/includeLU" />
 
     <ImageButton
         android:id="@+id/btnEditBreak"
@@ -83,11 +83,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:background="@null"
-        android:onClick="loadPicker"
+        android:onClick="loadLocalPicker"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnTPLunch"
+        app:layout_constraintBottom_toBottomOf="@+id/includeBF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTPBreakfast"
+        app:layout_constraintTop_toTopOf="@+id/includeBF"
         app:srcCompat="@drawable/ic_edit_black_24dp" />
 
     <ImageButton
@@ -96,24 +96,24 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:background="@null"
-        android:onClick="loadPicker"
+        android:onClick="loadLocalPicker"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnTPDinner"
+        app:layout_constraintBottom_toBottomOf="@+id/includeLU"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTPLunch"
+        app:layout_constraintTop_toTopOf="@+id/includeLU"
         app:srcCompat="@drawable/ic_edit_black_24dp" />
 
     <ImageButton
         android:id="@+id/btnDinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:background="@null"
-        android:onClick="loadPicker"
+        android:onClick="loadLocalPicker"
         android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/includeDI"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTPDinner"
+        app:layout_constraintTop_toTopOf="@+id/includeDI"
         app:srcCompat="@drawable/ic_edit_black_24dp" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -134,22 +134,6 @@
             android:editable="false"
             android:text="Monday" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tvLocalRef1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/tvBreakfast"
-        app:layout_constraintTop_toBottomOf="@+id/tvBreakfast" />
-
-    <TextView
-        android:id="@+id/tvLocalRef3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/tvDinner"
-        app:layout_constraintTop_toBottomOf="@+id/tvDinner" />
 
     <Button
         android:id="@+id/btnTPBreakfast"
@@ -246,5 +230,39 @@
         app:layout_constraintEnd_toStartOf="@+id/btnTPDinner"
         app:layout_constraintTop_toTopOf="@+id/btnTPDinner"
         app:srcCompat="@drawable/ic_notifications_active_black_24dp" />
+
+    <include
+        android:id="@+id/includeBF"
+        layout="@layout/recipe_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnTPLunch"
+        app:layout_constraintEnd_toStartOf="@+id/btnEditBreak"
+        app:layout_constraintStart_toStartOf="@+id/tvBreakfast"
+        app:layout_constraintTop_toBottomOf="@+id/tvBreakfast" />
+
+    <include
+        android:id="@+id/includeLU"
+        layout="@layout/recipe_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnTPDinner"
+        app:layout_constraintEnd_toStartOf="@+id/btnEditLunch"
+        app:layout_constraintStart_toStartOf="@+id/tvLunch"
+        app:layout_constraintTop_toBottomOf="@+id/tvLunch" />
+
+    <include
+        android:id="@+id/includeDI"
+        layout="@layout/recipe_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnEditBreak"
+        app:layout_constraintStart_toStartOf="@+id/tvBreakfast"
+        app:layout_constraintTop_toBottomOf="@+id/tvDinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,7 @@ import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
 import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_recipe_detail.*
 import org.bson.Document
+import java.util.logging.FileHandler
 
 
 class RecipeDetail : AppCompatActivity() {
@@ -62,6 +63,13 @@ class RecipeDetail : AppCompatActivity() {
                 // Fill in Content as Needed
 //        val bm : Bitmap = ImageConversions.stringToBitMap(imgPath)
 //        imgRecipePhoto.setImageBitmap(bm)
+
+                val fh = com.michaelwoodroof.culinaryassistant.helper.FileHandler()
+
+                if (fh.getRecipe(this, rc.id, false) == null) {
+                    // Set ImgButton Tint
+                    btnSave.setColorFilter(Color.BLACK)
+                }
 
                 imgRecipePhoto.setImageResource(R.drawable.rplaceholder)
 
@@ -390,6 +398,17 @@ class RecipeDetail : AppCompatActivity() {
 
             }
 
+        }
+
+    }
+
+    fun saveLocal(view : View) {
+
+        val fh = com.michaelwoodroof.culinaryassistant.helper.FileHandler()
+
+        if (fh.getRecipe(this, rc.id, false) == null) {
+            fh.addRecipe(rc, this)
+            btnSave.setColorFilter(Color.argb(204, 204, 204, 255))
         }
 
     }

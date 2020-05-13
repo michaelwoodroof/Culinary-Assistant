@@ -50,9 +50,7 @@
 28        <activity android:name="com.michaelwoodroof.culinaryassistant.ShoppingList" />
 28-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:9-50
 28-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:17:19-47
-29        <activity android:name="com.michaelwoodroof.culinaryassistant.DebugMenu" />
-29-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:9-47
-29-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:18:19-44
+29        <!-- <activity android:name=".DebugMenu" /> -->
 30        <activity android:name="com.michaelwoodroof.culinaryassistant.mealPlanner.MealPlanner" />
 30-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:9-61
 30-->C:\Users\Michael\AndroidStudioProjects\CulinaryAssistant\app\src\main\AndroidManifest.xml:19:19-58

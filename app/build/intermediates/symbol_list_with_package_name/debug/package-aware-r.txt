@@ -1602,6 +1602,7 @@ drawable ic_notifications_active_black_24dp
 drawable ic_notifications_black_24dp
 drawable ic_notifications_off_black_24dp
 drawable ic_radio_button_checked_black_24dp
+drawable ic_save_black_24dp
 drawable ic_search_black_24dp
 drawable ic_settings_black_24dp
 drawable ic_spicyoff
@@ -1743,7 +1744,6 @@ id btnClose
 id btnCommunity
 id btnCreate
 id btnCreateIngredient
-id btnDelete
 id btnDinner
 id btnEditBreak
 id btnEditLunch
@@ -1754,6 +1754,7 @@ id btnIntermediate
 id btnMenu
 id btnNovice
 id btnRemove
+id btnSave
 id btnSearchLoad
 id btnSeeMore
 id btnSignOut
@@ -1814,7 +1815,6 @@ id clCreateIngredient
 id clFlowHelper
 id clIngredients
 id clLayout
-id clLocalRecipes
 id clMain
 id clParent
 id clRecipe
@@ -1942,6 +1942,9 @@ id imgStar2
 id imgStar3
 id imgStar4
 id img_ref
+id includeBF
+id includeDI
+id includeLU
 id info
 id invisible
 id italic
@@ -2041,7 +2044,7 @@ id rounded
 id rvCategories
 id rvCommunityFavourites
 id rvIngredients
-id rvResults
+id rvLRecipes
 id rvSearchResults
 id rvShoppingList
 id rvSteps
@@ -2103,13 +2106,11 @@ id submit_area
 id svCategories
 id svContent
 id svIngredients
-id svLocalRecipes
 id svMain
 id svRecipes
 id svReviews
 id svSearch
 id svSteps
-id svTest
 id swFreezeable
 id swSBS
 id swShowNames
@@ -2162,8 +2163,6 @@ id tvDiff
 id tvDinner
 id tvHeader
 id tvIngredientName
-id tvLocalRef1
-id tvLocalRef3
 id tvLunch
 id tvMMLT
 id tvNotes
@@ -2174,6 +2173,7 @@ id tvStepNumber
 id tvTags
 id tvTitle
 id tvUnit
+id tv_local_title
 id tv_search_title
 id txtAmount
 id txtAuth
@@ -2340,7 +2340,6 @@ layout activity_create_recipe_s2
 layout activity_create_recipe_s3
 layout activity_create_recipe_s4
 layout activity_create_recipe_s5
-layout activity_debug_menu
 layout activity_local_recipes
 layout activity_login
 layout activity_main_nav

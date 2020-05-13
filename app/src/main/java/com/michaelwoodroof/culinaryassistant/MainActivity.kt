@@ -380,7 +380,7 @@ class MainActivity : AppCompatActivity() {
 
             "Shopping List" -> intent = Intent(this, ShoppingList::class.java)
 
-            "Debug" -> intent = Intent(this, DebugMenu::class.java)
+//            "Debug" -> intent = Intent(this, DebugMenu::class.java)
 
 
             else -> intent = Intent(this, LocalRecipes::class.java)

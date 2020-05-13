@@ -95,6 +95,18 @@
                 app:layout_constraintStart_toEndOf="@+id/imgRecipePhoto"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageButton
+                android:id="@+id/btnSave"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:background="@null"
+                android:onClick="saveLocal"
+                android:tint="#CCCCCC"
+                app:layout_constraintBottom_toBottomOf="@+id/txtvDescription"
+                app:layout_constraintEnd_toEndOf="@+id/txtvAuthor"
+                app:layout_constraintTop_toTopOf="@+id/txtvDescription"
+                app:srcCompat="@drawable/ic_save_black_24dp" />
+
             <ImageView
                 android:id="@+id/imgS1"
                 android:layout_width="16dp"
@@ -191,13 +203,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="4dp"
                 android:inputType="textMultiLine"
                 android:maxLines="5"
                 android:minLines="1"
                 android:text="A paella dish adapted and suited for a vegetarian diet. Featuring an assortment of mediterrian vegetables."
                 android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnSave"
                 app:layout_constraintStart_toStartOf="@+id/imgRecipePhoto"
                 app:layout_constraintTop_toBottomOf="@+id/cgAllergens" />
 
@@ -656,7 +668,7 @@
                 android:layout_marginBottom="8dp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/txtvDescription"
+                app:layout_constraintEnd_toEndOf="@+id/txtvAuthor"
                 app:layout_constraintStart_toStartOf="@+id/cgStepIngredient"
                 app:layout_constraintTop_toBottomOf="@+id/cgStepIngredient">
 
@@ -999,7 +1011,7 @@
                 android:text="Step by Step"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="@+id/cgStepIngredient"
-                app:layout_constraintEnd_toEndOf="@+id/txtvDescription"
+                app:layout_constraintEnd_toEndOf="@+id/txtvAuthor"
                 app:layout_constraintTop_toTopOf="@+id/cgStepIngredient" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

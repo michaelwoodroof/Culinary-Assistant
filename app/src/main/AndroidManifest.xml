@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".ShoppingList" />
-        <activity android:name=".DebugMenu" />
+<!--        <activity android:name=".DebugMenu" />-->
         <activity android:name=".mealPlanner.MealPlanner" />
         <activity android:name=".LocalRecipes" />
         <activity android:name=".overviews.RecipeDetail" />

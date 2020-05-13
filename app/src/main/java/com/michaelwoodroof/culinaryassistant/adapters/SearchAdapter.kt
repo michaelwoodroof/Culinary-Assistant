@@ -12,6 +12,7 @@ import com.michaelwoodroof.culinaryassistant.helper.FileHandler
 import com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail
 import com.michaelwoodroof.culinaryassistant.structure.SearchContent
 import kotlinx.android.synthetic.main.recipe_layout.view.*
+import kotlinx.android.synthetic.main.search_layout.view.*
 
 class SearchAdapter(private val mValues : List<SearchContent.SearchItem>
 ) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {

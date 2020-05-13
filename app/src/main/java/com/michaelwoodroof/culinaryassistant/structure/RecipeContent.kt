@@ -1,24 +1,12 @@
 package com.michaelwoodroof.culinaryassistant.structure
 
+import org.bson.types.Decimal128
 import java.util.ArrayList
 import java.util.HashMap
 
-/**
- * Helper class for providing sample content for user interfaces created by
- * Android template wizards.
- *
- * TODO: Replace all uses of this class before publishing your app.
- */
 object RecipeContent {
 
-    /**
-     * An array of sample (dummy) items.
-     */
     val ITEMS: MutableList<RecipeItem> = ArrayList()
-
-    /**
-     * A map of sample (dummy) items, by ID.
-     */
     private val ITEM_MAP: MutableMap<String, RecipeItem> = HashMap()
 
     private fun addItem(item: RecipeItem) {
@@ -27,14 +15,8 @@ object RecipeContent {
     }
 
     private fun createRecipeItem(position: Int): RecipeItem {
-        return RecipeItem(
-            position.toString(),
-            "Item $position",
-            makeDetails(
-                position
-            ),
-            ""
-        )
+        return RecipeItem(position.toString(), "Item $position", makeDetails(position), "", 0,
+            Decimal128(0), true, ArrayList<String>(), 0, MealDocument("", "", "", "", true), 0)
     }
 
     private fun makeDetails(position: Int): String {
@@ -46,8 +28,11 @@ object RecipeContent {
         return builder.toString()
     }
 
-    data class RecipeItem(val id: String, val content: String, val details: String, val imgString : String) {
-        override fun toString(): String = content
+    data class RecipeItem(val id: String, val title: String, val desc: String,
+                          val imgString : String, val spiceLevel: Int, val reviewScore : Decimal128,
+                          val hasRating : Boolean, val keyWords : ArrayList<String>, val mode : Int,
+                          val mpMode : MealDocument, val diff : Int) {
+        override fun toString(): String = id
     }
 
 }
