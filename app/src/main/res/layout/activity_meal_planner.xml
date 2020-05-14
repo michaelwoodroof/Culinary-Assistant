@@ -104,7 +104,7 @@
         app:srcCompat="@drawable/ic_edit_black_24dp" />
 
     <ImageButton
-        android:id="@+id/btnDinner"
+        android:id="@+id/btnEditDinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

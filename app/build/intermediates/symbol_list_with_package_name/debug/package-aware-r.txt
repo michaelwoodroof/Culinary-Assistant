@@ -1744,8 +1744,8 @@ id btnClose
 id btnCommunity
 id btnCreate
 id btnCreateIngredient
-id btnDinner
 id btnEditBreak
+id btnEditDinner
 id btnEditLunch
 id btnFilter
 id btnForward
@@ -2413,6 +2413,7 @@ layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout recipe_layout
+layout recipe_layout_local
 layout recipe_list
 layout search_layout
 layout search_list

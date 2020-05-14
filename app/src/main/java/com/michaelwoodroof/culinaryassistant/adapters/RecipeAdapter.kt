@@ -196,7 +196,6 @@ class RecipeAdapter(
 
         override fun toString(): String {
             return super.toString() + " '"
-            //return super.toString() + " '" + mContentView.text + "'"
         }
     }
 }

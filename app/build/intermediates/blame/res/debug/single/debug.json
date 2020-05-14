@@ -152,6 +152,10 @@
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\search_layout.xml"
     },
     {
+        "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout_recipe_layout_local.xml.flat",
+        "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\layout\\recipe_layout_local.xml"
+    },
+    {
         "merged": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_014___sulphites_f.xml.flat",
         "source": "C:\\Users\\Michael\\AndroidStudioProjects\\CulinaryAssistant\\app\\src\\main\\res\\drawable\\ic_014___sulphites_f.xml"
     },

@@ -3,6 +3,7 @@ package com.michaelwoodroof.culinaryassistant.helper
 import android.content.Context
 import android.util.Log
 import com.michaelwoodroof.culinaryassistant.structure.*
+import org.w3c.dom.Document
 import java.io.*
 
 class FileHandler {
@@ -14,7 +15,7 @@ class FileHandler {
         val files = fileDir.listFiles()
         files.forEach {
             val file = it
-            if (file.name != "mealplanner.txt") {
+            if (file.name != "mealplanner") {
                 val fis = givenContext.openFileInput(file.name)
                 try {
                     val ois = ObjectInputStream(fis)
@@ -82,11 +83,12 @@ class FileHandler {
     fun createBlankMealDocument(gc : Context) {
 
         try {
-            val fos : FileOutputStream = gc.openFileOutput("mealplanner.txt", Context.MODE_PRIVATE)
-            val out : OutputStreamWriter = OutputStreamWriter(fos)
+            val fos : FileOutputStream = gc.openFileOutput("mealplanner", Context.MODE_PRIVATE)
+            val oos = ObjectOutputStream(fos)
             var mealType = ""
             var notiTime = "00:00"
 
+            val armd : ArrayList<MealDocument> = ArrayList<MealDocument>()
             for (x in 0..6) {
                 for (y in 0..2) {
 
@@ -112,65 +114,76 @@ class FileHandler {
                     when (x) {
 
                         0 -> {
-                            out.write("Monday,$mealType,$notiTime,-1,true")
-                            out.write("\n\r")
+                            val md = MealDocument("Monday",mealType,notiTime,"-1",true)
+                            armd.add(md)
                         }
 
                         1 -> {
-                            out.write("Tuesday,$mealType,$notiTime,-1,true")
-                            out.write("\n\r")
+                            val md = MealDocument("Tuesday",mealType,notiTime,"-1",true)
+                            armd.add(md)
                         }
 
                         2 -> {
-                            out.write("Wednesday,$mealType,$notiTime,-1,true")
-                            out.write("\n\r")
+                            val md = MealDocument("Wednesday",mealType,notiTime,"-1",true)
+                            armd.add(md)
                         }
 
                         3 -> {
-                            out.write("Thursday,$mealType,$notiTime,-1,true")
-                            out.write("\n\r")
+                            val md = MealDocument("Thursday",mealType,notiTime,"-1",true)
+                            armd.add(md)
                         }
 
                         4 -> {
-                            out.write("Friday,$mealType,$notiTime,-1,true")
-                            out.write("\n\r")
+                            val md = MealDocument("Friday",mealType,notiTime,"-1",true)
+                            armd.add(md)
                         }
 
                         5 -> {
-                            out.write("Saturday,$mealType,$notiTime,-1,true")
-                            out.write("\n\r")
+                            val md = MealDocument("Saturday",mealType,notiTime,"-1",true)
+                            armd.add(md)
                         }
 
                         6 -> {
-                            out.write("Sunday,$mealType,$notiTime,-1,true")
-                            out.write("\n\r")
+                            val md = MealDocument("Sunday",mealType,notiTime,"-1",true)
+                            armd.add(md)
                         }
 
                     }
                 }
             }
 
+            oos.writeObject(armd)
+
+            oos.close()
+            fos.close()
+
         } catch (e : java.lang.Exception) {}
+
 
     }
 
     fun addMealDocument(md : ArrayList<MealDocument>, gc : Context) {
 
         try {
-            val fos : FileOutputStream = gc.openFileOutput("mealplanner.txt", Context.MODE_PRIVATE)
-            val out : OutputStreamWriter = OutputStreamWriter(fos)
-            for (doc in md) {
-                val convertedDoc = doc.day + "," + doc.mealType + "," + doc.time + "," + doc.uid + doc.isNoti.toString()
-                out.write(convertedDoc)
-                out.write("\n\r")
+            val f = File(gc.filesDir, "mealplanner")
+            Log.d("mdTest", "Running")
+            if (f.exists()) {
+                f.delete()
             }
+            val fos : FileOutputStream = gc.openFileOutput("mealplanner", Context.MODE_PRIVATE)
+            val oos = ObjectOutputStream(fos)
+            val armd = ArrayList<MealDocument>()
+            for (doc in md) {
+                armd.add(doc)
+            }
+            oos.writeObject(armd)
         } catch (e : java.lang.Exception) {}
 
     }
 
     fun updateMealDocument(md : MealDocument, gc : Context) {
         val fh = FileHandler()
-        val mdd = fh.getMealDocument()
+        val mdd = fh.getMealDocument(gc)
         var index = 0
         var mult = 0
         when (md.day) {
@@ -179,15 +192,15 @@ class FileHandler {
                 when (md.mealType) {
 
                     "Breakfast" -> {
-                        index = (mult * 3) + 1
+                        index = (mult * 3) + 0
                     }
 
                     "Lunch" -> {
-                        index = (mult * 3) + 2
+                        index = (mult * 3) + 1
                      }
 
                     "Dinner" -> {
-                        index = (mult * 3) + 3
+                        index = (mult * 3) + 2
                     }
 
                 }
@@ -198,15 +211,15 @@ class FileHandler {
                 when (md.mealType) {
 
                     "Breakfast" -> {
-                        index = (mult * 3) + 1
+                        index = (mult * 3) + 0
                     }
 
                     "Lunch" -> {
-                        index = (mult * 3) + 2
+                        index = (mult * 3) + 1
                     }
 
                     "Dinner" -> {
-                        index = (mult * 3) + 3
+                        index = (mult * 3) + 2
                     }
 
                 }
@@ -217,15 +230,15 @@ class FileHandler {
                 when (md.mealType) {
 
                     "Breakfast" -> {
-                        index = (mult * 3) + 1
+                        index = (mult * 3) + 0
                     }
 
                     "Lunch" -> {
-                        index = (mult * 3) + 2
+                        index = (mult * 3) + 1
                     }
 
                     "Dinner" -> {
-                        index = (mult * 3) + 3
+                        index = (mult * 3) + 2
                     }
 
                 }
@@ -236,15 +249,15 @@ class FileHandler {
                 when (md.mealType) {
 
                     "Breakfast" -> {
-                        index = (mult * 3) + 1
+                        index = (mult * 3) + 0
                     }
 
                     "Lunch" -> {
-                        index = (mult * 3) + 2
+                        index = (mult * 3) + 1
                     }
 
                     "Dinner" -> {
-                        index = (mult * 3) + 3
+                        index = (mult * 3) + 2
                     }
 
                 }
@@ -255,15 +268,15 @@ class FileHandler {
                 when (md.mealType) {
 
                     "Breakfast" -> {
-                        index = (mult * 3) + 1
+                        index = (mult * 3) + 0
                     }
 
                     "Lunch" -> {
-                        index = (mult * 3) + 2
+                        index = (mult * 3) + 1
                     }
 
                     "Dinner" -> {
-                        index = (mult * 3) + 3
+                        index = (mult * 3) + 2
                     }
 
                 }
@@ -274,15 +287,15 @@ class FileHandler {
                 when (md.mealType) {
 
                     "Breakfast" -> {
-                        index = (mult * 3) + 1
+                        index = (mult * 3) + 0
                     }
 
                     "Lunch" -> {
-                        index = (mult * 3) + 2
+                        index = (mult * 3) + 1
                     }
 
                     "Dinner" -> {
-                        index = (mult * 3) + 3
+                        index = (mult * 3) + 2
                     }
 
                 }
@@ -293,15 +306,15 @@ class FileHandler {
                 when (md.mealType) {
 
                     "Breakfast" -> {
-                        index = (mult * 3) + 1
+                        index = (mult * 3) + 0
                     }
 
                     "Lunch" -> {
-                        index = (mult * 3) + 2
+                        index = (mult * 3) + 1
                     }
 
                     "Dinner" -> {
-                        index = (mult * 3) + 3
+                        index = (mult * 3) + 2
                     }
 
                 }
@@ -315,21 +328,18 @@ class FileHandler {
 
         val md = ArrayList<MealDocument>()
         try {
-            val ins : FileInputStream = gc.openFileInput("mealplanner.txt", Context.MODE_PRIVATE)
-        } catch (e : java.lang.Exception) {}
 
+            val file = File(gc.filesDir, "mealplanner")
+            val fis = FileInputStream(file)
+            val ois = ObjectInputStream(fis)
 
+            val armd = ois.readObject() as ArrayList<*>
 
-        val ins : InputStream = File("mealplanner.txt").inputStream()
-        val ll = mutableListOf<String>()
-
-        ins.bufferedReader().useLines { lines ->
-            lines.forEach {
-                val converted = it.split(",")
-                Log.d("mdTest", converted.toString())
-                md.add(MealDocument(converted[0], converted[1], converted[2], converted[3], converted[4].toBoolean()))
+            for (doc in armd) {
+                md.add(doc as MealDocument)
             }
-        }
+
+        } catch (e : java.lang.Exception) {}
 
         return md
 

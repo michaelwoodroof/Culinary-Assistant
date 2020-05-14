@@ -16,6 +16,43 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@color/colorPrimary" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiTempUnit"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtiTempvalue"
+        app:layout_constraintHorizontal_weight="0.2"
+        app:layout_constraintStart_toStartOf="@+id/tvTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/tvUnit">>
+
+        <AutoCompleteTextView
+            android:id="@+id/ddTempUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtiTempvalue"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/swFreezeable"
+        app:layout_constraintHorizontal_weight="0.8"
+        app:layout_constraintStart_toEndOf="@+id/txtiTempUnit"
+        app:layout_constraintTop_toTopOf="@+id/txtiTempUnit">>
+
+        <AutoCompleteTextView
+            android:id="@+id/ddTempvalue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
@@ -50,7 +87,7 @@
         android:layout_marginTop="16dp"
         android:text="Is Recipe Freezable ?"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBacker" />
+        app:layout_constraintTop_toBottomOf="@+id/txtiTempvalue" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/swFreezeable"
@@ -248,5 +285,34 @@
         app:layout_constraintStart_toEndOf="@+id/imgIndication4"
         app:layout_constraintTop_toTopOf="@+id/btnForward"
         app:srcCompat="@drawable/ic_circle_fill" />
+
+    <TextView
+        android:id="@+id/tvTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Temperature of Recipe"
+        app:layout_constraintStart_toStartOf="@+id/txtvIsFreezable"
+        app:layout_constraintTop_toBottomOf="@+id/imgBacker" />
+
+    <TextView
+        android:id="@+id/tvUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Unit"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/txtiTempUnit"
+        app:layout_constraintTop_toBottomOf="@+id/tvTemperature" />
+
+    <TextView
+        android:id="@+id/tvValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Value"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/txtiTempvalue"
+        app:layout_constraintTop_toBottomOf="@+id/tvTemperature" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
