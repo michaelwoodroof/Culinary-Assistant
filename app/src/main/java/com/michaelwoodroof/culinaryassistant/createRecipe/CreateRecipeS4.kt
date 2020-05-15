@@ -23,9 +23,6 @@ import com.michaelwoodroof.culinaryassistant.structure.Recipe
 import com.mongodb.ConnectionString
 import kotlinx.android.synthetic.main.activity_create_recipe_s4.*
 
-
-// @TODO FIX ALLERGENS + INGREDIENTS
-
 class CreateRecipeS4 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -482,7 +479,7 @@ class CreateRecipeS4 : AppCompatActivity() {
 
     }
 
-    private fun getLastRef() : Int { // @TODO FIX
+    private fun getLastRef() : Int {
 
         var foundRef = 0
 

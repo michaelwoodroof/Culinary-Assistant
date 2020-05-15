@@ -170,7 +170,6 @@ class RecipeAdapter(
             } else if (item.mode == 2) { // MEAL PLANNER
                 setOnClickListener {
                     val intent = Intent(this.context, MealPlanner::class.java)
-                    // Update MealPlanner Document @TODO
                     val md : MealDocument = item.mpMode
                     md.uid = item.id
                     intent.putExtra("md", md as Parcelable)

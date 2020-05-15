@@ -14,7 +14,6 @@ object Conversions {
 
     fun convertUIDtoRecipe(uid : String, gc : Context) {
 
-        // Check if it Exists before DB Call to Save Calls @TODO
         val fh = FileHandler()
         if (!fh.checkIfExists(uid, true, gc)) {
 

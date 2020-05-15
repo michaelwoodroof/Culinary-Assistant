@@ -301,9 +301,7 @@ class MainActivity : AppCompatActivity() {
 
             query.into(result).addOnSuccessListener {
                 rc.getRecipe(result)
-            }.addOnFailureListener {
-                // @TODO
-            }
+            }.addOnFailureListener {}
 
         }
 
@@ -323,9 +321,7 @@ class MainActivity : AppCompatActivity() {
 
             query.into(result).addOnSuccessListener {
                 rc.getRecipe(result)
-            }.addOnFailureListener {
-                // @TODO
-            }
+            }.addOnFailureListener {}
 
         }
 

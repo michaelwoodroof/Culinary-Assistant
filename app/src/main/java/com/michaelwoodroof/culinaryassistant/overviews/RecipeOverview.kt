@@ -64,7 +64,7 @@ class RecipeOverview : AppCompatActivity() {
                             it["imagePath"] as String, it["title"] as String, it["spice"] as Int,
                             it["description"] as String, it["keyWords"] as ArrayList<*>,
                             it["difficulty"] as Int, it["reviewScore"] as Decimal128, prevID)
-                        RenderCard.renderFiller(this, clRecipes, tempInt, 400, 10) // @TODO MIGHT CHANGE SEEMS HIGH
+                        RenderCard.renderFiller(this, clRecipes, tempInt, 400, 10)
                     } else {
                         prevID = RenderCard.makeVerticalCard(this, clRecipes, it["uid"] as String,
                             it["imagePath"] as String, it["title"] as String, it["spice"] as Int,

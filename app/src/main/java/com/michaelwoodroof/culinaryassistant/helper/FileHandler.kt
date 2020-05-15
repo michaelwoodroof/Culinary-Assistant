@@ -69,7 +69,7 @@ class FileHandler {
     fun addRecipe(givenRecipe : Recipe, givenContext : Context) {
         // Check to See if File Exists Already
         if (checkIfExists(givenRecipe.id, false, givenContext)) {
-            // TELL USER @TODO
+
         } else {
             val fos = givenContext.openFileOutput(givenRecipe.id, Context.MODE_PRIVATE)
             val oos = ObjectOutputStream(fos)

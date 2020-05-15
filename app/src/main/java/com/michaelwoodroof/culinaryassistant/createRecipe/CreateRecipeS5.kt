@@ -198,7 +198,6 @@ class CreateRecipeS5 : AppCompatActivity() {
     fun createRecipe(view : View) {
         val pr: Recipe? = intent.getParcelableExtra("partialrecipe")
         // Updates Recipe with Stage 5 Recipe
-        // @TODO ADD FIELDS + ERROR CHECKING
         var stepNo = 0
         for (child in clSteps.children) {
             if (child is TextView) {
@@ -233,7 +232,6 @@ class CreateRecipeS5 : AppCompatActivity() {
 //            fileOutputStream.write(pr.difficulty)
 //            /*
 //            Write Image
-//            @TODO UPDATE
 //            Write Prep Time
 //            Write Cook Time
 //            Write Cuisine Type

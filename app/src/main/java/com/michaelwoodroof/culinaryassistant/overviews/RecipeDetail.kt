@@ -48,7 +48,7 @@ class RecipeDetail : AppCompatActivity() {
                 if (intent.getStringExtra("isOnline") == "Yes") {
                     // Show Reviews
                     clReview.visibility = View.VISIBLE
-                    clReview.visibility = View.GONE // @TODO REMOVE
+                    clReview.visibility = View.GONE
                     val uid = intent.getStringExtra("uid")
                     //loadReviews(uid)
                 } else {
@@ -191,7 +191,7 @@ class RecipeDetail : AppCompatActivity() {
                     txtvAllergens.visibility = View.VISIBLE
                     for (diet in rc.dietary) {
 
-                        // Add Allergens into Allergen List @TODO EXPAND
+                        // Add Allergens into Allergen List
                         when (diet.name) {
 
                             "Celery" -> chpCelery.visibility = View.VISIBLE

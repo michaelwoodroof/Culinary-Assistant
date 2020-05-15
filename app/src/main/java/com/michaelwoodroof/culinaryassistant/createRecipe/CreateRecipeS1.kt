@@ -67,9 +67,6 @@ class CreateRecipeS1 : AppCompatActivity() {
 
     fun goBack(view: View) {
         val intent = Intent(this, MainActivity::class.java)
-        //
-        // Show Pop Up that data on recipe will be removed @TODO
-        //
         startActivity(intent)
     }
 
@@ -180,7 +177,6 @@ class CreateRecipeS1 : AppCompatActivity() {
             imgPreview.setImageURI(selectedImage)
 
             imgPreview.tag = selectedImage.toString()
-            // @TODO Update pr here to save reference as uri instead
             var pr: Recipe? = intent.getParcelableExtra("partialrecipe")
             pr!!.uriRef = selectedImage!!.toString()
             intent.putExtra("partialrecipe", pr as Parcelable)

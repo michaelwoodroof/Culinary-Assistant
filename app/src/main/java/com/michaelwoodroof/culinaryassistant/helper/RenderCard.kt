@@ -244,7 +244,7 @@ object RenderCard {
         cv.tag = uid
         cv.radius = 20f
 
-        cv.setOnClickListener { // @TODO REPLACE
+        cv.setOnClickListener {
 
             val intent = Intent(givenContext, RecipeDetail::class.java)
 

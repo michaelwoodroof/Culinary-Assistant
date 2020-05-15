@@ -159,7 +159,7 @@ class SearchActivity : AppCompatActivity() {
 
     }
 
-    fun showFilters(view : View) { //@TODO EXPAND TO DO 1 SUB GOAL 1
+    fun showFilters(view : View) {
 
         if (view.tag == "noclick") {
             clIngredient.visibility = View.VISIBLE

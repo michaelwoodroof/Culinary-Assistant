@@ -1,7 +1,5 @@
 package com.michaelwoodroof.culinaryassistant.createRecipe
 
-// @TODO Update GO FORWARD AND GO BACKWARD TO METHOD
-
 import android.content.Intent
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
@@ -279,13 +277,10 @@ class CreateRecipeS2 : AppCompatActivity() {
 
     fun checkField(field : Int) : Boolean {
 
-        // @TODO SHOW ERRORS IN MEANINGFUL WAY
-
         when (field) {
 
             // PREP FIELDS
             0 -> {
-                // @TODO Check if Empty First then Try to Convert to Int
                 if (txtvPrep.text.toString().toInt() <= txtPrepMax.text.toString().toInt() &&
                         txtvPrep.text.toString() != "" && txtPrepMax.text.toString() != ""
                 ) {
@@ -299,7 +294,6 @@ class CreateRecipeS2 : AppCompatActivity() {
 
             // COOK FIELDS
             1 -> {
-                // @TODO Check if Empty First then Try to Convert to Int
                 if (txtvCook.text.toString().toInt() <= txtCookMax.text.toString().toInt() &&
                     txtvCook.text.toString() != "" && txtCookMax.text.toString() != ""
                 ) {
@@ -310,23 +304,12 @@ class CreateRecipeS2 : AppCompatActivity() {
                     return false
                 }
             }
-
-            // CUISINE @TODO ADD WARNING TEXTFIELDS
             2 -> {
-                if (ddCuisine.text.toString() != "") {
-                    return true
-                } else {
-                    return false
-                }
+                return ddCuisine.text.toString() != ""
             }
 
-            // MEAL TYPE @TODO ADD WARNING TEXTFIELDS
             3 -> {
-                if (ddMeal.text.toString() != "") {
-                    return true
-                } else {
-                    return false
-                }
+                return ddMeal.text.toString() != ""
             }
 
         }

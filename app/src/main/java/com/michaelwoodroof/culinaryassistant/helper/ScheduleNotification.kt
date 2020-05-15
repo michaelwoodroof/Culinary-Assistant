@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import java.util.*
 
-class ScheduleNotification { //@TODO ADD CHECK TO SEE IF TIME HAS ALREADY PASSED
+class ScheduleNotification {
 
     fun createAlarm(givenContext : Context, givenHour : Int, givenMinute : Int, givenInterval : Long, givenMessage : String) {
 

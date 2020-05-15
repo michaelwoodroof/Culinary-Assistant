@@ -17,8 +17,6 @@ import com.michaelwoodroof.culinaryassistant.structure.Recipe
 import kotlinx.android.synthetic.main.activity_create_recipe_s2.*
 import kotlinx.android.synthetic.main.activity_create_recipe_s3.*
 
-// @TODO Update GO FORWARD AND GO BACKWARD TO METHOD
-// @TODO UPDATE KEEP TIME SO THAT SWITCH ISN'T ON WHEN FIELD IS EMPTY
 
 class CreateRecipeS3 : AppCompatActivity() {
 
@@ -181,10 +179,6 @@ class CreateRecipeS3 : AppCompatActivity() {
 
     private fun addChipData(data : String) {
         val chip = Chip(cgKeywords.context)
-        // @TODO ADD PROPERTIES TO CHIP
-        // @TODO ADD METHOD TO REMOVE CHIP
-        // @TODO ADD CHECK TO ENSURE NOT TOO MANY CHIPS LIMIT AT 5 ?
-        // @TODO ENSURE NO DUPLICATE CHIPS
         chip.id = View.generateViewId()
         chip.chipText = data
         chip.isCloseIconVisible = true
