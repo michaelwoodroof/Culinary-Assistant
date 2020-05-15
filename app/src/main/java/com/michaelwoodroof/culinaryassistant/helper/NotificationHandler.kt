@@ -33,14 +33,14 @@ object NotificationHandler {
     fun buildNotification(givenContext : Context, givenTitle : String, givenContent : String, givenPending : PendingIntent) : NotificationCompat.Builder? {
 
         return NotificationCompat.Builder(givenContext, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_circle_fill) // @TODO UPDATE TO REAL ICON
+            .setSmallIcon(R.drawable.ic_circle_fill)
             .setContentTitle(givenTitle)
             .setContentText(givenContent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             // Set Intent that will launch on Notification
             .setContentIntent(givenPending)
             .setAutoCancel(true)
-            .setTimeoutAfter(3600000) // Delete Notification after an Hour // @TODO REVIEW THIS
+            .setTimeoutAfter(3600000) // Delete Notification after an Hour
 
     }
 
