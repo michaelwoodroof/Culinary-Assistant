@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.TextView
 import androidx.core.view.forEach
 import com.google.android.material.chip.Chip
 import com.michaelwoodroof.culinaryassistant.R
@@ -36,7 +37,46 @@ class CreateRecipeS3 : AppCompatActivity() {
             ddKeep.text = Editable.Factory.getInstance().newEditable(pr?.isFreezable)
         }
 
-        // Set Drop-Down content
+        ddTempUnit.setOnItemClickListener { parent, view, position, id ->
+            val v = view as TextView
+            var cTypes = arrayOf("110", "120", "140", "150", "160", "180", "190", "200", "220", "230", "240")
+
+            when (v.text.toString()) {
+
+                "GM" -> {
+                    cTypes = arrayOf("1/4", "1/2", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+                    ddTempvalue.text = Editable.Factory.getInstance().newEditable("1/4")
+                }
+
+                "°C" -> {
+                    cTypes = arrayOf("110", "120", "140", "150", "160", "180", "190", "200", "220", "230", "240")
+                    ddTempvalue.text = Editable.Factory.getInstance().newEditable("110")
+                }
+
+                "°C (Fan)" -> {
+                    cTypes = arrayOf("90", "100", "120", "130", "140", "160", "170", "180", "200", "210", "220")
+                    ddTempvalue.text = Editable.Factory.getInstance().newEditable("90")
+                }
+
+            }
+
+            ddTempUnit.text = Editable.Factory.getInstance().newEditable(v.text.toString())
+            val cunitTypes = arrayOf("GM", "°C", "°C (Fan)")
+            val gAdapter = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, cunitTypes)
+            ddTempUnit.setAdapter(gAdapter)
+
+            val fAdapter = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, cTypes)
+            ddTempvalue.setAdapter(fAdapter)
+        }
+
+        val unitTypes = arrayOf("GM", "°C", "°C (Fan)")
+        val valueTypes = arrayOf("110", "120", "140", "150", "160", "180", "190", "200", "220", "230", "240")
+
+        val dAdapter = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, unitTypes)
+        ddTempUnit.setAdapter(dAdapter)
+
+        val eAdapter = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, valueTypes)
+        ddTempvalue.setAdapter(eAdapter)
 
         val cAdapter = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, keepTypes)
         ddKeep.setAdapter(cAdapter)
@@ -67,6 +107,7 @@ class CreateRecipeS3 : AppCompatActivity() {
 
     fun goBack(view: View) {
         var pr: Recipe? = intent.getParcelableExtra("partialrecipe")
+        pr?.temperature = ddTempvalue.text.toString() + ddTempUnit.text.toString()
         // Update S3 Properties
         if (ddKeep.visibility == View.VISIBLE) {
             pr?.isFreezable = ddKeep.text.toString()
@@ -100,6 +141,22 @@ class CreateRecipeS3 : AppCompatActivity() {
             pr?.isFreezable = "NO"
         }
         // Update Keywords
+        var mod = ""
+        when (ddTempvalue.text.toString()) {
+            "°C" -> {
+               mod = "CC"
+            }
+
+            "°C (Fan)" -> {
+                mod = "FO"
+            }
+
+            "GM" -> {
+                mod = "GM"
+            }
+
+        }
+        pr?.temperature =  ddTempUnit.text.toString() + mod
         val keywords = ArrayList<String>()
         cgKeywords.forEach {
             val data : Chip = it as Chip

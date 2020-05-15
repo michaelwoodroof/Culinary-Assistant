@@ -15,7 +15,7 @@ class FileHandler {
         val files = fileDir.listFiles()
         files.forEach {
             val file = it
-            if (file.name != "mealplanner") {
+            if (file.name != "mealplanner" && file.name != "suggestion") {
                 val fis = givenContext.openFileInput(file.name)
                 try {
                     val ois = ObjectInputStream(fis)
@@ -24,7 +24,7 @@ class FileHandler {
                     ois.close()
                     fis.close()
                 } catch (e: Exception) {
-                    Log.d("testData", e.toString())
+
                 }
             }
 
@@ -77,6 +77,93 @@ class FileHandler {
             oos.close()
             fos.close()
         }
+
+    }
+
+    fun createBlankSuggestionFile(gc : Context) {
+
+        try {
+            val fos : FileOutputStream = gc.openFileOutput("suggestion", Context.MODE_PRIVATE)
+            val oos = ObjectOutputStream(fos)
+
+            val armd : ArrayList<Suggestion> = ArrayList<Suggestion>()
+            armd.add(Suggestion("notag", 0))
+
+            oos.writeObject(armd)
+            oos.close()
+            fos.close()
+
+        } catch (e : java.lang.Exception) {}
+
+    }
+
+    fun getSuggestionFile(gc : Context) : ArrayList<Suggestion> {
+
+        val sf = ArrayList<Suggestion>()
+        try {
+
+            val file = File(gc.filesDir, "suggestion")
+            val fis = FileInputStream(file)
+            val ois = ObjectInputStream(fis)
+
+            val armd = ois.readObject() as ArrayList<*>
+
+            for (doc in armd) {
+                sf.add(doc as Suggestion)
+            }
+
+            // Puts it to Ascending
+            sf.sortBy {it.amount}
+            sf.reverse()
+
+        } catch (e : java.lang.Exception) {}
+
+        return sf
+
+    }
+
+    fun updateSuggestionFile(sf : Suggestion, gc : Context) {
+
+        val fh = FileHandler()
+        val sff = fh.getSuggestionFile(gc)
+
+        var counter = 0
+        var isFound = false
+        for (tag in sff) {
+            if (tag.tag == sf.tag) {
+                isFound = true
+                break
+            }
+            counter++
+        }
+
+        if (!isFound) {
+            sff.add(Suggestion(sf.tag, 1))
+        } else {
+            val mod = sff[counter]
+            mod.amount += 1
+            sff[counter] = mod
+        }
+
+        fh.addSuggestionFile(sff, gc)
+
+    }
+
+    fun addSuggestionFile(sff : ArrayList<Suggestion>, gc : Context) {
+
+        try {
+            val f = File(gc.filesDir, "suggeston")
+            if (f.exists()) {
+                f.delete()
+            }
+            val fos : FileOutputStream = gc.openFileOutput("suggestion", Context.MODE_PRIVATE)
+            val oos = ObjectOutputStream(fos)
+            val armd = ArrayList<Suggestion>()
+            for (doc in sff) {
+                armd.add(doc)
+            }
+            oos.writeObject(armd)
+        } catch(e : java.lang.Exception) {}
 
     }
 
@@ -166,7 +253,7 @@ class FileHandler {
 
         try {
             val f = File(gc.filesDir, "mealplanner")
-            Log.d("mdTest", "Running")
+
             if (f.exists()) {
                 f.delete()
             }
@@ -350,7 +437,6 @@ class FileHandler {
         if (checkIfExists(givenRecipe.id, true, gc)) {
 
         } else {
-
             val cf = File(gc.cacheDir, givenRecipe.id)
             cf.createNewFile()
             val fos = FileOutputStream(cf)

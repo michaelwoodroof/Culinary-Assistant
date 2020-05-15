@@ -1,13 +1,8 @@
 package com.michaelwoodroof.culinaryassistant.structure
 
-import android.net.Uri
-import android.os.Parcel
 import android.os.Parcelable
-import android.util.Log
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
-import java.lang.IllegalArgumentException
-import java.net.URI
 import kotlin.collections.ArrayList
 
 @Parcelize
@@ -23,7 +18,7 @@ class Recipe(var isFreezable: String, var cookTime: String, var prepTime: String
 
 
     // Functions
-    fun convertTemperature(givenUnit: String): String {
+    fun convertTemperature(givenUnit: String, value : String): String {
 
         // Temperature Codes
         // NT - No Temperature
@@ -33,8 +28,6 @@ class Recipe(var isFreezable: String, var cookTime: String, var prepTime: String
         // GM - Gas Mark
         // Format - [Unit]-[Temperature Code]
         // Brackets not in Format
-
-        val rawTemperature = this.temperature.substring(0, this.temperature.length - 2)
 
         when (givenUnit) {
 
@@ -47,7 +40,7 @@ class Recipe(var isFreezable: String, var cookTime: String, var prepTime: String
             }
 
             "FF" -> {
-                var data = rawTemperature.toDouble()
+                var data = value.toDouble()
                 data *= 9
                 data /= 5
                 data += 32
@@ -57,12 +50,12 @@ class Recipe(var isFreezable: String, var cookTime: String, var prepTime: String
             }
 
             "FO" -> {
-                val str = (rawTemperature.toInt() - 20).toString()
+                val str = (value.toInt() - 20).toString()
                 return "$str$givenUnit"
             }
 
             "GM" -> {
-                when (rawTemperature.toInt()) {
+                when (value.toInt()) {
 
                     110 -> {
                         return "1/4GM"
@@ -119,10 +112,10 @@ class Recipe(var isFreezable: String, var cookTime: String, var prepTime: String
 
     }
 
-    fun convertToCelsius(givenUnit: String) : String {
+    fun convertToCelsius(givenUnit: String, value : String) : String {
 
         var suffix = "CC"
-        var rawTemp = this.temperature.substring(0, this.temperature.length - 2)
+        var rawTemp = value
 
         when (givenUnit) {
 

@@ -23,8 +23,10 @@ import com.michaelwoodroof.culinaryassistant.helper.ImageConversions
 import com.michaelwoodroof.culinaryassistant.mealPlanner.MealPlanner
 import com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail
 import com.michaelwoodroof.culinaryassistant.structure.MealDocument
+import com.michaelwoodroof.culinaryassistant.structure.Recipe
 
 import com.michaelwoodroof.culinaryassistant.structure.RecipeContent
+import com.michaelwoodroof.culinaryassistant.structure.Suggestion
 
 import kotlinx.android.synthetic.main.recipe_layout.view.*
 import org.w3c.dom.Text
@@ -158,9 +160,11 @@ class RecipeAdapter(
                 setOnClickListener {
                     val intent = Intent(this.context, RecipeDetail::class.java)
                     intent.putExtra("uid", (tag as RecipeContent.RecipeItem).id)
-                    intent.putExtra("r", fh.getRecipe(this.context,
-                        (tag as RecipeContent.RecipeItem).id, true) as Parcelable)
+
+                    val r : Recipe = fh.getRecipe(this.context, (tag as RecipeContent.RecipeItem).id, false)!!
+                    intent.putExtra("r", r as Parcelable)
                     intent.putExtra("isOnline", "Yes")
+
                     this.context.startActivity(intent)
                 }
             } else if (item.mode == 2) { // MEAL PLANNER
@@ -169,7 +173,6 @@ class RecipeAdapter(
                     // Update MealPlanner Document @TODO
                     val md : MealDocument = item.mpMode
                     md.uid = item.id
-                    Log.d("mdTest", md.uid)
                     intent.putExtra("md", md as Parcelable)
                     this.context.startActivity(intent)
                 }

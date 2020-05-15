@@ -17,6 +17,8 @@ import androidx.core.net.toUri
 import androidx.core.view.children
 import com.michaelwoodroof.culinaryassistant.MainActivity
 import com.michaelwoodroof.culinaryassistant.R
+import com.michaelwoodroof.culinaryassistant.helper.Conversions
+import com.michaelwoodroof.culinaryassistant.helper.FileHandler
 import com.michaelwoodroof.culinaryassistant.helper.ImageConversions
 import com.michaelwoodroof.culinaryassistant.structure.Recipe
 import com.michaelwoodroof.culinaryassistant.structure.Section
@@ -25,6 +27,7 @@ import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
 import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_create_recipe_s5.*
 import org.bson.Document
+import org.bson.types.Decimal128
 import java.io.*
 import java.lang.Exception
 import java.util.*
@@ -87,7 +90,6 @@ class CreateRecipeS5 : AppCompatActivity() {
         setDsc.clone(clSteps)
         setDsc.constrainWidth(txtd.id, 0)
 
-        // WRAP IN IF STATEMENT
         if (lastRef == 0) {
             setDsc.connect (
                 txtd.id,
@@ -213,10 +215,9 @@ class CreateRecipeS5 : AppCompatActivity() {
 
         val str = UUID.randomUUID().toString()
         val uid = "uid$str"
+        pr!!.id = uid
         val fileOutputStream : FileOutputStream
-        if (pr != null) {
-            uploadToDB(pr, uid)
-        }
+        uploadToDB(pr, uid)
 
 //        try {
 //            // Set Up File Stream
@@ -266,6 +267,10 @@ class CreateRecipeS5 : AppCompatActivity() {
 
         val recipeDoc = Document()
 
+        val fh = FileHandler()
+        Log.d("testData", "Adding Cache")
+        fh.addCacheRecipe(pr, this)
+
         // Stage 1
         recipeDoc["title"] = pr.title
         recipeDoc["description"] = pr.description
@@ -303,6 +308,7 @@ class CreateRecipeS5 : AppCompatActivity() {
 
         val dietData = ArrayList<Document>()
         // Iterate through Dietary Information
+        dietData.add(Document("name", "NO ALLERGENS"))
         for (dietary in pr.dietary) {
             val data = Document("name", dietary.name)
             dietData.add(data)
@@ -326,19 +332,23 @@ class CreateRecipeS5 : AppCompatActivity() {
         // Others that Need Adding
         recipeDoc["ingredientSection"] = "Add this"
         recipeDoc["stepsSection"] = "Add this"
-        recipeDoc["temperature"] = "Add this"
-        recipeDoc["author"] = "Add this"
-        recipeDoc["source"] = "Add this"
+
+        recipeDoc["temperature"] = pr.temperature
+        recipeDoc["author"] = pr.author
+        recipeDoc["source"] = pr.source
 
         // Set when Uploading to Database
         recipeDoc["uid"] = uid
-        recipeDoc["reviewScore"] = 0.0
+        recipeDoc["reviewScore"] = org.bson.BsonDecimal128(Decimal128(0))
         recipeDoc["totalReviews"] = 0
+
         coll.insertOne(recipeDoc).addOnSuccessListener {
             Toast.makeText(applicationContext,"Recipe uploaded", Toast.LENGTH_LONG).show()
         }.addOnFailureListener {
             Toast.makeText(applicationContext,"Recipe couldn't be upload", Toast.LENGTH_LONG).show()
         }
+
+
 
     }
 

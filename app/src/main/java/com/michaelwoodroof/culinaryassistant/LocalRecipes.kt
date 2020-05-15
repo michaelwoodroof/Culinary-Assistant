@@ -23,7 +23,6 @@ class LocalRecipes : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_local_recipes)
 
-        // Get Local File
         val fh = FileHandler()
 
         val localRecipes = fh.getLocalRecipes(this)

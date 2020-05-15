@@ -13,6 +13,8 @@ import com.michaelwoodroof.culinaryassistant.LocalRecipes
 import com.michaelwoodroof.culinaryassistant.MainActivity
 import com.michaelwoodroof.culinaryassistant.R
 import com.michaelwoodroof.culinaryassistant.helper.FileHandler
+import com.michaelwoodroof.culinaryassistant.helper.NotificationHandler
+import com.michaelwoodroof.culinaryassistant.helper.ScheduleNotification
 import com.michaelwoodroof.culinaryassistant.structure.MealDocument
 import com.michaelwoodroof.culinaryassistant.structure.Recipe
 import kotlinx.android.synthetic.main.activity_meal_planner.*
@@ -42,6 +44,17 @@ class MealPlanner : AppCompatActivity() {
         } else {
             fh.createBlankMealDocument(this)
             mdd = fh.getMealDocument(this)
+        }
+
+        // Get Suggestion File
+        val fs = File(this.filesDir, "suggestions")
+        val fhs = FileHandler()
+        if (fs.exists()) {
+            // Get Exisiting Suggestion File
+
+        } else {
+            // Create Suggestions
+
         }
 
         val bundle : Bundle? = intent.extras
@@ -109,10 +122,18 @@ class MealPlanner : AppCompatActivity() {
         val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
             cal.set(Calendar.HOUR_OF_DAY, hour)
             cal.set(Calendar.MINUTE, minute)
+
+            // Ensure that App has Notification Channel
+            NotificationHandler.createNotificationChannel(this)
+
+
+
             // Set Time Here
             when (view.id) {
 
                 btnTPBreakfast.id -> {
+                    val sn = ScheduleNotification()
+                    sn.createAlarm(this, hour, minute, (24 * 60 * 60 * 1000 * 7), "Breakfast Meal")
                     btnTPBreakfast.text = SimpleDateFormat("HH:mm").format(cal.time)
                     fh.updateMealDocument(MealDocument(ddDayOfWeek.text.toString(),
                         "Breakfast", btnTPBreakfast.text.toString(),
@@ -120,6 +141,8 @@ class MealPlanner : AppCompatActivity() {
                 }
 
                 btnTPLunch.id -> {
+                    val sn = ScheduleNotification()
+                    sn.createAlarm(this, hour, minute, (24 * 60 * 60 * 1000 * 7), "Lunch Meal")
                     btnTPLunch.text = SimpleDateFormat("HH:mm").format(cal.time)
                     fh.updateMealDocument(MealDocument(ddDayOfWeek.text.toString(),
                         "Lunch", btnTPLunch.text.toString(),
@@ -127,6 +150,8 @@ class MealPlanner : AppCompatActivity() {
                 }
 
                 btnTPDinner.id -> {
+                    val sn = ScheduleNotification()
+                    sn.createAlarm(this, hour, minute, (24 * 60 * 60 * 1000 * 7), "Evening Meal")
                     btnTPDinner.text = SimpleDateFormat("HH:mm").format(cal.time)
                     fh.updateMealDocument(MealDocument(ddDayOfWeek.text.toString(),
                         "Dinner", btnTPDinner.text.toString(),
@@ -154,7 +179,6 @@ class MealPlanner : AppCompatActivity() {
 
     fun dayLoad(day : Int) {
 
-        Log.d("mdTest", "DAY LOADED")
         val fh = FileHandler()
 
         // Clear Includes

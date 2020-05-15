@@ -1753,6 +1753,7 @@ id btnImgPicker
 id btnIntermediate
 id btnMenu
 id btnNovice
+id btnNutrionalData
 id btnRemove
 id btnSave
 id btnSearchLoad
@@ -1778,7 +1779,6 @@ id center_horizontal
 id center_vertical
 id cgAllergens
 id cgDietary
-id cgFilters
 id cgKeywords
 id cgStepIngredient
 id chain
@@ -1786,9 +1786,6 @@ id chains
 id checkbox
 id checked
 id chip
-id chip2
-id chip3
-id chip4
 id chipGroup
 id chip_group
 id chpCelery
@@ -1813,6 +1810,7 @@ id clCategories
 id clContent
 id clCreateIngredient
 id clFlowHelper
+id clIngredient
 id clIngredients
 id clLayout
 id clMain
@@ -1845,6 +1843,8 @@ id ddCuisine
 id ddDayOfWeek
 id ddKeep
 id ddMeal
+id ddTempUnit
+id ddTempvalue
 id ddUnit
 id decelerate
 id decelerateAndComplete
@@ -2045,6 +2045,7 @@ id rvCategories
 id rvCommunityFavourites
 id rvIngredients
 id rvLRecipes
+id rvNutrition
 id rvSearchResults
 id rvShoppingList
 id rvSteps
@@ -2171,9 +2172,12 @@ id tvReview
 id tvSBSDesc
 id tvStepNumber
 id tvTags
+id tvTemperature
 id tvTitle
 id tvUnit
+id tvValue
 id tv_local_title
+id tv_lower
 id tv_search_title
 id txtAmount
 id txtAuth
@@ -2183,6 +2187,7 @@ id txtDate
 id txtDesc
 id txtHelper
 id txtIngredientName
+id txtIngredients
 id txtNotes
 id txtPassword
 id txtPortion
@@ -2202,6 +2207,7 @@ id txtiCuisine
 id txtiDayOfWeek
 id txtiDesc
 id txtiIngredientName
+id txtiIngredients
 id txtiKeep
 id txtiMealType
 id txtiNotes
@@ -2212,6 +2218,8 @@ id txtiPrepMax
 id txtiSearch
 id txtiStepDesc
 id txtiStepNum
+id txtiTempUnit
+id txtiTempvalue
 id txtiTitle
 id txtiUnit
 id txticPassword

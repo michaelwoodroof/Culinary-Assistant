@@ -1,10 +1,5 @@
 package com.michaelwoodroof.culinaryassistant.createRecipe
 
-// @TODO Update GO FORWARD AND GO BACKWARD TO METHOD
-// @TODO ADD WARNING DATA WILL BE GONE WHEN GOING BACK TO MAIN MENU
-// @TODO ADD WHITE BACKGROUND TO REMOVE ICON
-// @TODO MAKE ERROR CHECKING BETTER UI-WISE
-
 import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -206,7 +201,6 @@ class CreateRecipeS1 : AppCompatActivity() {
     // Used for Error Checking
     private fun checkField(field : Int) : Boolean {
 
-        Log.d("CALLEDBOB", "BOBCALLED")
 
         when (field) {
 

@@ -28,10 +28,10 @@ class ScheduleNotification { //@TODO ADD CHECK TO SEE IF TIME HAS ALREADY PASSED
             set(Calendar.SECOND, 1)
         }
 
-        alarmMgr.setRepeating(
+        alarmMgr.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
-            givenInterval, // @TODO CHANGE TO EVERY DAY/WEEK INSTEAD
+            givenInterval,
             alarmIntent
         )
 

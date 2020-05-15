@@ -1,6 +1,7 @@
 package com.michaelwoodroof.culinaryassistant
 
 import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
@@ -26,6 +27,7 @@ import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_main_nav.*
 import org.bson.Document
 import org.bson.types.Decimal128
+import java.io.File
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -61,88 +63,14 @@ class MainActivity : AppCompatActivity() {
             //
             var fileName = "token.txt"
             loggedIn = true
-            loadMainScreen()
+            loadMainScreen(this)
         }
-
-        // Ensure that App has Notification Channel
-        NotificationHandler.createNotificationChannel(this)
-
-//        Log.d("testData", "startConvert")
-//        Conversions.convertUIDtoRecipe("uid00000001")
-
-        val sn = ScheduleNotification()
-        sn.createAlarm(this, 21, 41, (1000 * 60 * 60 * 24), "Demo")
-
-        val sn1 = ScheduleNotification()
-        sn1.createAlarm(this, 21, 42, (1000 * 60 * 60 * 24), "Demo2")
-
-
-        // Demo for Changing Temperatures
-        val er = Recipe(
-            isFreezable = "NO", cookTime = "", prepTime = "",
-            difficulty = -1,
-            spice = 0,
-            id = "",
-            author = "",
-            courseType = "",
-            cuisine = "",
-            description = "",
-            imgReference = "",
-            numOfServings = "",
-            source = "",
-            temperature = "200CC",
-            title = "",
-            dietary = ArrayList<Dietary>(),
-            ingredients = ArrayList<Ingredient>(),
-            nutrition = ArrayList<Nutrition>(),
-            ingredientSection = ArrayList<ExtSection>(),
-            stepsSection = ArrayList<ExtSection>(),
-            keywords = ArrayList<String>(),
-            steps = ArrayList<Section>(),
-            uriRef = ""
-        )
-
-        //val stitchAppClient = Stitch.getDefaultAppClient()
-
-        // Call Database for Community Favouritesl
-//        stitchAppClient.auth.loginWithCredential(AnonymousCredential()).addOnSuccessListener {
-//
-//            val client = stitchAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas")
-//            val coll = client.getDatabase("appdata").getCollection("recipes")
-//
-//            val str = """.*""" + Pattern.quote("Med") + """.*"""
-//            val doc = Document().append("\$regex", str.toRegex())
-//            doc.append("\$options", "i")
-//            val docQuery = Document().append("title", doc)
-//            Log.d("searchTest", docQuery.toString())
-//
-//            val query = coll.find(docQuery).limit(10)
-//            val result = mutableListOf<Document>()
-//
-//            query.into(result).addOnSuccessListener {
-//
-//                result.forEach {
-//                    Log.d("searchTest", it["title"] as String)
-//                }
-//
-//            }
-//        }
-
-
-        val fah = er.convertTemperature("FF")
-        Log.d("convertData", fah)
-
-        val gm = er.convertTemperature("GM")
-        Log.d("convertData", gm)
-
-        val fo = er.convertTemperature("FO")
-        Log.d("convertData", fo)
 
     }
 
     private fun performSearch(query: String) {
         // Handles Search Query
-        Log.d("testData", query)
+
     }
 
     fun loadSearch(view : View) {
@@ -151,18 +79,97 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Used to Fill Main Menu with Info can be called with Sync Button if application is offline
-    private fun loadMainScreen() {
+    private fun loadMainScreen(gc : Context) {
 
         var r = loadSuggested(
             object : RecipeCallback {
                 override fun getRecipe(result: MutableList<Document>) {
                     val dataSet = ArrayList<MainMenuContent.MainMenuItem>()
-                    result.forEach {
-                        Conversions.convertUIDtoRecipe(it["uid"] as String, baseContext)
-                        val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
-                            it["imagePath"] as String, it["uid"] as String,
-                            it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
-                        dataSet.add(mmc)
+                    val addedRecipes = ArrayList<String>()
+                    val limit = 9
+                    var counter = 0
+                    val f = File(gc.filesDir, "suggestion")
+                    val fh = FileHandler()
+                    if (!f.exists()) {
+                        fh.createBlankSuggestionFile(gc)
+                    }
+                    if (result.size <= limit + 1) { // Add Regardlessly then
+                        Log.d("testData", "adding in regardless")
+                        result.forEach {
+                            Conversions.convertUIDtoRecipe(it["uid"] as String, gc)
+                            val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                                it["imagePath"] as String, it["uid"] as String,
+                                it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                            dataSet.add(mmc)
+                        }
+                    } else {
+                        val sf : ArrayList<Suggestion> = fh.getSuggestionFile(gc)
+                        sf.removeAt(0) // Remove no Tag
+                        sf.sortBy { it.amount }
+                        if (sf.isEmpty() || sf.size < 5) {
+                            result.forEach {
+                                Conversions.convertUIDtoRecipe(it["uid"] as String, gc)
+                                if (counter <= limit) {
+                                    val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                                        it["imagePath"] as String, it["uid"] as String,
+                                        it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                                    dataSet.add(mmc)
+                                }
+                                counter++
+                            }
+                        } else {
+                            var passes = 0
+                            counter = 0
+
+                            while (counter <= limit && passes < 20) {
+                                passes += 1
+                                // First Six are based on Top Tags of the User
+                                when {
+                                    counter < 6 -> result.forEach {
+                                        val cwords = Conversions.convertDocumenttoRecipe(it)
+                                        val words = cwords.keywords
+                                        if (words.contains(sf[0].tag) || words.contains(sf[1].tag) || words.contains(sf[2].tag) && !addedRecipes.contains(it["uid"] as String)) {
+                                            val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                                                it["imagePath"] as String, it["uid"] as String,
+                                                it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                                            dataSet.add(mmc)
+                                            addedRecipes.add(it["uid"] as String)
+                                            counter++
+                                        }
+                                    }
+                                    counter in 6..7 -> {
+                                        result.forEach {
+                                            val cwords = Conversions.convertDocumenttoRecipe(it)
+                                            val words = cwords.keywords
+                                            if (words.contains(sf[3].tag) || words.contains(sf[4].tag) && !addedRecipes.contains(it["uid"] as String)) {
+                                                val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                                                    it["imagePath"] as String, it["uid"] as String,
+                                                    it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                                                dataSet.add(mmc)
+                                                addedRecipes.add(it["uid"] as String)
+                                                counter++
+                                            }
+                                        }
+                                    }
+                                    else -> {
+                                        // Wildcard Recipes
+                                        result.forEach {
+                                            if (!addedRecipes.contains(it["uid"] as String)) {
+                                                val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                                                    it["imagePath"] as String, it["uid"] as String,
+                                                    it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                                                dataSet.add(mmc)
+                                                addedRecipes.add(it["uid"] as String)
+                                                counter++
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+
+
                     }
 
                     viewManager = LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)
@@ -185,12 +192,17 @@ class MainActivity : AppCompatActivity() {
             object : RecipeCallback {
                 override fun getRecipe(result: MutableList<Document>) {
                     val dataSet = ArrayList<MainMenuContent.MainMenuItem>()
+                    var counter = 0
+                    val limit = 9
                     result.forEach {
                         Conversions.convertUIDtoRecipe(it["uid"] as String, baseContext)
-                        val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
-                            it["imagePath"] as String, it["uid"] as String,
-                            it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
-                        dataSet.add(mmc)
+                        if (counter <= limit) {
+                            val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                                it["imagePath"] as String, it["uid"] as String,
+                                it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                            dataSet.add(mmc)
+                        }
+                        counter++
                     }
 
                     viewManager = LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)
@@ -213,11 +225,25 @@ class MainActivity : AppCompatActivity() {
             object : RecipeCallback {
                 override fun getRecipe(result: MutableList<Document>) {
                     val dataSet = ArrayList<MainMenuContent.MainMenuItem>()
+                    var limit = 9
+                    if (result.size < 10) {
+                        limit = result.size
+                    }
+                    var counter = 0
                     result.forEach {
-                        val mmc = MainMenuContent.MainMenuItem(it["categoryTitle"] as String,
-                            it["imagePath"] as String, it["categoryTitle"] as String,
-                            Decimal128(0), it["categoryTitle"] as String, false)
-                        dataSet.add(mmc)
+
+                        // Modify
+                        val isMet : Boolean = true
+
+                        if (counter != limit && isMet) {
+                            val mmc = MainMenuContent.MainMenuItem(it["categoryTitle"] as String,
+                                it["imagePath"] as String, it["categoryTitle"] as String,
+                                Decimal128(0), it["categoryTitle"] as String, false)
+                            dataSet.add(mmc)
+                        }
+
+
+                        counter++
                     }
 
                     viewManager = LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)
@@ -270,7 +296,7 @@ class MainActivity : AppCompatActivity() {
             // Read from File for Suggested Recipes
             val client = stitchAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas")
             val coll = client.getDatabase("appdata").getCollection("recipes")
-            val query = coll.find().sort(Document("reviewScore", 1)).limit(10)
+            val query = coll.find().sort(Document("reviewScore", -1))
             val result = mutableListOf<Document>()
 
             query.into(result).addOnSuccessListener {
@@ -292,7 +318,7 @@ class MainActivity : AppCompatActivity() {
 
             val client = stitchAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas")
             val coll = client.getDatabase("appdata").getCollection("recipes")
-            val query = coll.find().sort(Document("reviewScore", -1)).limit(10)
+            val query = coll.find().sort(Document("reviewScore", -1))
             val result = mutableListOf<Document>()
 
             query.into(result).addOnSuccessListener {

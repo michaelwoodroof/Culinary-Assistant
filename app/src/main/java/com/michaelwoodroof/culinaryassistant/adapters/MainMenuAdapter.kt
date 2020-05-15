@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Parcelable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,9 @@ import com.michaelwoodroof.culinaryassistant.helper.ImageConversions
 import com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail
 import com.michaelwoodroof.culinaryassistant.overviews.RecipeOverview
 import com.michaelwoodroof.culinaryassistant.structure.MainMenuContent
+import com.michaelwoodroof.culinaryassistant.structure.Recipe
 import com.michaelwoodroof.culinaryassistant.structure.SearchContent
+import com.michaelwoodroof.culinaryassistant.structure.Suggestion
 import kotlinx.android.synthetic.main.main_menu_layout.view.*
 
 class MainMenuAdapter (private val mValues : List<MainMenuContent.MainMenuItem>
@@ -35,9 +38,11 @@ class MainMenuAdapter (private val mValues : List<MainMenuContent.MainMenuItem>
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
         holder.mTitle.text = item.title
-        if (item.imgStr != "") {
+        if (item.imgStr != "" && item.imgStr.length > 20) {
             val bm : Bitmap = ImageConversions.stringToBitMap(item.imgStr)
             holder.mImg.setImageBitmap(bm)
+        } else {
+
         }
         if (!item.hasReview) {
             holder.mReview.visibility = View.GONE
@@ -54,8 +59,12 @@ class MainMenuAdapter (private val mValues : List<MainMenuContent.MainMenuItem>
                     intent.putExtra("uid", (tag as MainMenuContent.MainMenuItem).uid)
                     intent.putExtra("isOnline", "Yes")
                     val fh = FileHandler()
-                    intent.putExtra("r", fh.getRecipe(this.context, (tag as MainMenuContent.MainMenuItem).uid, true) as Parcelable)
-
+                    val r : Recipe = fh.getRecipe(this.context, (tag as MainMenuContent.MainMenuItem).uid, true)!!
+                    intent.putExtra("r", r as Parcelable)
+                    // Update Suggestion File
+                    for (tag in r.keywords) {
+                        fh.updateSuggestionFile(Suggestion(tag, -1), this.context)
+                    }
                     this.context.startActivity(intent)
                 }
             } else {

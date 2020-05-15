@@ -492,7 +492,6 @@ class CreateRecipeS4 : AppCompatActivity() {
 
         }
 
-        Log.d("testData", foundRef.toString())
         return foundRef
 
     }

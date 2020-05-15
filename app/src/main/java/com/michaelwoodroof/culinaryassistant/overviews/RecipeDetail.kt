@@ -160,9 +160,10 @@ class RecipeDetail : AppCompatActivity() {
 
                 }
 
-                val temperatureSuffix = "°C"
-
-                txtvTemp.text = getString(R.string.tempFormat, "", rc.temperature, temperatureSuffix)
+                val temp = rc.temperature.substring(0, rc.temperature.length - 2)
+                val suffix = rc.temperature.takeLast(2)
+                val celcius = rc.convertToCelsius(suffix, temp)
+                txtvTemp.text = celcius
 
                 // Format Prep and Cook Times
                 val prepTime = rc.prepTime.split("-")
@@ -262,7 +263,6 @@ class RecipeDetail : AppCompatActivity() {
     fun moveStep (view : View) {
 
         val v : Chip = view as Chip
-        Log.d("testData", currentStep.toString())
         if (v.id == chpPrev.id) {
             if (currentStep != 0) {
                 currentStep -= 1
@@ -274,6 +274,31 @@ class RecipeDetail : AppCompatActivity() {
         }
 
         loadStepContent(currentStep)
+
+    }
+
+    fun changeToAlternative(view : View) {
+        val temp = rc.temperature.substring(0, rc.temperature.length - 2)
+        val suffix = rc.temperature.takeLast(2)
+        var celsius = rc.convertToCelsius(suffix, temp)
+        celsius = celsius.substring(0, celsius.length - 2)
+
+        when(view.tag) {
+            "CC" -> {
+                txtvTemp.text = rc.convertTemperature("FO", celsius)
+                view.tag = "FO"
+            }
+
+            "FO" -> {
+                txtvTemp.text = rc.convertTemperature("GM", celsius)
+                view.tag = "GM"
+            }
+
+            "GM" -> {
+                txtvTemp.text = rc.convertTemperature("CC", celsius)
+                view.tag = "CC"
+            }
+        }
 
     }
 
@@ -318,7 +343,6 @@ class RecipeDetail : AppCompatActivity() {
         val v : Chip = view as Chip
         var type : Int = 0
 
-        Log.d("testData", v.tag as String)
 
         if (v.tag == "not") {
             if (v.id == chpSteps.id) {
@@ -377,8 +401,6 @@ class RecipeDetail : AppCompatActivity() {
         // Load in Reviews
         val stitchAppClient = Stitch.getDefaultAppClient()
 
-        Log.d("searchTest", "IT loaded")
-
         stitchAppClient.auth.loginWithCredential(AnonymousCredential()).addOnSuccessListener {
 
             val client = stitchAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas")
@@ -393,7 +415,7 @@ class RecipeDetail : AppCompatActivity() {
             query.into(result).addOnSuccessListener {
 
                 result.forEach {
-                    Log.d("searchTest", it["contents"] as String)
+
                 }
 
             }
@@ -409,6 +431,18 @@ class RecipeDetail : AppCompatActivity() {
         if (fh.getRecipe(this, rc.id, false) == null) {
             fh.addRecipe(rc, this)
             btnSave.setColorFilter(Color.argb(204, 204, 204, 255))
+        }
+
+    }
+
+    fun loadNutrionalData(view : View) {
+
+        if (view.tag == "noclick") {
+            view.tag = "click"
+            rvNutrition.visibility = View.VISIBLE
+        } else {
+            view.tag = "noclick"
+            rvNutrition.visibility = View.GONE
         }
 
     }

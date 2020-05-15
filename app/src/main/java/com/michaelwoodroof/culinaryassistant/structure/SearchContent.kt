@@ -11,7 +11,7 @@ object SearchContent {
     }
 
     private fun createRecipeItem(position: Int): SearchItem {
-        return SearchItem(position.toString(), makeDetails(position))
+        return SearchItem(position.toString(), makeDetails(position), "")
     }
 
     private fun makeDetails(position: Int): String {
@@ -23,7 +23,7 @@ object SearchContent {
         return builder.toString()
     }
 
-    data class SearchItem(val title: String, val uid: String) {
+    data class SearchItem(val title: String, val uid: String, val lowerString : String) {
         override fun toString(): String = uid
     }
 

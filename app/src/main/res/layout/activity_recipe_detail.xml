@@ -512,6 +512,8 @@
                 android:id="@+id/txtvTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="changeToAlternative"
+                android:tag="CC"
                 android:text="200 C"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imgS5"
@@ -539,13 +541,25 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imgRecipePhoto"
                 app:layout_constraintEnd_toEndOf="@+id/txtvTemp" />
 
+            <Button
+                android:id="@+id/btnNutrionalData"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:onClick="loadNutrionalData"
+                android:tag="noclick"
+                android:text="Show Nutrition Data"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/btnSave"
+                app:layout_constraintTop_toBottomOf="@+id/txtvDescription" />
+
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/cgStepIngredient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="@+id/txtvDescription"
-                app:layout_constraintTop_toBottomOf="@+id/txtvDescription">
+                app:layout_constraintTop_toBottomOf="@+id/rvNutrition">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chpSteps"
@@ -684,7 +698,20 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/txtvDescription"
-                app:layout_constraintTop_toBottomOf="@+id/cgStepIngredient" />
+                app:layout_constraintTop_toBottomOf="@+id/cgStepIngredient" >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNutrition"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnNutrionalData" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clReview"
