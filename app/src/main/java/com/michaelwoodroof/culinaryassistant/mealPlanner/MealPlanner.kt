@@ -9,12 +9,15 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.michaelwoodroof.culinaryassistant.LocalRecipes
 import com.michaelwoodroof.culinaryassistant.MainActivity
 import com.michaelwoodroof.culinaryassistant.R
 import com.michaelwoodroof.culinaryassistant.helper.FileHandler
 import com.michaelwoodroof.culinaryassistant.helper.NotificationHandler
 import com.michaelwoodroof.culinaryassistant.helper.ScheduleNotification
+import com.michaelwoodroof.culinaryassistant.overviews.RecipeDetail
 import com.michaelwoodroof.culinaryassistant.structure.MealDocument
 import com.michaelwoodroof.culinaryassistant.structure.Recipe
 import kotlinx.android.synthetic.main.activity_meal_planner.*
@@ -39,6 +42,7 @@ class MealPlanner : AppCompatActivity() {
         // Get Meal Document from File
         val f = File(this.filesDir, "mealplanner")
         val fh = FileHandler()
+        Log.d("testData", f.exists().toString())
         if (f.exists()) {
             mdd = fh.getMealDocument(this)
         } else {
@@ -46,15 +50,9 @@ class MealPlanner : AppCompatActivity() {
             mdd = fh.getMealDocument(this)
         }
 
-        // Get Suggestion File
-        val fs = File(this.filesDir, "suggestions")
-        val fhs = FileHandler()
-        if (fs.exists()) {
-            // Get Exisiting Suggestion File
-
-        } else {
-            // Create Suggestions
-
+        for (i in 0..20) {
+            Log.d("testData", i.toString())
+            Log.d("testData", mdd[i].uid)
         }
 
         val bundle : Bundle? = intent.extras
@@ -111,7 +109,23 @@ class MealPlanner : AppCompatActivity() {
             R.layout.dropdown_menu_popup_item, days)
         ddDayOfWeek.setAdapter(cAdapter)
 
-        dayLoad(date.get(Calendar.DAY_OF_WEEK))
+        dayLoad(date.get(Calendar.DAY_OF_WEEK) - 2)
+
+        // Set on Clicks
+        val ib : CardView = includeBF.findViewById(R.id.cvMain)
+        ib.setOnClickListener {
+            loadRecipe(includeBF)
+        }
+
+        val il : CardView = includeLU.findViewById(R.id.cvMain)
+        il.setOnClickListener {
+            loadRecipe(includeLU)
+        }
+
+        val idd : CardView = includeDI.findViewById(R.id.cvMain)
+        idd.setOnClickListener {
+            loadRecipe(includeDI)
+        }
 
     }
 
@@ -178,6 +192,8 @@ class MealPlanner : AppCompatActivity() {
     }
 
     fun dayLoad(day : Int) {
+
+        Log.d("testData", day.toString())
 
         val fh = FileHandler()
 
@@ -468,6 +484,18 @@ class MealPlanner : AppCompatActivity() {
         intent.putExtra("mpMode", MealDocument(day, mealType, time, uid, isNoti) as Parcelable)
         startActivity(intent)
 
+    }
+
+    fun loadRecipe(view : View) {
+        val fh = FileHandler()
+        if (view.tag != "-1") {
+            val intent = Intent(this, RecipeDetail::class.java)
+            intent.putExtra("uid", view.tag.toString())
+            intent.putExtra("r", fh.getRecipe(this,
+                view.tag.toString(), false) as Parcelable)
+            intent.putExtra("isOnline", "No")
+            startActivity(intent)
+        }
     }
 
     fun goBack(view : View) {

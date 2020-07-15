@@ -14,6 +14,8 @@ object Conversions {
 
     fun convertUIDtoRecipe(uid : String, gc : Context) {
 
+        Log.d("testDat", uid)
+
         val fh = FileHandler()
         if (!fh.checkIfExists(uid, true, gc)) {
 
@@ -63,7 +65,14 @@ object Conversions {
                 }
             }
 
-            cSteps.add(Section(stepNo, step["description"] as String))
+            var desc = ""
+            try {
+                desc = step["description"] as String
+            } catch (e : Exception) {
+
+            }
+
+            cSteps.add(Section(stepNo, desc))
         }
 
         val ingredients = doc["ingredients"] as ArrayList<*>

@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgBacker"
         app:counterEnabled="true"
-        app:counterMaxLength="30"
+        app:counterMaxLength="50"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText

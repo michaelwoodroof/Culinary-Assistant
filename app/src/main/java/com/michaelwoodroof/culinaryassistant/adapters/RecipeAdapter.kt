@@ -172,6 +172,7 @@ class RecipeAdapter(
                     val intent = Intent(this.context, MealPlanner::class.java)
                     val md : MealDocument = item.mpMode
                     md.uid = item.id
+                    fh.updateMealDocument(md, this.context)
                     intent.putExtra("md", md as Parcelable)
                     this.context.startActivity(intent)
                 }

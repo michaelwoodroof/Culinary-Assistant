@@ -8,21 +8,26 @@ import java.io.*
 
 class FileHandler {
 
-    fun getLocalRecipes(givenContext: Context) : ArrayList<Recipe> {
+    fun getLocalRecipes(givenContext: Context, isCache: Boolean) : ArrayList<Recipe> {
         val localRecipes = ArrayList<Recipe>()
 
-        val fileDir = givenContext.filesDir
+        var fileDir = givenContext.filesDir
+
+        if (isCache) {
+            fileDir = givenContext.cacheDir
+        }
+
         val files = fileDir.listFiles()
         files.forEach {
             val file = it
             if (file.name != "mealplanner" && file.name != "suggestion") {
-                val fis = givenContext.openFileInput(file.name)
                 try {
-                    val ois = ObjectInputStream(fis)
-                    val r = ois.readObject() as Recipe
-                    localRecipes.add(r)
-                    ois.close()
+
+                    val fis = FileInputStream(file)
+                    val ro = ObjectInputStream(fis).readObject() as Recipe
+                    localRecipes.add(ro)
                     fis.close()
+
                 } catch (e: Exception) {
 
                 }

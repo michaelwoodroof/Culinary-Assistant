@@ -25,7 +25,7 @@ class LocalRecipes : AppCompatActivity() {
 
         val fh = FileHandler()
 
-        val localRecipes = fh.getLocalRecipes(this)
+        val localRecipes = fh.getLocalRecipes(this, false)
         val dataSet = ArrayList<RecipeContent.RecipeItem>()
 
         localRecipes.forEach {

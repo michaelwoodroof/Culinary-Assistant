@@ -13,6 +13,7 @@ import com.google.android.material.chip.Chip
 import com.michaelwoodroof.culinaryassistant.adapters.MainMenuAdapter
 import com.michaelwoodroof.culinaryassistant.adapters.SearchAdapter
 import com.michaelwoodroof.culinaryassistant.helper.Conversions
+import com.michaelwoodroof.culinaryassistant.helper.FileHandler
 import com.michaelwoodroof.culinaryassistant.structure.Recipe
 import com.michaelwoodroof.culinaryassistant.structure.SearchContent
 import com.mongodb.stitch.android.core.Stitch
@@ -48,114 +49,225 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextSubmit(uquery: String): Boolean {
-                // Perform Search
 
-                val r = getRecipes(
-                    object : RecipeCallback {
-                        override fun getRecipe(result: MutableList<Document>) {
-                            val dataSet = ArrayList<SearchContent.SearchItem>()
+                // Get Cached Recipes
+                val fh = FileHandler()
 
-                            // Create Ingredient Search Array
-                            var ingredients : List<String>
-                            var cIngredient : MutableList<String> = mutableListOf()
-                            if (clIngredient.visibility == View.VISIBLE) {
-                                ingredients = txtIngredients.text.toString().toLowerCase().trim().replace("\\s".toRegex(), "").split(",")
-                                cIngredient = ingredients.toMutableList()
-                            }
+                val ri = fh.getLocalRecipes(baseContext, true)
 
-                            viewManager = LinearLayoutManager(baseContext)
-                            viewAdapter =
-                                SearchAdapter(
-                                    dataSet
-                                )
+                val dataSet = ArrayList<SearchContent.SearchItem>()
 
-                            recyclerView = findViewById<RecyclerView>(R.id.rvSearchResults).apply {
-                                setHasFixedSize(true)
-                                layoutManager = viewManager
-                                adapter = viewAdapter
-                            }
+                // Create Ingredient Search Array
+                var ingredients : List<String>
+                var cIngredient : MutableList<String> = mutableListOf()
+                if (clIngredient.visibility == View.VISIBLE) {
+                    ingredients = txtIngredients.text.toString().toLowerCase().trim().replace("\\s".toRegex(), "").split(",")
+                    cIngredient = ingredients.toMutableList()
+                }
 
+                viewManager = LinearLayoutManager(baseContext)
+                viewAdapter =
+                    SearchAdapter(
+                        dataSet
+                    )
 
-                            result.forEach {
-                                val r : Recipe = Conversions.convertDocumenttoRecipe(it)
-                                var modtitle = r.title
-                                var isValid = true
-                                var lStr = ""
-
-                                // Convert
-                                // Check if Title is Viable
-                                val q = ".*$uquery.*"
-                                val reg = q.toRegex()
-
-                                if (!modtitle.matches(reg)) {
-                                    isValid = false
-                                }
-
-                                // Now Check Ingredients
-                                if (clIngredient.visibility == View.VISIBLE) {
-                                    var simpleIngredients : MutableList<String> = mutableListOf()
-                                    for (i in r.ingredients) {
-                                        simpleIngredients.add(i.name.toLowerCase().replace("\\s".toRegex(), ""))
-                                    }
-
-                                    simpleIngredients.sort()
-                                    cIngredient.sort()
-
-                                    if (!simpleIngredients.equals(cIngredient)) {
-
-                                        // Check if Valid
-                                        val sum = simpleIngredients.intersect(cIngredient)
-                                        var givensize : Int
-                                        if (simpleIngredients.size >= 9) {
-                                            givensize = simpleIngredients.size - 3
-                                        } else if (simpleIngredients.size >= 5) {
-                                            givensize = simpleIngredients.size - 1
-                                        } else {
-                                            givensize = simpleIngredients.size
-                                        }
-                                        if (sum.size >= givensize) {
-                                            isValid = false
-                                        }
+                recyclerView = findViewById<RecyclerView>(R.id.rvSearchResults).apply {
+                    setHasFixedSize(true)
+                    layoutManager = viewManager
+                    adapter = viewAdapter
+                }
 
 
-                                    } else {
-                                        // Have Same Ingredients
-                                        lStr = " Shares ${simpleIngredients.size} of ${cIngredient.size} Ingredients"
-                                    }
+                ri.forEach {
+                    val r : Recipe = it
+                    var modtitle = r.title
+                    modtitle = modtitle.toLowerCase()
+                    var isValid = true
+                    var lStr = ""
 
+                    // Convert
+                    // Check if Title is Viable
+                    val qq = uquery.toLowerCase()
+                    val q = ".*$qq.*"
+                    val reg = q.toRegex()
 
-                                }
-
-                                val si = SearchContent.SearchItem(modtitle,
-                                    r.id, lStr)
-
-                                if (isValid) {
-                                    dataSet.add(si)
-                                }
-
-
-
-
-                            }
-                            viewManager = LinearLayoutManager(baseContext)
-                            viewAdapter =
-                                SearchAdapter(
-                                    dataSet
-                                )
-
-                            recyclerView = findViewById<RecyclerView>(R.id.rvSearchResults).apply {
-                                setHasFixedSize(true)
-                                layoutManager = viewManager
-                                adapter = viewAdapter
-                            }
-                        }
+                    if (!modtitle.matches(reg)) {
+                        isValid = false
                     }
-                )
 
+                    Log.d("regexTest", reg.toString())
+                    Log.d("regexTest", modtitle)
+
+                    // Now Check Ingredients
+                    if (clIngredient.visibility == View.VISIBLE) {
+                        var simpleIngredients : MutableList<String> = mutableListOf()
+                        for (i in r.ingredients) {
+                            simpleIngredients.add(i.name.toLowerCase().replace("\\s".toRegex(), ""))
+                        }
+
+                        simpleIngredients.sort()
+                        cIngredient.sort()
+
+                        if (!simpleIngredients.equals(cIngredient)) {
+
+                            // Check if Valid
+                            val sum = simpleIngredients.intersect(cIngredient)
+                            var givensize : Int
+                            if (simpleIngredients.size >= 9) {
+                                givensize = simpleIngredients.size - 3
+                            } else if (simpleIngredients.size >= 5) {
+                                givensize = simpleIngredients.size - 1
+                            } else {
+                                givensize = simpleIngredients.size
+                            }
+                            if (sum.size >= givensize) {
+                                isValid = false
+                            }
+
+
+
+                        } else {
+                            // Have Same Ingredients
+                            lStr = " Shares ${simpleIngredients.size} of ${cIngredient.size} Ingredients"
+                        }
+
+
+                    }
+
+                    val si = SearchContent.SearchItem(modtitle,
+                        r.id, lStr)
+
+                    if (isValid) {
+                        dataSet.add(si)
+                    }
+
+
+
+
+                }
+                viewManager = LinearLayoutManager(baseContext)
+                viewAdapter =
+                    SearchAdapter(
+                        dataSet
+                    )
+
+                recyclerView = findViewById<RecyclerView>(R.id.rvSearchResults).apply {
+                    setHasFixedSize(true)
+                    layoutManager = viewManager
+                    adapter = viewAdapter
+                }
                 return true
             }
+        }
+        )
 
-        })
+
+                // Perform Search
+
+//                val r = getRecipes(
+//                    object : RecipeCallback {
+//                        override fun getRecipe(result: MutableList<Document>) {
+//                            val dataSet = ArrayList<SearchContent.SearchItem>()
+//
+//                            // Create Ingredient Search Array
+//                            var ingredients : List<String>
+//                            var cIngredient : MutableList<String> = mutableListOf()
+//                            if (clIngredient.visibility == View.VISIBLE) {
+//                                ingredients = txtIngredients.text.toString().toLowerCase().trim().replace("\\s".toRegex(), "").split(",")
+//                                cIngredient = ingredients.toMutableList()
+//                            }
+//
+//                            viewManager = LinearLayoutManager(baseContext)
+//                            viewAdapter =
+//                                SearchAdapter(
+//                                    dataSet
+//                                )
+//
+//                            recyclerView = findViewById<RecyclerView>(R.id.rvSearchResults).apply {
+//                                setHasFixedSize(true)
+//                                layoutManager = viewManager
+//                                adapter = viewAdapter
+//                            }
+//
+//
+//                            result.forEach {
+//                                val r : Recipe = Conversions.convertDocumenttoRecipe(it)
+//                                var modtitle = r.title
+//                                var isValid = true
+//                                var lStr = ""
+//
+//                                // Convert
+//                                // Check if Title is Viable
+//                                val q = ".*$uquery.*"
+//                                val reg = q.toRegex()
+//
+//                                if (!modtitle.matches(reg)) {
+//                                    isValid = false
+//                                }
+//
+//                                // Now Check Ingredients
+//                                if (clIngredient.visibility == View.VISIBLE) {
+//                                    var simpleIngredients : MutableList<String> = mutableListOf()
+//                                    for (i in r.ingredients) {
+//                                        simpleIngredients.add(i.name.toLowerCase().replace("\\s".toRegex(), ""))
+//                                    }
+//
+//                                    simpleIngredients.sort()
+//                                    cIngredient.sort()
+//
+//                                    if (!simpleIngredients.equals(cIngredient)) {
+//
+//                                        // Check if Valid
+//                                        val sum = simpleIngredients.intersect(cIngredient)
+//                                        var givensize : Int
+//                                        if (simpleIngredients.size >= 9) {
+//                                            givensize = simpleIngredients.size - 3
+//                                        } else if (simpleIngredients.size >= 5) {
+//                                            givensize = simpleIngredients.size - 1
+//                                        } else {
+//                                            givensize = simpleIngredients.size
+//                                        }
+//                                        if (sum.size >= givensize) {
+//                                            isValid = false
+//                                        }
+//
+//
+//                                    } else {
+//                                        // Have Same Ingredients
+//                                        lStr = " Shares ${simpleIngredients.size} of ${cIngredient.size} Ingredients"
+//                                    }
+//
+//
+//                                }
+//
+//                                val si = SearchContent.SearchItem(modtitle,
+//                                    r.id, lStr)
+//
+//                                if (isValid) {
+//                                    dataSet.add(si)
+//                                }
+//
+//
+//
+//
+//                            }
+//                            viewManager = LinearLayoutManager(baseContext)
+//                            viewAdapter =
+//                                SearchAdapter(
+//                                    dataSet
+//                                )
+//
+//                            recyclerView = findViewById<RecyclerView>(R.id.rvSearchResults).apply {
+//                                setHasFixedSize(true)
+//                                layoutManager = viewManager
+//                                adapter = viewAdapter
+//                            }
+//                        }
+//                    }
+//                )
+//            }
+//
+//        })
 
     }
 

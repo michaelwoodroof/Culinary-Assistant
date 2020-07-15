@@ -93,6 +93,9 @@ class MainActivity : AppCompatActivity() {
                     if (!f.exists()) {
                         fh.createBlankSuggestionFile(gc)
                     }
+
+                    result.sortBy { it["title"] as String }
+
                     if (result.size <= limit + 1) { // Add Regardlessly then
                         Log.d("testData", "adding in regardless")
                         result.forEach {
@@ -106,16 +109,23 @@ class MainActivity : AppCompatActivity() {
                         val sf : ArrayList<Suggestion> = fh.getSuggestionFile(gc)
                         sf.removeAt(0) // Remove no Tag
                         sf.sortBy { it.amount }
+
+                        sf.forEach {
+                            Log.d("testData22", it.tag)
+                        }
+
                         if (sf.isEmpty() || sf.size < 5) {
                             result.forEach {
-                                Conversions.convertUIDtoRecipe(it["uid"] as String, gc)
-                                if (counter <= limit) {
-                                    val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
-                                        it["imagePath"] as String, it["uid"] as String,
-                                        it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
-                                    dataSet.add(mmc)
+                                if (counter < limit) {
+                                    Conversions.convertUIDtoRecipe(it["uid"] as String, gc)
+                                    if (counter < limit && !addedRecipes.contains(it["uid"] as String)) {
+                                        val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                                            it["imagePath"] as String, it["uid"] as String,
+                                            it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                                        dataSet.add(mmc)
+                                    }
+                                    counter++
                                 }
-                                counter++
                             }
                         } else {
                             var passes = 0
@@ -128,20 +138,8 @@ class MainActivity : AppCompatActivity() {
                                     counter < 6 -> result.forEach {
                                         val cwords = Conversions.convertDocumenttoRecipe(it)
                                         val words = cwords.keywords
-                                        if (words.contains(sf[0].tag) || words.contains(sf[1].tag) || words.contains(sf[2].tag) && !addedRecipes.contains(it["uid"] as String)) {
-                                            val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
-                                                it["imagePath"] as String, it["uid"] as String,
-                                                it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
-                                            dataSet.add(mmc)
-                                            addedRecipes.add(it["uid"] as String)
-                                            counter++
-                                        }
-                                    }
-                                    counter in 6..7 -> {
-                                        result.forEach {
-                                            val cwords = Conversions.convertDocumenttoRecipe(it)
-                                            val words = cwords.keywords
-                                            if (words.contains(sf[3].tag) || words.contains(sf[4].tag) && !addedRecipes.contains(it["uid"] as String)) {
+                                        if (counter < limit) {
+                                            if ((words.contains(sf[0].tag) || words.contains(sf[1].tag) || words.contains(sf[2].tag)) && !addedRecipes.contains(it["uid"] as String)) {
                                                 val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
                                                     it["imagePath"] as String, it["uid"] as String,
                                                     it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
@@ -150,17 +148,37 @@ class MainActivity : AppCompatActivity() {
                                                 counter++
                                             }
                                         }
+
+                                    }
+                                    counter in 6..7 -> {
+                                        result.forEach {
+                                            val cwords = Conversions.convertDocumenttoRecipe(it)
+                                            val words = cwords.keywords
+                                            if (counter < limit) {
+                                                if ((words.contains(sf[3].tag) || words.contains(sf[4].tag)) && !addedRecipes.contains(it["uid"] as String)) {
+                                                    val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                                                        it["imagePath"] as String, it["uid"] as String,
+                                                        it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                                                    dataSet.add(mmc)
+                                                    addedRecipes.add(it["uid"] as String)
+                                                    counter++
+                                                }
+                                            }
+
+                                        }
                                     }
                                     else -> {
                                         // Wildcard Recipes
                                         result.forEach {
                                             if (!addedRecipes.contains(it["uid"] as String)) {
-                                                val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
-                                                    it["imagePath"] as String, it["uid"] as String,
-                                                    it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
-                                                dataSet.add(mmc)
-                                                addedRecipes.add(it["uid"] as String)
-                                                counter++
+                                                if (counter < limit && !addedRecipes.contains(it["uid"] as String)) {
+                                                    val mmc = MainMenuContent.MainMenuItem(it["title"] as String,
+                                                        it["imagePath"] as String, it["uid"] as String,
+                                                        it["reviewScore"] as Decimal128, it["cuisine"] as String, true)
+                                                    dataSet.add(mmc)
+                                                    addedRecipes.add(it["uid"] as String)
+                                                    counter++
+                                                }
                                             }
                                         }
                                     }
@@ -169,6 +187,9 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
 
+                        addedRecipes.forEach {
+                            Log.d("testDataa", it)
+                        }
 
                     }
 
@@ -278,6 +299,7 @@ class MainActivity : AppCompatActivity() {
             val result = mutableListOf<Document>()
 
             query.into(result).addOnSuccessListener {
+                Log.d("testData", "callBack Success")
                 rc.getRecipe(result)
             }.addOnFailureListener {
             }

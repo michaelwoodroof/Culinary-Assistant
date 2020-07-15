@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlMain"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_marginBottom="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMain"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="20px"
+        app:cardElevation="3dp"
+        app:cardMaxElevation="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_local_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Choose a Recipe"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDescR"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:maxLines="4"
+                android:minLines="1"
+                android:text="Recipe will go here"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_local_title"
+                app:layout_constraintTop_toBottomOf="@+id/imgS1" />
+
+            <TextView
+                android:id="@+id/tvTags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvDescR" />
+
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_search_title"
+                app:layout_constraintEnd_toStartOf="@+id/imgStar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRating"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvRating"
+                app:srcCompat="@drawable/ic_star_black_8dp" />
+
+            <TextView
+                android:id="@+id/tvDiff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgS5"
+                app:layout_constraintEnd_toEndOf="@+id/imgStar"
+                app:layout_constraintTop_toTopOf="@+id/imgS5" />
+
+            <ImageView
+                android:id="@+id/imgS1"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginTop="4dp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="@+id/tv_local_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_local_title"
+                app:srcCompat="@drawable/ic_spicyon" />
+
+            <ImageView
+                android:id="@+id/imgS2"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toEndOf="@+id/imgS1"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyon" />
+
+            <ImageView
+                android:id="@+id/imgS3"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toEndOf="@+id/imgS2"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyon" />
+
+            <ImageView
+                android:id="@+id/imgS4"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toEndOf="@+id/imgS3"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyon" />
+
+            <ImageView
+                android:id="@+id/imgS5"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toEndOf="@+id/imgS4"
+                app:layout_constraintTop_toTopOf="@+id/imgS1"
+                app:srcCompat="@drawable/ic_spicyon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

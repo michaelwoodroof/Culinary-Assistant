@@ -7,5 +7,4 @@ import java.io.Serializable
 @Parcelize
 class Ingredient(var name: String, var amount: String, var unit: String,
                  var notes: String) : Parcelable, Serializable {
-
 }

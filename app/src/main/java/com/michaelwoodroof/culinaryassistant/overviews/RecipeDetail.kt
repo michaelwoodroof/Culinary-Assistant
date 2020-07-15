@@ -1,9 +1,12 @@
 package com.michaelwoodroof.culinaryassistant.overviews
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Switch
@@ -13,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.michaelwoodroof.culinaryassistant.adapters.IngredientAdapter
 import com.michaelwoodroof.culinaryassistant.R
+import com.michaelwoodroof.culinaryassistant.RecipeCallback
 import com.michaelwoodroof.culinaryassistant.adapters.StepAdapter
 import com.michaelwoodroof.culinaryassistant.structure.IngredientContent
 import com.michaelwoodroof.culinaryassistant.structure.Recipe
@@ -22,13 +26,16 @@ import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
 import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_recipe_detail.*
 import org.bson.Document
-import java.util.logging.FileHandler
+import java.lang.Exception
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class RecipeDetail : AppCompatActivity() {
 
     // Used throughout
     lateinit var rc : Recipe
+    lateinit var nd : MutableList<Document>
     var currentStep : Int = 0
     var currentData : String = "YES"
     private lateinit var recyclerView : RecyclerView
@@ -181,7 +188,7 @@ class RecipeDetail : AppCompatActivity() {
                 txtvPrep.text = getString(R.string.timingFormat, modPrep)
                 txtvCook.text = getString(R.string.timingFormat, modCook)
 
-                txtvServings.text = getString(R.string.servingFormat, rc.numOfServings)
+                txtvPortion.text = Editable.Factory.getInstance().newEditable(rc.numOfServings)
                 txtvAuthor.text = rc.author
 
                 // Configure Allergens
@@ -252,9 +259,154 @@ class RecipeDetail : AppCompatActivity() {
                     adapter = viewAdapter
                 }
 
+                // Get Nutrional Data
+
+                Log.d("testData", "preNNLOAD")
+                Log.d("testData", rc.ingredients[0].name)
+
+                loadNNData()
+
                 loadStepContent(0)
 
             }
+
+        }
+
+        txtvPortion.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(p0: Editable?) {
+                // Update Portion Size
+                // Get Original Portion Size
+                try {
+                    val ogs = rc.numOfServings.toInt()
+                    val newss = txtvPortion.text.toString().toInt()
+                    // Go Through each Ingredient
+                    val dataSetIng = ArrayList<IngredientContent.IngredientItem>()
+                    for (ingredient in rc.ingredients) {
+                        var adjustedAmount = ingredient.amount
+
+                        // Attempt to Update Amount of Ingredient
+                        try {
+
+                            var single = adjustedAmount.toDouble()
+                            single /= ogs
+
+                            adjustedAmount = (single * newss).toString()
+
+                        } catch (e : Exception) {}
+
+                        val ii = IngredientContent.IngredientItem(adjustedAmount, ingredient.unit,
+                            ingredient.name, ingredient.notes)
+                        dataSetIng.add(ii)
+                    }
+
+                    viewManager = LinearLayoutManager(baseContext)
+                    viewAdapter =
+                        IngredientAdapter(
+                            dataSetIng
+                        )
+
+                    recyclerView = findViewById<RecyclerView>(R.id.rvIngredients).apply {
+                        setHasFixedSize(true)
+                        layoutManager = viewManager
+                        adapter = viewAdapter
+                    }
+
+                } catch (e : Exception) {}
+
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+        })
+    }
+
+    fun loadNNData() {
+
+        Log.d("testData", "NNLOAD")
+
+        val dd = loadNData(
+            object : RecipeCallback {
+                @SuppressLint("SetTextI18n")
+                override fun getRecipe(result: MutableList<Document>) {
+                    // Use Data
+                    Log.d("testData", "INNERLOAD")
+                    // Load in Nutrional Data
+                    var fat = 0.0
+                    var sodium = 0.0
+                    var carbohydrate = 0.0
+                    var protein = 0.0
+                    var calories = 0.0
+
+                    Log.d("testData", "preIngredCheck")
+
+                    // Sort Data
+                    rc.ingredients.forEach {
+
+                        Log.d("testData", it.name)
+
+                        // Check each Ingredient against Nutritional Database
+                        val checkname = it.name.toLowerCase()
+
+                        result.forEach { iit ->
+                            if ((iit["ingredientName"] as String).toLowerCase(Locale.ROOT) == checkname && it.unit == "g") {
+                                val mult : Double = it.amount.toDouble() / 100
+
+                                fat += ((iit["fat"] as String).split(":")[0]).toDouble() * mult
+                                sodium += ((iit["sodium"] as String).split(":")[0]).toDouble() * mult
+                                carbohydrate += ((iit["carbohydrate"] as String).split(":")[0]).toDouble() * mult
+                                protein += ((iit["protein"] as String).split(":")[0]).toDouble() * mult
+                                calories += (iit["calories"] as String).toDouble() * mult
+
+                            }
+                        }
+
+
+
+                    }
+
+                    // Set Text Up
+                    tvFA.text = String.format("%.2f", fat) + "g"
+                    tvSA.text = String.format("%.2f", sodium) + "mg"
+                    tvCA.text = String.format("%.2f", carbohydrate) + "g"
+                    tvPA.text = String.format("%.2f", protein) + "g"
+                    tvCAL.text = String.format("%.2f", calories)
+
+                    tvFA.visibility = View.VISIBLE
+                    tvSA.visibility = View.VISIBLE
+                    tvCA.visibility = View.VISIBLE
+                    tvPA.visibility = View.VISIBLE
+                    tvCAL.visibility = View.VISIBLE
+
+                }
+
+            }
+
+        )
+
+
+    }
+
+    private fun loadNData(rc : RecipeCallback) {
+
+        val stitchAppClient = Stitch.getDefaultAppClient()
+
+        // Call Database for Suggested Recipes
+        stitchAppClient.auth.loginWithCredential(AnonymousCredential()).addOnSuccessListener {
+
+            // Read from File for Suggested Recipes
+            val client = stitchAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas")
+            val coll = client.getDatabase("appdata").getCollection("nutrition")
+            val query = coll.find().limit(100)
+            val result = mutableListOf<Document>()
+
+            query.into(result).addOnSuccessListener {
+                Log.d("testData", "callBack Nutrional Success")
+                rc.getRecipe(result)
+            }.addOnFailureListener {}
 
         }
 
@@ -283,21 +435,25 @@ class RecipeDetail : AppCompatActivity() {
         var celsius = rc.convertToCelsius(suffix, temp)
         celsius = celsius.substring(0, celsius.length - 2)
 
-        when(view.tag) {
-            "CC" -> {
-                txtvTemp.text = rc.convertTemperature("FO", celsius)
-                view.tag = "FO"
-            }
+        try {
+            when(view.tag) {
+                "CC" -> {
+                    txtvTemp.text = rc.convertTemperature("FO", celsius)
+                    view.tag = "FO"
+                }
 
-            "FO" -> {
-                txtvTemp.text = rc.convertTemperature("GM", celsius)
-                view.tag = "GM"
-            }
+                "FO" -> {
+                    txtvTemp.text = rc.convertTemperature("GM", celsius)
+                    view.tag = "GM"
+                }
 
-            "GM" -> {
-                txtvTemp.text = rc.convertTemperature("CC", celsius)
-                view.tag = "CC"
+                "GM" -> {
+                    txtvTemp.text = rc.convertTemperature("CC", celsius)
+                    view.tag = "CC"
+                }
             }
+        } catch (e : Exception) {
+
         }
 
     }
@@ -362,9 +518,10 @@ class RecipeDetail : AppCompatActivity() {
     }
 
     fun updateContent(type : Int) {
-
+        clNutrional.visibility = View.GONE
         // Update Chips and View
         if (type == 0) {
+
             swSBS.visibility = View.VISIBLE
             rvIngredients.visibility = View.GONE
             if (swSBS.isChecked) {
@@ -435,14 +592,21 @@ class RecipeDetail : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     fun loadNutrionalData(view : View) {
 
         if (view.tag == "noclick") {
             view.tag = "click"
-            rvNutrition.visibility = View.VISIBLE
+            clNutrional.visibility = View.VISIBLE
+            rvIngredients.visibility = View.GONE
+            rvSteps.visibility = View.GONE
+            clStepbyStep.visibility = View.GONE
         } else {
             view.tag = "noclick"
-            rvNutrition.visibility = View.GONE
+            clNutrional.visibility = View.GONE
+            rvIngredients.visibility = View.GONE
+            rvSteps.visibility = View.GONE
+            clStepbyStep.visibility = View.GONE
         }
 
     }
